@@ -10,6 +10,9 @@ namespace DungeonCrawl.Actors.Characters
     {
         protected override void OnUpdate(float deltaTime)
         {
+
+            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
+
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 // Move up
@@ -38,7 +41,12 @@ namespace DungeonCrawl.Actors.Characters
                 throw new NotImplementedException();
             }
 
-            UserInterface.Singleton.SetText(ActorManager.Singleton.GetActorAt(Position).ToString(),UserInterface.TextPosition.BottomRight);
+            Sword sword = ActorManager.Singleton.GetActorAt<Sword>(Position);
+           
+            if (sword.Pickable)
+            {
+                UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
+            }
         }
 
         public override bool OnCollision(Actor anotherActor)
