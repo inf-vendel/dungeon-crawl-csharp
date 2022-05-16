@@ -1,5 +1,7 @@
 ﻿using System;
 using Assets.Source.Core;
+using DungeonCrawl.Actors.Static.Items;
+using DungeonCrawl.Core;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -33,13 +35,14 @@ namespace DungeonCrawl.Actors.Characters
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
-                
+                throw new NotImplementedException();
             }
+
+            UserInterface.Singleton.SetText(ActorManager.Singleton.GetActorAt(Position).ToString(),UserInterface.TextPosition.BottomRight);
         }
 
         public override bool OnCollision(Actor anotherActor)
         {
-            UserInterface.Singleton.SetText("Press 'E' to pick up this.", UserInterface.TextPosition.BottomRight);
             return false;
         }
 
