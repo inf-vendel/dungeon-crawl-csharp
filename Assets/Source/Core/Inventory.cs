@@ -18,8 +18,8 @@ namespace Assets.Source.Core
         }
         public void Display()
         {
-            UserInterface.Singleton.SetText(Items.Count.ToString(), UserInterface.TextPosition.TopLeft);
-
+            UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
+            
         }
 
         public void AddItem(Item item)
@@ -41,9 +41,10 @@ namespace Assets.Source.Core
         public override string ToString()
         {
             var sb = new StringBuilder();
-            foreach (Item item in Items)
+            for (int i = 0; i < Items.Count; i++)
             {
-                sb.Append(item.name);
+                sb.Append($"{i+1}. {Items[i].DefaultName}");
+                sb.Append(Environment.NewLine);
             }
 
             return sb.ToString();
