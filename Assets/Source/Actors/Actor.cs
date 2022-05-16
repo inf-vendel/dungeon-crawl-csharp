@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Core;
+﻿using DungeonCrawl.Actors.Static.Items;
+using DungeonCrawl.Core;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors
