@@ -1,5 +1,6 @@
 ﻿using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Static;
+using DungeonCrawl.Actors.Static.Items;
 using System;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -57,6 +58,10 @@ namespace DungeonCrawl.Core
                     break;
                 case 's':
                     ActorManager.Singleton.Spawn<Skeleton>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'ł':
+                    ActorManager.Singleton.Spawn<Sword>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case ' ':

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Assets.Source.Core;
+using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -29,10 +31,15 @@ namespace DungeonCrawl.Actors.Characters
                 // Move right
                 TryMove(Direction.Right);
             }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                
+            }
         }
 
         public override bool OnCollision(Actor anotherActor)
         {
+            UserInterface.Singleton.SetText("Press 'E' to pick up this.", UserInterface.TextPosition.BottomRight);
             return false;
         }
 
