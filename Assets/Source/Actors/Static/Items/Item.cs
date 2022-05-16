@@ -8,5 +8,10 @@ namespace DungeonCrawl.Actors.Static.Items
         public override bool Detectable => false;
 
         public virtual bool Pickable => false;
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

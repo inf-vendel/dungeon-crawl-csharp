@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Assets.Source.Core;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
@@ -8,6 +9,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
+        private Inventory _inventory = new Inventory();
         protected override void OnUpdate(float deltaTime)
         {
 
@@ -36,17 +38,26 @@ namespace DungeonCrawl.Actors.Characters
                 // Move right
                 TryMove(Direction.Right);
             }
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.I))
             {
-                throw new NotImplementedException();
+                _inventory.ToString();
+                _inventory.Display();
             }
 
-            Sword sword = ActorManager.Singleton.GetActorAt<Sword>(Position);
+
+            Item item = ActorManager.Singleton.GetActorAt<Item>(Position);
            
-            if (sword.Pickable)
+            if (item is not null && item.Pickable)
             {
-                UserInterface.Singleton.SetText("Press E to pick up", UserInterface.TextPosition.BottomRight);
+                UserInterface.Singleton.SetText($"Press E to pick up {item.name}", UserInterface.TextPosition.BottomRight);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Item copyObject = (Item) item.Clone();
+                    _inventory.AddItem(copyObject);
+                    ActorManager.Singleton.DestroyActor(item);
+                }
             }
+            
         }
 
         public override bool OnCollision(Actor anotherActor)
@@ -61,5 +72,8 @@ namespace DungeonCrawl.Actors.Characters
 
         public override int DefaultSpriteId => 24;
         public override string DefaultName => "Player";
+
+        // capacity, display, item selection, move/delete,
+        // protected List<Item> Inventory;
     }
 }
