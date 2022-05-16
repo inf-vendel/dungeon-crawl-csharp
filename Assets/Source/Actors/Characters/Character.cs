@@ -4,7 +4,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public abstract class Character : Actor
     {
-        public int Health { get; private set; }
+        public int Health { get; private set; } = 100;
 
         public void ApplyDamage(int damage)
         {
@@ -17,6 +17,11 @@ namespace DungeonCrawl.Actors.Characters
 
                 ActorManager.Singleton.DestroyActor(this);
             }
+        }
+
+        protected void setHP(int health)
+        {
+            Health = health;
         }
 
         protected abstract void OnDeath();

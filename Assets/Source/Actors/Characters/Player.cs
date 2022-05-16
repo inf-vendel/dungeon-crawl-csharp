@@ -10,6 +10,12 @@ namespace DungeonCrawl.Actors.Characters
     public class Player : Character
     {
         private Inventory _inventory = new Inventory();
+
+        public Player(int health)
+        {
+            setHP(health);
+        }
+
         protected override void OnUpdate(float deltaTime)
         {
 
