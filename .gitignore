@@ -15,6 +15,10 @@ ProjectSettings/MemorySettings.asset
 ProjectSettings/boot.config
 dungeon-crawl-1-csharp-inf-vendel.sln
 *.meta
+#Ignore all .meta file
+*.meta
+#But not source file with postfix. which is everything but a folder
+!*.*.meta
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
