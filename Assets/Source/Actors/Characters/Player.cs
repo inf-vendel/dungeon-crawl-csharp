@@ -10,19 +10,23 @@ namespace DungeonCrawl.Actors.Characters
     public class Player : Character
     {
         private Inventory _inventory = new Inventory();
-        private const int DEFAULT_HEALTH = 120;
+        private const int DEFAULT_HEALTH = 30;
+        private const int DEFAULT_DAMAGE = 5;
         public Player()
         {
-            setHP(DEFAULT_HEALTH);
+            SetHp(DEFAULT_HEALTH);
+            SetDamage(DEFAULT_DAMAGE);
         }
-        public Player(int health)
-        {
-            setHP(health);
-        }
+        //public Player(int health, int damage)
+        //{
+        //    SetHp(health);
+        //    SetDamage(damage);
+        //}
 
         protected override void OnUpdate(float deltaTime)
         {
 
+            UserInterface.Singleton.SetText($"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", UserInterface.TextPosition.BottomLeft);
             UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -52,23 +56,24 @@ namespace DungeonCrawl.Actors.Characters
 
 
             Item item = ActorManager.Singleton.GetActorAt<Item>(Position);
-           
+
             if (item is not null && item.Pickable)
             {
                 UserInterface.Singleton.SetText($"Press E to pick up {item.name}", UserInterface.TextPosition.BottomRight);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Item copyObject = (Item) item.Clone();
+                    Item copyObject = (Item)item.Clone();
                     _inventory.AddItem(copyObject);
                     ActorManager.Singleton.DestroyActor(item);
                     _inventory.Display();
                 }
             }
-            
+
         }
 
         public override bool OnCollision(Actor anotherActor)
         {
+            //if (anotherActor is Skeleton)
             return false;
         }
 
