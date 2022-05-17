@@ -10,6 +10,9 @@ namespace DungeonCrawl.Actors.Characters
     {
         public override bool Detectable => true;
 
+        public const float SPEED = 1.0f;
+        private float _moveCounter;
+
         private const int DEFAULT_HEALTH = 12;
         private const int DEFAULT_DAMAGE = 3;
         public bool IsAgressive { get; set; }
@@ -28,29 +31,36 @@ namespace DungeonCrawl.Actors.Characters
             (int x, int y) playerPosition = player.Position;
             UserInterface.Singleton.SetText(playerPosition.ToString(), UserInterface.TextPosition.TopCenter);
 
-            if (Position.x < playerPosition.x)
-            {
-                TryMove(Direction.Right);
-            }
-            if (Position.x > playerPosition.x)
-            {
-                TryMove(Direction.Left);
-            }
+            _moveCounter -= deltaTime;
 
-            if (Position.y < playerPosition.y)
+            if (_moveCounter <= 0.0f)
             {
-                TryMove(Direction.Up);
-            }
-            if (Position.y > playerPosition.y)
-            {
-                TryMove(Direction.Down);
+
+                if (Position.x < playerPosition.x)
+                {
+                    TryMove(Direction.Right);
+                }
+                if (Position.x > playerPosition.x)
+                {
+                    TryMove(Direction.Left);
+                }
+
+                if (Position.y < playerPosition.y)
+                {
+                    TryMove(Direction.Up);
+                }
+                if (Position.y > playerPosition.y)
+                {
+                    TryMove(Direction.Down);
+                }
+                _moveCounter = SPEED;
             }
 
         }
 
         public override bool OnCollision(Actor anotherActor)
         {
-            var battle = new Battle((Player) anotherActor, this);
+            var battle = new Battle((Player)anotherActor, this);
             StartCoroutine(battle.Loop());
             if (anotherActor is Player)
             {
