@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -6,10 +7,18 @@ namespace DungeonCrawl.Actors.Characters
     {
         private const int DEFAULT_HEALTH = 12;
         private const int DEFAULT_DAMAGE = 3;
+        public bool IsAgressive { get; set; }
         public Ghost()
         {
             SetHp(DEFAULT_HEALTH);
             SetDamage(DEFAULT_DAMAGE);
+            IsAgressive = true;
+        }
+
+        protected override void OnUpdate(float deltaTime)
+        {
+            throw new NotImplementedException();
+
         }
 
         public override bool OnCollision(Actor anotherActor)
@@ -31,4 +40,5 @@ namespace DungeonCrawl.Actors.Characters
         public override int DefaultSpriteId => 315;
         public override string DefaultName => "Ghost";
     }
+
 }

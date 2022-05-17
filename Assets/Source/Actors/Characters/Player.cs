@@ -26,6 +26,7 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnUpdate(float deltaTime)
         {
 
+            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -68,7 +69,6 @@ namespace DungeonCrawl.Actors.Characters
             }
 
             UserInterface.Singleton.SetText($"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", UserInterface.TextPosition.BottomLeft);
-            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
         }
 
         public override bool OnCollision(Actor anotherActor)

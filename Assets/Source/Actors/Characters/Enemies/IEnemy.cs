@@ -1,9 +1,12 @@
 ﻿
 
+using UnityEngine.UIElements.Experimental;
+
 namespace DungeonCrawl.Actors.Characters
 {
     public interface IEnemy
     {
-        //public int counter { get; set; }
+        public bool IsAgressive { get; set; }
+
     }
 }

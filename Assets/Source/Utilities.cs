@@ -28,5 +28,13 @@ namespace DungeonCrawl
                     throw new ArgumentOutOfRangeException(nameof(dir), dir, null);
             }
         }
+
+        public static Direction GetRandomDirection()
+        {
+            Array values = Enum.GetValues(typeof(Direction));
+            Random random = new Random();
+            Direction randomDir = (Direction)values.GetValue(random.Next(values.Length));
+            return randomDir;
+        }
     }
 }
