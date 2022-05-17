@@ -1,4 +1,5 @@
-﻿using Assets.Source.Core;
+﻿using System.Threading;
+using Assets.Source.Core;
 using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
@@ -8,6 +9,9 @@ namespace DungeonCrawl.Actors
 {
     public abstract class Actor : MonoBehaviour
     {
+
+        protected float spriteAlpha { get; set; } = 1.0f;
+
         public (int x, int y) Position
         {
             get => _position;
@@ -36,6 +40,9 @@ namespace DungeonCrawl.Actors
         public void SetSprite(int id)
         {
             _spriteRenderer.sprite = ActorManager.Singleton.GetSprite(id);
+            Color tmp = _spriteRenderer.color;
+            tmp.a = spriteAlpha;
+            _spriteRenderer.color = tmp;
         }
 
         public void TryMove(Direction direction)
@@ -55,20 +62,7 @@ namespace DungeonCrawl.Actors
                 if (actorAtTargetPosition.OnCollision(this))
                 {
                     // Allowed to move
-
-                    //Skeleton skeleton = (Skeleton) this;
-                    //skeleton.ApplyDamage(actorAtTargetPosition.Damage);
-                    //this.ApplyDamage(skeleton.Damage);
                     Position = targetPosition;
-                }
-                else if (actorAtTargetPosition is Skeleton)
-                {
-                    UserInterface.Singleton.SetText("Fight", UserInterface.TextPosition.BottomCenter);
-                    Skeleton skeleton = (Skeleton)actorAtTargetPosition;
-                    Player player = (Player)this;
-                    skeleton.ApplyDamage(player.Damage);
-                    player.ApplyDamage(skeleton.Damage);
-
                 }
             }
         }

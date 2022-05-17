@@ -12,6 +12,8 @@ namespace DungeonCrawl.Actors.Characters
         private Inventory _inventory = new Inventory();
         private const int DEFAULT_HEALTH = 30;
         private const int DEFAULT_DAMAGE = 5;
+        public bool CanMove;
+        public bool InFight;
         public Player()
         {
             SetHp(DEFAULT_HEALTH);
@@ -25,8 +27,6 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-
-            UserInterface.Singleton.SetText($"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", UserInterface.TextPosition.BottomLeft);
             UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -69,11 +69,12 @@ namespace DungeonCrawl.Actors.Characters
                 }
             }
 
+            UserInterface.Singleton.SetText($"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", UserInterface.TextPosition.BottomLeft);
         }
 
         public override bool OnCollision(Actor anotherActor)
         {
-            //if (anotherActor is Skeleton)
+            
             return false;
         }
 
