@@ -2,12 +2,13 @@
 
 namespace DungeonCrawl.Actors.Characters
 {
-    public class Skeleton : Character, IEnemy
+    public class Slime : Character, IEnemy
     {
 
-        private const int DEFAULT_HEALTH = 10;
-        private const int DEFAULT_DAMAGE = 2;
-        public Skeleton()
+        private const int DEFAULT_HEALTH = 20;
+        private const int DEFAULT_DAMAGE = 1;
+
+        public Slime()
         {
             SetHp(DEFAULT_HEALTH);
             SetDamage(DEFAULT_DAMAGE);
@@ -20,10 +21,10 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            Debug.Log("Well, I was already dead anyway...");
+            Debug.Log("Blugy...blugy...");
         }
 
-        public override int DefaultSpriteId => 316;
-        public override string DefaultName => "Skeleton";
+        public override int DefaultSpriteId => 453;
+        public override string DefaultName => "Slime";
     }
 }

@@ -1,33 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="DungeonCrawl.Actors.Actor">
-    <Position X="4.25" Y="0.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAQAgAAgAAABAAAgAAAAACAAAAAAAAAAIIAAgAEAAkE=</HashCode>
-      <FileName>Assets\Source\Actors\Actor.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DungeonCrawl.Actors.Characters.Character">
-    <Position X="4.25" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAACAAAAAAAAAAAAAAAAIAAAEAAAAAAAAAAAAAAAAE=</HashCode>
-      <FileName>Assets\Source\Actors\Characters\Character.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DungeonCrawl.Actors.Characters.Player">
-    <Position X="2.5" Y="8" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAgAAAAAAAAAAAAAAAAIAAAAAAAAAAIIAAAAEAAAA=</HashCode>
-      <FileName>Assets\Source\Actors\Characters\Player.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DungeonCrawl.Actors.Characters.Skeleton">
-    <Position X="6" Y="8.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAgAAAAAAAAAAAAAAAAIAAAAAAAAAAIIAAAAAAAAA=</HashCode>
-      <FileName>Assets\Source\Actors\Characters\Skeleton.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DungeonCrawl.Actors.Static.Floor">
     <Position X="2" Y="2.25" Width="1.5" />
     <TypeIdentifier>
@@ -38,7 +10,7 @@
   <Class Name="DungeonCrawl.Actors.Static.Wall">
     <Position X="6.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAIIAAAAAAAAA=</HashCode>
       <FileName>Assets\Source\Actors\Static\Wall.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -92,6 +64,34 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\Source\Utilities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DungeonCrawl.Actors.Actor">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAgAAABAAAgAAAAACAAAAAAAAAAIIAAgAEAAkE=</HashCode>
+      <FileName>Assets\Source\Actors\Actor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DungeonCrawl.Actors.Characters.Character">
+    <Position X="4.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACAAAAAAAAAAEAAAIAAAEAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Assets\Source\Actors\Characters\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DungeonCrawl.Actors.Characters.Player">
+    <Position X="2.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAIAQAAAAAACAIIAAABEAAAA=</HashCode>
+      <FileName>Assets\Source\Actors\Characters\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DungeonCrawl.Actors.Characters.Skeleton">
+    <Position X="6" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAIAQAAAAAAAAIIAAABAAAAA=</HashCode>
+      <FileName>Assets\Source\Actors\Characters\Skeleton.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="DungeonCrawl.Direction">

@@ -1,4 +1,5 @@
-﻿using Assets.Source.Core;
+﻿using System.Threading;
+using Assets.Source.Core;
 using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
@@ -48,6 +49,7 @@ namespace DungeonCrawl.Actors
             if (actorAtTargetPosition == null)
             {
                 // No obstacle found, just move
+                UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
                 Position = targetPosition;
             }
             else
@@ -55,20 +57,31 @@ namespace DungeonCrawl.Actors
                 if (actorAtTargetPosition.OnCollision(this))
                 {
                     // Allowed to move
-
-                    //Skeleton skeleton = (Skeleton) this;
-                    //skeleton.ApplyDamage(actorAtTargetPosition.Damage);
-                    //this.ApplyDamage(skeleton.Damage);
                     Position = targetPosition;
                 }
-                else if (actorAtTargetPosition is Skeleton)
+                else if (actorAtTargetPosition is IEnemy)
                 {
                     UserInterface.Singleton.SetText("Fight", UserInterface.TextPosition.BottomCenter);
-                    Skeleton skeleton = (Skeleton)actorAtTargetPosition;
                     Player player = (Player)this;
-                    skeleton.ApplyDamage(player.Damage);
-                    player.ApplyDamage(skeleton.Damage);
-
+                    switch (actorAtTargetPosition.DefaultName)
+                    {
+                        case "Skeleton":
+                            Skeleton skeleton = (Skeleton)actorAtTargetPosition;
+                            skeleton.ApplyDamage(player.Damage);
+                            player.ApplyDamage(skeleton.Damage);
+                            break;
+                        case "Ghost":
+                            Ghost ghost = (Ghost) actorAtTargetPosition;
+                            ghost.ApplyDamage(player.Damage);
+                            player.ApplyDamage(ghost.Damage);
+                            break;
+                        case "Slime":
+                            Slime slime = (Slime) actorAtTargetPosition;
+                            slime.ApplyDamage(player.Damage);
+                            player.ApplyDamage(slime.Damage);
+                            break;
+                    }
+                   
                 }
             }
         }
