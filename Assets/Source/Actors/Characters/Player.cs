@@ -70,10 +70,6 @@ namespace DungeonCrawl.Actors.Characters
             }
 
             UserInterface.Singleton.SetText($"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", UserInterface.TextPosition.BottomLeft);
-            
-            if ()
-            UserInterface.Singleton.SetText("", UserInterface.TextPosition.BottomCenter);
-
         }
 
         public override bool OnCollision(Actor anotherActor)
