@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DungeonCrawl.Actors;
+using DungeonCrawl.Actors.Characters;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -31,6 +32,19 @@ namespace DungeonCrawl.Core
 
             _allActors = new HashSet<Actor>();
             _spriteAtlas = Resources.Load<SpriteAtlas>("Spritesheet");
+        }
+
+
+        public Actor GetPlayer()
+        {
+            foreach (Actor actor in _allActors)
+            {
+                if (actor is Player)
+                {
+                    return actor;
+                }
+            }
+            return null;
         }
 
         /// <summary>

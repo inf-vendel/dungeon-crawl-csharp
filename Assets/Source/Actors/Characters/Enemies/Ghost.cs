@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Assets.Source.Core;
+using DungeonCrawl.Core;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -22,7 +23,28 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            throw new NotImplementedException();
+
+            Actor player = ActorManager.Singleton.GetPlayer();
+            (int x, int y) playerPosition = player.Position;
+            UserInterface.Singleton.SetText(playerPosition.ToString(), UserInterface.TextPosition.TopCenter);
+
+            if (Position.x < playerPosition.x)
+            {
+                TryMove(Direction.Right);
+            }
+            if (Position.x > playerPosition.x)
+            {
+                TryMove(Direction.Left);
+            }
+
+            if (Position.y < playerPosition.y)
+            {
+                TryMove(Direction.Up);
+            }
+            if (Position.y > playerPosition.y)
+            {
+                TryMove(Direction.Down);
+            }
 
         }
 
