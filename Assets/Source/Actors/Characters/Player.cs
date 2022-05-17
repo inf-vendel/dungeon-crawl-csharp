@@ -48,11 +48,7 @@ namespace DungeonCrawl.Actors.Characters
                 // Move right
                 TryMove(Direction.Right);
             }
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                _inventory.ToString();
-                _inventory.Display();
-            }
+
 
 
             Item item = ActorManager.Singleton.GetActorAt<Item>(Position);
@@ -65,6 +61,7 @@ namespace DungeonCrawl.Actors.Characters
                     Item copyObject = (Item) item.Clone();
                     _inventory.AddItem(copyObject);
                     ActorManager.Singleton.DestroyActor(item);
+                    _inventory.Display();
                 }
             }
             

@@ -40,14 +40,29 @@ namespace Assets.Source.Core
 
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            for (int i = 0; i < Items.Count; i++)
+            StringBuilder result = new();
+            result.Append("Inventory:\n");
+
+            Dictionary<string, int> dict = new();
+
+            foreach (Item item in Items)
             {
-                sb.Append($"{i+1}. {Items[i].DefaultName}");
-                sb.Append(Environment.NewLine);
+                if (dict.ContainsKey(item.DefaultName))
+                    dict[item.DefaultName]++;
+                else
+                    dict.Add(item.DefaultName, 1);
             }
 
-            return sb.ToString();
+            int counter = 1;
+
+            foreach (KeyValuePair<string, int> item in dict)
+            {
+                result.Append($"{counter}. {item.Key} ({item.Value})");
+                result.Append(Environment.NewLine);
+                counter++;
+            }
+
+            return result.ToString();
         }
     }
 }
