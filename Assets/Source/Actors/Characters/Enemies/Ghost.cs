@@ -64,7 +64,6 @@ namespace DungeonCrawl.Actors.Characters
                 return false;
             }
             return true;
-
         }
 
         protected override void OnDeath()

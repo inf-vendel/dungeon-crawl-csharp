@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Source.Core;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -22,19 +23,14 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor is Player)
-            {
-                Player player = (Player)anotherActor;
-                this.ApplyDamage(player.Damage);
-                player.ApplyDamage(Damage);
-            }
+            var battle = new Battle((Player)anotherActor, this);
+            StartCoroutine(battle.Loop());
             return false;
         }
 
         protected override void OnUpdate(float deltaTime)
         {
             throw new NotImplementedException();
-
         }
 
         protected override void OnDeath()

@@ -20,7 +20,7 @@ namespace Assets.Source.Core
         public IEnumerator Loop()
         {
             int counter = 0;
-            while (true)
+            while (Enemy.Health > 0 && Player.Health > 0)
             {
                 // Use Player.CalculateDamage();
                 this.Enemy.ApplyDamage(this.Player.Damage);
@@ -29,17 +29,8 @@ namespace Assets.Source.Core
                 Player.ApplyDamage(Enemy.Damage);
                 UserInterface.Singleton.SetText($"You have {Player.Health.ToString()} HP left", UserInterface.TextPosition.BottomCenter);
                 counter++;
-
-                if (Enemy.Health <= Player.Damage)
-                {
-                    Player.BattleWon();
-                    break;
-                }
-                
                 yield return new WaitForSeconds(0.5f);
             }
-            
-            
         }
     }
 }

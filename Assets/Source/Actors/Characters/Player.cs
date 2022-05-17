@@ -70,6 +70,10 @@ namespace DungeonCrawl.Actors.Characters
             }
 
             UserInterface.Singleton.SetText($"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", UserInterface.TextPosition.BottomLeft);
+            
+            if ()
+            UserInterface.Singleton.SetText("", UserInterface.TextPosition.BottomCenter);
+
         }
 
         public override bool OnCollision(Actor anotherActor)
@@ -81,12 +85,6 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             Debug.Log("Oh no, I'm dead!");
-        }
-
-        public void BattleWon()
-        {
-            UserInterface.Singleton.SetText("I won!", UserInterface.TextPosition.BottomCenter);
-            SetHp(100);
         }
 
         public override int DefaultSpriteId => 24;
