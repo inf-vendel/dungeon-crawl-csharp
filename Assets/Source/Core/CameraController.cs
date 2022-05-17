@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DungeonCrawl.Actors;
+using UnityEngine;
 
 namespace DungeonCrawl.Core
 {
@@ -49,5 +50,17 @@ namespace DungeonCrawl.Core
 
             _camera = GetComponent<Camera>();
         }
+        void Update()
+        {
+            // Temporary vector
+            var player = ActorManager.Singleton.GetPlayer();
+            Vector3 temp;
+            temp.x = player.Position.x;
+            temp.y = player.Position.y;
+            temp.z = -10;
+            // Assign value to Camera position
+            transform.position = temp;
+        }
+
     }
 }
