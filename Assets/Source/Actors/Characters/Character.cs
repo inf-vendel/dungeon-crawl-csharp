@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Core;
+﻿using Assets.Source.Core;
+using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -7,6 +8,8 @@ namespace DungeonCrawl.Actors.Characters
         public int Health { get; private set; } = 100;
         public int Damage { get; private set; } = 10;
         protected int Defense { get; set; } = 1;
+
+        public bool IsAlive { get; set; } = true;
 
 
         public void ApplyDamage(int damage)
@@ -17,7 +20,7 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Die
                 OnDeath();
-
+                UserInterface.Singleton.SetText(string.Empty,UserInterface.TextPosition.BottomCenter);
                 ActorManager.Singleton.DestroyActor(this);
             }
         }
@@ -38,5 +41,11 @@ namespace DungeonCrawl.Actors.Characters
         ///     All characters are drawn "above" floor etc
         /// </summary>
         public override int Z => -1;
+
+        public void GetMessage()
+        {
+            UserInterface.Singleton.SetText($"{DefaultName} {Health.ToString()} HP left",
+                UserInterface.TextPosition.BottomCenter);
+        }
     }
 }

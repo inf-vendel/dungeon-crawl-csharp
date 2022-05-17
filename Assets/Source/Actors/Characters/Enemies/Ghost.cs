@@ -16,6 +16,7 @@ namespace DungeonCrawl.Actors.Characters
         private const int DEFAULT_HEALTH = 12;
         private const int DEFAULT_DAMAGE = 3;
         public bool IsAgressive { get; set; }
+        
         public Ghost()
         {
             SetHp(DEFAULT_HEALTH);
@@ -68,6 +69,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
+            IsAlive = false;
             UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
             Debug.Log("huuuuuuuuu...");
         }
