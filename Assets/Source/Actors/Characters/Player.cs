@@ -12,6 +12,8 @@ namespace DungeonCrawl.Actors.Characters
         private Inventory _inventory = new Inventory();
         private const int DEFAULT_HEALTH = 30;
         private const int DEFAULT_DAMAGE = 5;
+        public bool CanMove;
+        public bool InFight;
         public Player()
         {
             SetHp(DEFAULT_HEALTH);

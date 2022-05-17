@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Assets.Source.Core;
 using UnityEngine;
 
@@ -25,16 +26,25 @@ namespace DungeonCrawl.Actors.Characters
 
         }
 
+        IEnumerator battle()
+        {
+            int counter = 0;
+            while (counter < 10)
+            {
+                UserInterface.Singleton.SetText(counter.ToString() + " secs", UserInterface.TextPosition.BottomCenter);
+                counter++;
+                yield return new WaitForSeconds(0.5f);
+
+            }
+
+        }
         public override bool OnCollision(Actor anotherActor)
         {
-            new Battle();
-            //if (anotherActor is Player)
-            //{
-            //    Player player = (Player)anotherActor;
-            //    this.ApplyDamage(player.Damage);
-            //    player.ApplyDamage(Damage);
-            //    return false;
-            //}
+            StartCoroutine(battle());
+            if (anotherActor is Player)
+            {
+                return false;
+            }
             return true;
 
         }

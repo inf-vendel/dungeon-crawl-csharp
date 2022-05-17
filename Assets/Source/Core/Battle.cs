@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using UnityEngine;
 
 namespace Assets.Source.Core
 {
@@ -11,13 +12,7 @@ namespace Assets.Source.Core
 
         public void Loop()
         {
-            int counter = 0;
-            while (counter < 10)
-            {
-                UserInterface.Singleton.SetText(counter.ToString(), UserInterface.TextPosition.BottomCenter);
-                counter++;
-                Thread.Sleep(300);
-            }
+            new WaitForTime(1);
         }
     }
 }
