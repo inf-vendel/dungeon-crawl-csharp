@@ -1,4 +1,6 @@
-﻿using DungeonCrawl.Actors.Static.Items;
+﻿using Assets.Source.Core;
+using DungeonCrawl.Actors.Characters;
+using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
 using UnityEngine;
 
@@ -53,7 +55,20 @@ namespace DungeonCrawl.Actors
                 if (actorAtTargetPosition.OnCollision(this))
                 {
                     // Allowed to move
+
+                    //Skeleton skeleton = (Skeleton) this;
+                    //skeleton.ApplyDamage(actorAtTargetPosition.Damage);
+                    //this.ApplyDamage(skeleton.Damage);
                     Position = targetPosition;
+                }
+                else if (actorAtTargetPosition is Skeleton)
+                {
+                    UserInterface.Singleton.SetText("Fight", UserInterface.TextPosition.BottomCenter);
+                    Skeleton skeleton = (Skeleton)actorAtTargetPosition;
+                    Player player = (Player)this;
+                    skeleton.ApplyDamage(player.Damage);
+                    player.ApplyDamage(skeleton.Damage);
+
                 }
             }
         }
