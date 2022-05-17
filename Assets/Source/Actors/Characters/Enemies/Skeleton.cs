@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading;
 using Assets.Source.Core;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -7,29 +9,43 @@ namespace DungeonCrawl.Actors.Characters
     public class Skeleton : Character, IEnemy
     {
 
+        public override bool Detectable => true;
+
+        public const float SPEED = 1.0f;
+        private float _moveCounter;
+
         private const int DEFAULT_HEALTH = 10;
         private const int DEFAULT_DAMAGE = 2;
-        private const float SPEED = 6.0F;
         public bool IsAgressive { get; set; }
+
         public Skeleton()
         {
             SetHp(DEFAULT_HEALTH);
             SetDamage(DEFAULT_DAMAGE);
             IsAgressive = false;
+            _moveCounter = SPEED;
         }
 
         public override bool OnCollision(Actor anotherActor)
         {
+            if (anotherActor is Player)
+            {
+                Player player = (Player) anotherActor;
+                this.ApplyDamage(player.Damage);
+                player.ApplyDamage(Damage);
+            }
             return false;
         }
+
         protected override void OnUpdate(float deltaTime)
         {
-            UserInterface.Singleton.SetText(deltaTime.ToString(),UserInterface.TextPosition.MiddleCenter );
-            if (deltaTime*1000 >= SPEED)
+            _moveCounter -= deltaTime;
+
+            if (_moveCounter <= 0.0f)
             {
                 TryMove(Utilities.GetRandomDirection());
+                _moveCounter = SPEED;
             }
-            
         }
 
         protected override void OnDeath()

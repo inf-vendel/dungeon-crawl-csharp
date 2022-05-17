@@ -6,6 +6,9 @@ namespace DungeonCrawl.Actors.Characters
     public class Slime : Character, IEnemy
     {
 
+        public override bool Detectable => true;
+
+
         private const int DEFAULT_HEALTH = 20;
         private const int DEFAULT_DAMAGE = 1;
         public bool IsAgressive { get; set; }
@@ -19,6 +22,12 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor)
         {
+            if (anotherActor is Player)
+            {
+                Player player = (Player)anotherActor;
+                this.ApplyDamage(player.Damage);
+                player.ApplyDamage(Damage);
+            }
             return false;
         }
 

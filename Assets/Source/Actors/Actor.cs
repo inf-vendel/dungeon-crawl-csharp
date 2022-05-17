@@ -9,6 +9,9 @@ namespace DungeonCrawl.Actors
 {
     public abstract class Actor : MonoBehaviour
     {
+
+        protected float spriteAlpha { get; set; } = 1.0f;
+
         public (int x, int y) Position
         {
             get => _position;
@@ -37,6 +40,9 @@ namespace DungeonCrawl.Actors
         public void SetSprite(int id)
         {
             _spriteRenderer.sprite = ActorManager.Singleton.GetSprite(id);
+            Color tmp = _spriteRenderer.color;
+            tmp.a = spriteAlpha;
+            _spriteRenderer.color = tmp;
         }
 
         public void TryMove(Direction direction)
@@ -49,7 +55,6 @@ namespace DungeonCrawl.Actors
             if (actorAtTargetPosition == null)
             {
                 // No obstacle found, just move
-                UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
                 Position = targetPosition;
             }
             else
@@ -58,30 +63,6 @@ namespace DungeonCrawl.Actors
                 {
                     // Allowed to move
                     Position = targetPosition;
-                }
-                else if (actorAtTargetPosition is IEnemy)
-                {
-                    UserInterface.Singleton.SetText("Fight", UserInterface.TextPosition.BottomCenter);
-                    Player player = (Player)this;
-                    switch (actorAtTargetPosition.DefaultName)
-                    {
-                        case "Skeleton":
-                            Skeleton skeleton = (Skeleton)actorAtTargetPosition;
-                            skeleton.ApplyDamage(player.Damage);
-                            player.ApplyDamage(skeleton.Damage);
-                            break;
-                        case "Ghost":
-                            Ghost ghost = (Ghost) actorAtTargetPosition;
-                            ghost.ApplyDamage(player.Damage);
-                            player.ApplyDamage(ghost.Damage);
-                            break;
-                        case "Slime":
-                            Slime slime = (Slime) actorAtTargetPosition;
-                            slime.ApplyDamage(player.Damage);
-                            player.ApplyDamage(slime.Damage);
-                            break;
-                    }
-                   
                 }
             }
         }
