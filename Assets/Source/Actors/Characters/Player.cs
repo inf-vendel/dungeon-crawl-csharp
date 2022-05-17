@@ -27,7 +27,6 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-
             UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -82,6 +81,12 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             Debug.Log("Oh no, I'm dead!");
+        }
+
+        public void BattleWon()
+        {
+            UserInterface.Singleton.SetText("I won!", UserInterface.TextPosition.BottomCenter);
+            SetHp(100);
         }
 
         public override int DefaultSpriteId => 24;

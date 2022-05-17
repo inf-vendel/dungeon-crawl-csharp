@@ -26,16 +26,14 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-
+            // szellem látómezője
             Actor player = ActorManager.Singleton.GetPlayer();
             (int x, int y) playerPosition = player.Position;
-            UserInterface.Singleton.SetText(playerPosition.ToString(), UserInterface.TextPosition.TopCenter);
 
             _moveCounter -= deltaTime;
 
             if (_moveCounter <= 0.0f)
             {
-
                 if (Position.x < playerPosition.x)
                 {
                     TryMove(Direction.Right);
@@ -44,7 +42,6 @@ namespace DungeonCrawl.Actors.Characters
                 {
                     TryMove(Direction.Left);
                 }
-
                 if (Position.y < playerPosition.y)
                 {
                     TryMove(Direction.Up);
@@ -72,6 +69,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
+            UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
             Debug.Log("huuuuuuuuu...");
         }
 
