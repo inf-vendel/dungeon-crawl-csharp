@@ -10,7 +10,11 @@ namespace DungeonCrawl.Actors.Characters
     public class Player : Character
     {
         private Inventory _inventory = new Inventory();
-
+        private const int DEFAULT_HEALTH = 120;
+        public Player()
+        {
+            setHP(DEFAULT_HEALTH);
+        }
         public Player(int health)
         {
             setHP(health);
