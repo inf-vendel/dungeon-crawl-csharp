@@ -6,10 +6,12 @@ namespace DungeonCrawl.Actors.Characters
     {
         public int Health { get; private set; } = 100;
         public int Damage { get; private set; } = 10;
+        protected int Defense { get; set; } = 1;
+
 
         public void ApplyDamage(int damage)
         {
-            Health -= damage;
+            Health -= damage - Defense;
 
             if (Health <= 0)
             {

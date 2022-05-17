@@ -26,21 +26,10 @@ namespace DungeonCrawl.Actors.Characters
 
         }
 
-        IEnumerator battle()
-        {
-            int counter = 0;
-            while (counter < 10)
-            {
-                UserInterface.Singleton.SetText(counter.ToString() + " secs", UserInterface.TextPosition.BottomCenter);
-                counter++;
-                yield return new WaitForSeconds(0.5f);
-
-            }
-
-        }
         public override bool OnCollision(Actor anotherActor)
         {
-            StartCoroutine(battle());
+            var battle = new Battle((Player) anotherActor, this);
+            StartCoroutine(battle.Loop());
             if (anotherActor is Player)
             {
                 return false;
