@@ -10,7 +10,7 @@ namespace Assets.Source.Core
     {
         protected int Capacity { get; private set; }
         public List<Item> Items;
-
+        public Item SelectedItem { get; set; }
         public Inventory()
         {
             Items = new();

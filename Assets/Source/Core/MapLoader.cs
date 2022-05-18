@@ -47,7 +47,7 @@ namespace DungeonCrawl.Core
                     var character = line[x];
 
                     SpawnActor(character, (x, -y));
-
+                    
                 }
             }
 
@@ -73,6 +73,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case '>':
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'p':
+                    ActorManager.Singleton.GetPlayer().Position = position;
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'X':
