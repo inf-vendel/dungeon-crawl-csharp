@@ -67,32 +67,43 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Input.GetKeyDown(KeyCode.I))
             {
+                if (InventoryOpen)
+                {
+                    PlayerInventory.HideDisplay();
+                }
+                else
+                {
+                    PlayerInventory.Display();
+                }
                 InventoryOpen = !InventoryOpen;
-                UserInterface.Singleton.SetText(InventoryOpen.ToString(), UserInterface.TextPosition.MiddleCenter);
-                
             }
 
             if (InventoryOpen)
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    PlayerInventory.SelectedItem = PlayerInventory.Items[0];
+                    PlayerInventory.SelectedItem = 0;
+                    PlayerInventory.Display();
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    PlayerInventory.SelectedItem = PlayerInventory.Items[1];
+                    PlayerInventory.SelectedItem = 1;
+                    PlayerInventory.Display();
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
-                    PlayerInventory.SelectedItem = PlayerInventory.Items[2];
+                    PlayerInventory.SelectedItem = 2;
+                    PlayerInventory.Display();
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha4))
                 {
-                    PlayerInventory.SelectedItem = PlayerInventory.Items[3];
+                    PlayerInventory.SelectedItem = 3;
+                    PlayerInventory.Display();
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha5))
                 {
-                    PlayerInventory.SelectedItem = PlayerInventory.Items[4];
+                    PlayerInventory.SelectedItem = 4;
+                    PlayerInventory.Display();
                 }
             }
             Item item = ActorManager.Singleton.GetActorAt<Item>(Position);

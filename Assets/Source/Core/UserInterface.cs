@@ -46,9 +46,16 @@ namespace Assets.Source.Core
         /// </summary>
         /// <param name="text"></param>
         /// <param name="textPosition"></param>
-        public void SetText(string text, TextPosition textPosition)
+        public void SetText(string text, TextPosition textPosition, float size = 55.0f)
         {
             _textComponents[(int) textPosition].text = text;
+            _textComponents[(int) textPosition].fontSize = size;
         }
+        public void SetText(string text, TextPosition textPosition, Color color)
+        {
+            _textComponents[(int)textPosition].text = text;
+            _textComponents[(int)textPosition].color = color;
+        }
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DungeonCrawl.Actors.Static.Items;
+using UnityEngine;
 
 namespace Assets.Source.Core
 {
@@ -10,16 +11,37 @@ namespace Assets.Source.Core
     {
         protected int Capacity { get; private set; }
         public List<Item> Items;
-        public Item SelectedItem { get; set; }
+        private int _selectedItem;
+        public int SelectedItem {
+            get => _selectedItem;
+            set
+            {
+                if (value < Items.Count)
+                {
+                    _selectedItem = value;
+                }
+                
+            }
+
+        }
+        public Item GetSelectedItem => Items[_selectedItem];
+
         public Inventory()
         {
             Items = new();
 
         }
+
+        public void HideDisplay()
+        {
+            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.TopLeft);
+        }
         public void Display()
         {
             UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
-            
+            UserInterface.Singleton.SetText("Selected: " + GetSelectedItem.DefaultName, UserInterface.TextPosition.TopCenter, Color.cyan);
+
+
         }
 
         public void AddItem(Item item)

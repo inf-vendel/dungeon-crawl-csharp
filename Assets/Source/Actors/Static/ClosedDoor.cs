@@ -14,10 +14,10 @@ namespace DungeonCrawl.Actors.Static
             if (anotherActor is Player)
             {
                 Player player = (Player)anotherActor;
-                if (player.PlayerInventory.SelectedItem is Key)
+                if (player.PlayerInventory.GetSelectedItem is Key)
                 {
-                    player.PlayerInventory.RemoveItem(player.PlayerInventory.SelectedItem);
-                    player.PlayerInventory.SelectedItem = null;
+                    player.PlayerInventory.RemoveItem(player.PlayerInventory.GetSelectedItem);
+                    player.PlayerInventory.SelectedItem = 0;
                     player.PlayerInventory.Display();
 
                     ActorManager.Singleton.Spawn<OpenDoor>(this.Position);
