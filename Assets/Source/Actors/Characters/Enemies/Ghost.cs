@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Assets.Source.Core;
 using DungeonCrawl.Core;
 using UnityEngine;
@@ -10,13 +11,13 @@ namespace DungeonCrawl.Actors.Characters
     {
         public override bool Detectable => true;
 
-        public const float SPEED = 1.0f;
+        public const float SPEED = 0.6f;
         private float _moveCounter;
 
         private const int DEFAULT_HEALTH = 12;
         private const int DEFAULT_DAMAGE = 3;
         public bool IsAgressive { get; set; }
-        
+
         public Ghost()
         {
             SetHp(DEFAULT_HEALTH);
@@ -33,26 +34,47 @@ namespace DungeonCrawl.Actors.Characters
 
             _moveCounter -= deltaTime;
 
+            List<Tuple<int, int>> neighbours = new();
+
+            for (int i = 1; i < 5; i++)
+            {
+                neighbours.Add(Tuple.Create(Position.x + i, Position.y));
+                neighbours.Add(Tuple.Create(Position.x, Position.y + i));
+                neighbours.Add(Tuple.Create(Position.x - i, Position.y));
+                neighbours.Add(Tuple.Create(Position.x, Position.y - i));
+                neighbours.Add(Tuple.Create(Position.x + i, Position.y + i));
+                neighbours.Add(Tuple.Create(Position.x - i, Position.y - i));
+                neighbours.Add(Tuple.Create(Position.x + i, Position.y - i));
+                neighbours.Add(Tuple.Create(Position.x - i, Position.y + i));
+            }
+
             if (_moveCounter <= 0.0f)
             {
-                if (Position.x < playerPosition.x)
+                foreach (Tuple<int, int> neighbour in neighbours)
                 {
-                    TryMove(Direction.Right);
+                    if (ActorManager.Singleton.GetActorAt<Player>((neighbour.Item1, neighbour.Item2)))
+                    {
+                        if (Position.x < playerPosition.x)
+                        {
+                            TryMove(Direction.Right);
+                        }
+                        else if (Position.x > playerPosition.x)
+                        {
+                            TryMove(Direction.Left);
+                        }
+                        if (Position.y < playerPosition.y)
+                        {
+                            TryMove(Direction.Up);
+                        }
+                        else if (Position.y > playerPosition.y)
+                        {
+                            TryMove(Direction.Down);
+                        }
+                        _moveCounter = SPEED;
+                    }
                 }
-                if (Position.x > playerPosition.x)
-                {
-                    TryMove(Direction.Left);
-                }
-                if (Position.y < playerPosition.y)
-                {
-                    TryMove(Direction.Up);
-                }
-                if (Position.y > playerPosition.y)
-                {
-                    TryMove(Direction.Down);
-                }
-                _moveCounter = SPEED;
             }
+
 
         }
 

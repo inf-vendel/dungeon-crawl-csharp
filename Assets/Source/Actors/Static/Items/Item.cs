@@ -9,6 +9,8 @@ namespace DungeonCrawl.Actors.Static.Items
 
         public virtual bool Pickable => false;
 
+        public override int Z => -1;
+
         public object Clone()
         {
             return this.MemberwiseClone();
