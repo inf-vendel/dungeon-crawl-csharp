@@ -15,6 +15,7 @@ namespace DungeonCrawl.Core
 
         public static int _width { get; set; }
         public static int _height { get; set; }
+        public static int _actualMap { get; set; }
 
         /// <summary>
         ///     Constructs map from txt file and spawns actors at appropriate positions
@@ -28,6 +29,7 @@ namespace DungeonCrawl.Core
             var split = lines[0].Split(' ');
             var width = int.Parse(split[0]);
             var height = int.Parse(split[1]);
+            _actualMap = id;
 
             _width = width;
             _height = height;
@@ -46,7 +48,7 @@ namespace DungeonCrawl.Core
             }
 
             // Set default camera size and position
-            CameraController.Singleton.Size = 10;
+            CameraController.Singleton.Size = 20;
             CameraController.Singleton.Position = ActorManager.Singleton.GetPlayer().Position;
         }
 
@@ -58,6 +60,18 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Wall>(position);
                     break;
                 case '.':
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case '/':
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case '<':
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case '>':
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'X':
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 's':

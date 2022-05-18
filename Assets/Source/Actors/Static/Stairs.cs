@@ -14,7 +14,7 @@ namespace DungeonCrawl.Actors.Static
             if (anotherActor is Player)
             {
                 ActorManager.Singleton.DestroyAllActors();
-                MapLoader.LoadMap(2);
+                MapLoader.LoadMap(MapLoader._actualMap+1);
             }
             return true;
         }
