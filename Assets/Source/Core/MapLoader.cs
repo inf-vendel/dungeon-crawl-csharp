@@ -39,18 +39,9 @@ namespace DungeonCrawl.Core
                 for (var x = 0; x < width; x++)
                 {
                     var character = line[x];
-                    if (id == 1)
-                    {
-                        SpawnActor(character, (x, -y));
-                    }
-                    else
-                    {
-                        if (character != 'p')
-                        {
-                            SpawnActor(character, (x, -y));
-                        }
-                    }
-                    
+
+                    SpawnActor(character, (x, -y));
+
                 }
             }
 
@@ -67,10 +58,6 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Wall>(position);
                     break;
                 case '.':
-                    ActorManager.Singleton.Spawn<Floor>(position);
-                    break;
-                case 'p':
-                    ActorManager.Singleton.Spawn<Player>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 's':
@@ -97,11 +84,21 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Stairs>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'u':
+                    ActorManager.Singleton.Spawn<StairUp>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
                 case ' ':
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+        }
+
+        public static void SpawnPlayer((int x, int y) position)
+        {
+            ActorManager.Singleton.Spawn<Player>(position);
         }
     }
 }
