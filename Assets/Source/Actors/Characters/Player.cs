@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Source.Core;
+using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
 using UnityEngine;
@@ -34,6 +35,7 @@ namespace DungeonCrawl.Actors.Characters
             //}
 
             UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
+            UserInterface.Singleton.SetText($"{Position.x}-{Position.y}", UserInterface.TextPosition.BottomRight);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -58,9 +60,7 @@ namespace DungeonCrawl.Actors.Characters
                 // Move right
                 TryMove(Direction.Right);
             }
-
-
-
+            
             Item item = ActorManager.Singleton.GetActorAt<Item>(Position);
 
             if (item is not null && item.Pickable)
@@ -80,7 +80,6 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor)
         {
-            
             return false;
         }
 

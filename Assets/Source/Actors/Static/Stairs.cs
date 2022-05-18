@@ -14,11 +14,10 @@ namespace DungeonCrawl.Actors.Static
             if (anotherActor is Player)
             {
                 ActorManager.Singleton.DestroyAllActors();
-                MapLoader.LoadMap(MapLoader._actualMap+1);
+                MapLoader.LoadMap(MapLoader._actualMap + 1, (anotherActor.Position.x + 3, anotherActor.Position.y));
             }
-            return true;
-        }
 
-       
-    }
+            return false;
+        }
+        }
 }

@@ -3,6 +3,7 @@ using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Actors.Static.Items;
 using System;
 using System.Text.RegularExpressions;
+using DungeonCrawl.Actors;
 using UnityEngine;
 
 namespace DungeonCrawl.Core
@@ -21,8 +22,11 @@ namespace DungeonCrawl.Core
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
         /// <param name="id"></param>
-        public static void LoadMap(int id)
+        public static void LoadMap(int id, (int, int) position)
         {
+
+            ActorManager.Singleton.GetPlayer().Position = position;
+
             var lines = Regex.Split(Resources.Load<TextAsset>($"map_{id}").text, "\r\n|\r|\n");
 
             // Read map size from the first line
@@ -48,7 +52,7 @@ namespace DungeonCrawl.Core
             }
 
             // Set default camera size and position
-            CameraController.Singleton.Size = 20;
+            CameraController.Singleton.Size = 10;
             CameraController.Singleton.Position = ActorManager.Singleton.GetPlayer().Position;
         }
 
