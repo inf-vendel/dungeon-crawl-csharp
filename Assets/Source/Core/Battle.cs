@@ -7,37 +7,42 @@ using DungeonCrawl.Actors.Characters;
 
 namespace Assets.Source.Core
 {
-    public class Battle
+    public static class Battle
     {
-        public Player Player;
-        public Character Enemy;
+        
 
-
-        public Battle(Player player, Character enemy)
+        static Battle()
         {
-            Player = player;
-            Enemy = enemy;
         }
 
-        public IEnumerator Loop()
+        public static IEnumerator Loop(Player Player, Character Enemy)
         {
-            UserInterface.Singleton.SetText(Player.CanMove.ToString(), UserInterface.TextPosition.MiddleLeft);
             Player.CanMove = false;
-            UserInterface.Singleton.SetText(Player.CanMove.ToString(), UserInterface.TextPosition.MiddleLeft);
-            List<Character> characters = new List<Character> {Player, Enemy};
-            this.Enemy.ApplyDamage(this.Player.Damage);
-            yield return new WaitForSeconds(0.5f);
+            if ((Enemy.Health - Player.Damage) <= 0)
+            {
+                UserInterface.Singleton.SetText("You win!", UserInterface.TextPosition.BottomCenter);
+                yield return new WaitForSeconds(1.0f);
+                UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
+            }
+            else
+            {
+                UserInterface.Singleton.SetText($"{Enemy.DefaultName} {(Enemy.Health - Player.Damage).ToString()} HP left",
+                    UserInterface.TextPosition.BottomCenter);
+                yield return new WaitForSeconds(1.0f);
+                UserInterface.Singleton.SetText($"You have {(Player.Health + 1 - Enemy.Damage).ToString()} HP left",
+                    UserInterface.TextPosition.BottomCenter);
+            }
+
+            Player.ApplyDamage(Enemy.Damage);
 
             Player.CanMove = true;
-            UserInterface.Singleton.SetText(Player.CanMove.ToString(), UserInterface.TextPosition.MiddleLeft);
 
-            Enemy.GetMessage();
-            yield return new WaitForSeconds(0.5f);
-            Player.ApplyDamage(Enemy.Damage);
-            UserInterface.Singleton.SetText($"You have {Player.Health.ToString()} HP left",
-                        UserInterface.TextPosition.BottomCenter);
-            yield return new WaitForSeconds(0.5f);
+            Enemy.ApplyDamage(Player.Damage);
+
+            yield return new WaitForSeconds(1.0f);
+
             UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
+
         }
     }
 }

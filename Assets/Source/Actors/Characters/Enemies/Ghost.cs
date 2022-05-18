@@ -74,9 +74,8 @@ namespace DungeonCrawl.Actors.Characters
         }
 
         public override bool OnCollision(Actor anotherActor)
-        {
-            var battle = new Battle((Player)anotherActor, this);
-            StartCoroutine(battle.Loop());
+        { 
+            StartCoroutine(Battle.Loop((Player)anotherActor, this));
             if (anotherActor is Player)
             {
                 return false;

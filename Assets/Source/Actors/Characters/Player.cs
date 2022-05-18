@@ -33,14 +33,14 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            //if (!CanMove)
-            //{
-            //    return;
-            //}
+            if (!CanMove)
+            {
+                return;
+            }
 
             UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
             UserInterface.Singleton.SetText($"{Position.x}-{Position.y}", UserInterface.TextPosition.BottomRight);
-
+            
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 // Move up

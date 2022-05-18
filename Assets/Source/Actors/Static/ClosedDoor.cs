@@ -1,12 +1,12 @@
 ﻿using Assets.Source.Core;
 using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Static.Items;
+using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Static
 {
-    public class Door : Actor
+    public class ClosedDoor : Actor
     {
-        
         public override int DefaultSpriteId => 435;
         public override string DefaultName => "Door";
         public override bool OnCollision(Actor anotherActor)
@@ -19,7 +19,9 @@ namespace DungeonCrawl.Actors.Static
                     player.PlayerInventory.RemoveItem(player.PlayerInventory.SelectedItem);
                     player.PlayerInventory.SelectedItem = null;
                     player.PlayerInventory.Display();
-                    return true;
+
+                    ActorManager.Singleton.Spawn<OpenDoor>(this.Position);
+                    ActorManager.Singleton.DestroyActor(this);
                 }
             }
             return false;

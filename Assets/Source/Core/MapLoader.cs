@@ -13,7 +13,6 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
-
         public static int _width { get; set; }
         public static int _height { get; set; }
         public static int _actualMap { get; set; }
@@ -64,7 +63,7 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case '/':
-                    ActorManager.Singleton.Spawn<Door>(position);
+                    ActorManager.Singleton.Spawn<ClosedDoor>(position);
                     break;
                 case '<':
                     ActorManager.Singleton.Spawn<Floor>(position);
@@ -118,6 +117,11 @@ namespace DungeonCrawl.Core
         public static void SpawnPlayer((int x, int y) position)
         {
             ActorManager.Singleton.Spawn<Player>(position);
+        }
+
+        public static void SpawnPlayer()
+        {
+            ActorManager.Singleton.Spawn<Player>((0,0));
         }
     }
 }
