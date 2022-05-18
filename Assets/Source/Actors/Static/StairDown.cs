@@ -3,7 +3,7 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Static
 {
-    public class Stairs : Actor
+    public class StairDown : Actor
     {
         public override int DefaultSpriteId => 290;
         public override string DefaultName => "StairDown";
