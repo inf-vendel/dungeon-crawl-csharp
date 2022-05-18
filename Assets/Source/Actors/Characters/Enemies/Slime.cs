@@ -11,7 +11,7 @@ namespace DungeonCrawl.Actors.Characters
 
 
         private const int DEFAULT_HEALTH = 20;
-        private const int DEFAULT_DAMAGE = 1;
+        private const int DEFAULT_DAMAGE = 2;
         public bool IsAgressive { get; set; }
 
         public Slime()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Source.Core;
+using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
 using UnityEngine;
@@ -13,11 +14,15 @@ namespace DungeonCrawl.Actors.Characters
         private const int DEFAULT_HEALTH = 30;
         private const int DEFAULT_DAMAGE = 5;
         public bool CanMove;
+        public bool InventoryOpen;
         public bool InFight;
+        
         public Player()
         {
             SetHp(DEFAULT_HEALTH);
             SetDamage(DEFAULT_DAMAGE);
+            CanMove = true;
+            InventoryOpen = false;
         }
         //public Player(int health, int damage)
         //{
@@ -27,7 +32,13 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
+            //if (!CanMove)
+            //{
+            //    return;
+            //}
+
             UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
+            UserInterface.Singleton.SetText($"{Position.x}-{Position.y}", UserInterface.TextPosition.BottomRight);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -53,8 +64,36 @@ namespace DungeonCrawl.Actors.Characters
                 TryMove(Direction.Right);
             }
 
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                InventoryOpen = !InventoryOpen;
+                UserInterface.Singleton.SetText(InventoryOpen.ToString(), UserInterface.TextPosition.MiddleCenter);
+                
+            }
 
-
+            if (InventoryOpen)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    _inventory.SelectedItem = _inventory.Items[0];
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    _inventory.SelectedItem = _inventory.Items[1];
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    _inventory.SelectedItem = _inventory.Items[2];
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha4))
+                {
+                    _inventory.SelectedItem = _inventory.Items[3];
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha5))
+                {
+                    _inventory.SelectedItem = _inventory.Items[4];
+                }
+            }
             Item item = ActorManager.Singleton.GetActorAt<Item>(Position);
 
             if (item is not null && item.Pickable)
@@ -74,7 +113,6 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor)
         {
-            
             return false;
         }
 

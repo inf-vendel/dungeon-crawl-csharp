@@ -11,8 +11,10 @@ namespace DungeonCrawl.Actors.Characters
     {
         public override bool Detectable => true;
 
-        public const float SPEED = 0.6f;
+        public const float SPEED = 1.0f;
         private float _moveCounter;
+
+        public float Vision { get; set; }
 
         private const int DEFAULT_HEALTH = 12;
         private const int DEFAULT_DAMAGE = 3;
@@ -24,55 +26,48 @@ namespace DungeonCrawl.Actors.Characters
             SetDamage(DEFAULT_DAMAGE);
             IsAgressive = true;
             spriteAlpha = 0.5f;
+            Vision = 5.0f;
         }
 
         protected override void OnUpdate(float deltaTime)
         {
-            // szellem látómezője
             Actor player = ActorManager.Singleton.GetPlayer();
             (int x, int y) playerPosition = player.Position;
 
             _moveCounter -= deltaTime;
 
-            List<Tuple<int, int>> neighbours = new();
+            Vector2 ghostVector = new Vector2(Position.x, Position.y);
+            Vector2 playerVector = new Vector2(player.Position.x, player.Position.y);
 
-            for (int i = 1; i < 5; i++)
-            {
-                neighbours.Add(Tuple.Create(Position.x + i, Position.y));
-                neighbours.Add(Tuple.Create(Position.x, Position.y + i));
-                neighbours.Add(Tuple.Create(Position.x - i, Position.y));
-                neighbours.Add(Tuple.Create(Position.x, Position.y - i));
-                neighbours.Add(Tuple.Create(Position.x + i, Position.y + i));
-                neighbours.Add(Tuple.Create(Position.x - i, Position.y - i));
-                neighbours.Add(Tuple.Create(Position.x + i, Position.y - i));
-                neighbours.Add(Tuple.Create(Position.x - i, Position.y + i));
-            }
+            float distance = Vector2.Distance(ghostVector, playerVector);
 
             if (_moveCounter <= 0.0f)
             {
-                foreach (Tuple<int, int> neighbour in neighbours)
+                if (distance < Vision)
                 {
-                    if (ActorManager.Singleton.GetActorAt<Player>((neighbour.Item1, neighbour.Item2)))
+                    if (Position.x < playerPosition.x)
                     {
-                        if (Position.x < playerPosition.x)
-                        {
-                            TryMove(Direction.Right);
-                        }
-                        else if (Position.x > playerPosition.x)
-                        {
-                            TryMove(Direction.Left);
-                        }
-                        if (Position.y < playerPosition.y)
-                        {
-                            TryMove(Direction.Up);
-                        }
-                        else if (Position.y > playerPosition.y)
-                        {
-                            TryMove(Direction.Down);
-                        }
-                        _moveCounter = SPEED;
+                        TryMove(Direction.Right);
+                    }
+                    else if (Position.x > playerPosition.x)
+                    {
+                        TryMove(Direction.Left);
+                    }
+                   
+                    if (Position.y < playerPosition.y)
+                    {
+                        TryMove(Direction.Up);
+                    }
+                    else if (Position.y > playerPosition.y)
+                    {
+                        TryMove(Direction.Down);
                     }
                 }
+                else
+                {
+                    TryMove(Utilities.GetRandomDirection());
+                }
+                _moveCounter = SPEED;
             }
 
 
