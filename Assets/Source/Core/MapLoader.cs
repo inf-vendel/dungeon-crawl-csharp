@@ -39,8 +39,18 @@ namespace DungeonCrawl.Core
                 for (var x = 0; x < width; x++)
                 {
                     var character = line[x];
-
-                    SpawnActor(character, (x, -y));
+                    if (id == 1)
+                    {
+                        SpawnActor(character, (x, -y));
+                    }
+                    else
+                    {
+                        if (character != 'p')
+                        {
+                            SpawnActor(character, (x, -y));
+                        }
+                    }
+                    
                 }
             }
 
@@ -81,6 +91,10 @@ namespace DungeonCrawl.Core
                     break;
                 case 'S':
                     ActorManager.Singleton.Spawn<Slime>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'd':
+                    ActorManager.Singleton.Spawn<Stairs>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case ' ':
