@@ -12,6 +12,10 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
+
+        public static int _width { get; set; }
+        public static int _height { get; set; }
+
         /// <summary>
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
@@ -24,6 +28,9 @@ namespace DungeonCrawl.Core
             var split = lines[0].Split(' ');
             var width = int.Parse(split[0]);
             var height = int.Parse(split[1]);
+
+            _width = width;
+            _height = height;
 
             // Create actors
             for (var y = 0; y < height; y++)
@@ -38,7 +45,7 @@ namespace DungeonCrawl.Core
             }
 
             // Set default camera size and position
-            CameraController.Singleton.Size = 5;
+            CameraController.Singleton.Size = 10;
             CameraController.Singleton.Position = ActorManager.Singleton.GetPlayer().Position;
         }
 

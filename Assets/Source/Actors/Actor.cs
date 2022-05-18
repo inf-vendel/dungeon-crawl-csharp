@@ -52,17 +52,20 @@ namespace DungeonCrawl.Actors
 
             var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
 
-            if (actorAtTargetPosition == null)
+            if (targetPosition.x <= MapLoader._width && targetPosition.y <= - 1 && targetPosition.x >= - 1 && targetPosition.y >= -MapLoader._height)
             {
-                // No obstacle found, just move
-                Position = targetPosition;
-            }
-            else
-            {
-                if (actorAtTargetPosition.OnCollision(this))
+                if (actorAtTargetPosition == null)
                 {
-                    // Allowed to move
+                    // No obstacle found, just move
                     Position = targetPosition;
+                }
+                else
+                {
+                    if (actorAtTargetPosition.OnCollision(this))
+                    {
+                        // Allowed to move
+                        Position = targetPosition;
+                    }
                 }
             }
         }
