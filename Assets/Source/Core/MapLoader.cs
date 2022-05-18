@@ -22,10 +22,8 @@ namespace DungeonCrawl.Core
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
         /// <param name="id"></param>
-        public static void LoadMap(int id, (int, int) position)
+        public static void LoadMap(int id)
         {
-
-            ActorManager.Singleton.GetPlayer().Position = position;
 
             var lines = Regex.Split(Resources.Load<TextAsset>($"map_{id}").text, "\r\n|\r|\n");
 
@@ -47,7 +45,6 @@ namespace DungeonCrawl.Core
                     var character = line[x];
 
                     SpawnActor(character, (x, -y));
-                    
                 }
             }
 
