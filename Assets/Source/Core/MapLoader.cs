@@ -13,7 +13,6 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
-
         public static int _width { get; set; }
         public static int _height { get; set; }
         public static int _actualMap { get; set; }
@@ -22,10 +21,8 @@ namespace DungeonCrawl.Core
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
         /// <param name="id"></param>
-        public static void LoadMap(int id, (int, int) position)
+        public static void LoadMap(int id)
         {
-
-            ActorManager.Singleton.GetPlayer().Position = position;
 
             var lines = Regex.Split(Resources.Load<TextAsset>($"map_{id}").text, "\r\n|\r|\n");
 
@@ -47,7 +44,6 @@ namespace DungeonCrawl.Core
                     var character = line[x];
 
                     SpawnActor(character, (x, -y));
-                    
                 }
             }
 
@@ -67,7 +63,7 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case '/':
-                    ActorManager.Singleton.Spawn<Floor>(position);
+                    ActorManager.Singleton.Spawn<ClosedDoor>(position);
                     break;
                 case '<':
                     ActorManager.Singleton.Spawn<Floor>(position);
@@ -103,7 +99,7 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'd':
-                    ActorManager.Singleton.Spawn<Stairs>(position);
+                    ActorManager.Singleton.Spawn<StairDown>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'u':
@@ -121,6 +117,11 @@ namespace DungeonCrawl.Core
         public static void SpawnPlayer((int x, int y) position)
         {
             ActorManager.Singleton.Spawn<Player>(position);
+        }
+
+        public static void SpawnPlayer()
+        {
+            ActorManager.Singleton.Spawn<Player>((0,0));
         }
     }
 }

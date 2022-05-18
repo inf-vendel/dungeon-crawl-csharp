@@ -3,7 +3,7 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Static
 {
-    public class StairUp : Stairs
+    public class StairUp : StairDown
     {
         public override int DefaultSpriteId => 289;
         public override string DefaultName => "StairUp";
@@ -13,7 +13,7 @@ namespace DungeonCrawl.Actors.Static
             if (anotherActor is Player)
             {
                 ActorManager.Singleton.DestroyAllActors();
-                MapLoader.LoadMap(MapLoader._actualMap - 1, (20, 20));
+                MapLoader.LoadMap(MapLoader._actualMap - 1);
             }
 
             return false;

@@ -10,7 +10,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
-        private Inventory _inventory = new Inventory();
+        public Inventory PlayerInventory { get; private set; }
         private const int DEFAULT_HEALTH = 30;
         private const int DEFAULT_DAMAGE = 5;
         public bool CanMove;
@@ -23,6 +23,7 @@ namespace DungeonCrawl.Actors.Characters
             SetDamage(DEFAULT_DAMAGE);
             CanMove = true;
             InventoryOpen = false;
+            PlayerInventory = new Inventory();
         }
         //public Player(int health, int damage)
         //{
@@ -32,14 +33,14 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            //if (!CanMove)
-            //{
-            //    return;
-            //}
+            if (!CanMove)
+            {
+                return;
+            }
 
             UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
             UserInterface.Singleton.SetText($"{Position.x}-{Position.y}", UserInterface.TextPosition.BottomRight);
-
+            
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 // Move up
@@ -75,23 +76,23 @@ namespace DungeonCrawl.Actors.Characters
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    _inventory.SelectedItem = _inventory.Items[0];
+                    PlayerInventory.SelectedItem = PlayerInventory.Items[0];
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    _inventory.SelectedItem = _inventory.Items[1];
+                    PlayerInventory.SelectedItem = PlayerInventory.Items[1];
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
-                    _inventory.SelectedItem = _inventory.Items[2];
+                    PlayerInventory.SelectedItem = PlayerInventory.Items[2];
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha4))
                 {
-                    _inventory.SelectedItem = _inventory.Items[3];
+                    PlayerInventory.SelectedItem = PlayerInventory.Items[3];
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha5))
                 {
-                    _inventory.SelectedItem = _inventory.Items[4];
+                    PlayerInventory.SelectedItem = PlayerInventory.Items[4];
                 }
             }
             Item item = ActorManager.Singleton.GetActorAt<Item>(Position);
@@ -102,9 +103,9 @@ namespace DungeonCrawl.Actors.Characters
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     Item copyObject = (Item)item.Clone();
-                    _inventory.AddItem(copyObject);
+                    PlayerInventory.AddItem(copyObject);
                     ActorManager.Singleton.DestroyActor(item);
-                    _inventory.Display();
+                    PlayerInventory.Display();
                 }
             }
 

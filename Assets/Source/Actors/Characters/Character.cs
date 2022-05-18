@@ -42,10 +42,5 @@ namespace DungeonCrawl.Actors.Characters
         /// </summary>
         public override int Z => -1;
 
-        public void GetMessage()
-        {
-            UserInterface.Singleton.SetText($"{DefaultName} {Health.ToString()} HP left",
-                UserInterface.TextPosition.BottomCenter);
-        }
     }
 }
