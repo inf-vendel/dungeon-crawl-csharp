@@ -21,9 +21,16 @@ namespace Assets.Source.Core
 
         public IEnumerator Loop()
         {
+            UserInterface.Singleton.SetText(Player.CanMove.ToString(), UserInterface.TextPosition.MiddleLeft);
+            Player.CanMove = false;
+            UserInterface.Singleton.SetText(Player.CanMove.ToString(), UserInterface.TextPosition.MiddleLeft);
             List<Character> characters = new List<Character> {Player, Enemy};
             this.Enemy.ApplyDamage(this.Player.Damage);
             yield return new WaitForSeconds(0.5f);
+
+            Player.CanMove = true;
+            UserInterface.Singleton.SetText(Player.CanMove.ToString(), UserInterface.TextPosition.MiddleLeft);
+
             Enemy.GetMessage();
             yield return new WaitForSeconds(0.5f);
             Player.ApplyDamage(Enemy.Damage);
@@ -34,6 +41,3 @@ namespace Assets.Source.Core
         }
     }
 }
-
-
-    

@@ -31,34 +31,18 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            // szellem látómezője
             Actor player = ActorManager.Singleton.GetPlayer();
             (int x, int y) playerPosition = player.Position;
 
             _moveCounter -= deltaTime;
-
-            //List<Tuple<int, int>> neighbours = new();
 
             Vector2 ghostVector = new Vector2(Position.x, Position.y);
             Vector2 playerVector = new Vector2(player.Position.x, player.Position.y);
 
             float distance = Vector2.Distance(ghostVector, playerVector);
 
-            //for (int i = 1; i < 5; i++)
-            //{
-            //    neighbours.Add(Tuple.Create(Position.x + i, Position.y));
-            //    neighbours.Add(Tuple.Create(Position.x, Position.y + i));
-            //    neighbours.Add(Tuple.Create(Position.x - i, Position.y));
-            //    neighbours.Add(Tuple.Create(Position.x, Position.y - i));
-            //    neighbours.Add(Tuple.Create(Position.x + i, Position.y + i));
-            //    neighbours.Add(Tuple.Create(Position.x - i, Position.y - i));
-            //    neighbours.Add(Tuple.Create(Position.x + i, Position.y - i));
-            //    neighbours.Add(Tuple.Create(Position.x - i, Position.y + i));
-            //}
-
             if (_moveCounter <= 0.0f)
             {
-                UserInterface.Singleton.SetText($"{Position.x}-{Position.y}", UserInterface.TextPosition.MiddleLeft);
                 if (distance < Vision)
                 {
                     if (Position.x < playerPosition.x)

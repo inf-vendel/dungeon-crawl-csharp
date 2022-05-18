@@ -18,6 +18,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             SetHp(DEFAULT_HEALTH);
             SetDamage(DEFAULT_DAMAGE);
+            CanMove = true;
         }
         //public Player(int health, int damage)
         //{
@@ -27,6 +28,11 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
+            if (!CanMove)
+            {
+                return;
+            }
+
             UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
