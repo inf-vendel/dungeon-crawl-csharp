@@ -43,25 +43,28 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Move up
                 TryMove(Direction.Up);
-                //Utilities.PlaySound("Bruh");
+                Utilities.PlaySound("Footstep");
                 UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
             }
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 // Move down
+                Utilities.PlaySound("Footstep");
                 TryMove(Direction.Down);
             }
 
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 // Move left
+                Utilities.PlaySound("Footstep");
                 TryMove(Direction.Left);
             }
 
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 // Move right
+                Utilities.PlaySound("Footstep");
                 TryMove(Direction.Right);
             }
 
