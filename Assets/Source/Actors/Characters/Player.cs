@@ -18,7 +18,30 @@ namespace DungeonCrawl.Actors.Characters
         public bool CanMove;
         public bool InventoryOpen;
         public bool InFight;
-        
+        private int _damage;
+
+        public override int Damage
+        {
+            get
+            {
+                int bonusdamage = 0;
+                foreach (var item in PlayerInventory.Items)
+                {
+                    if (item is Sword)
+                    {
+                        Sword sword = (Sword) item;
+                        bonusdamage += sword.Damage;
+                    }
+                }
+
+                return _damage + bonusdamage;
+            }
+        }
+
+        protected override void SetDamage(int damage)
+        {
+            _damage = damage;
+        }
         public Player()
         {
             SetHp(DEFAULT_HEALTH);
@@ -39,13 +62,13 @@ namespace DungeonCrawl.Actors.Characters
             {
                 return;
             }
+            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 // Move up
                 TryMove(Direction.Up);
                 Utilities.PlaySound("Footstep");
-                UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
             }
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))

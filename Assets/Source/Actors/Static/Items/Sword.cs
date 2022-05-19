@@ -13,6 +13,8 @@ namespace DungeonCrawl.Actors.Static.Items
         public override bool Detectable => true;
         public override bool Pickable => true;
 
+        public int Damage => 3;
+
         public override bool OnCollision(Actor anotherActor)
         {
             return true;

@@ -28,7 +28,11 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor)
         {
-            StartCoroutine(Battle.Loop((Player)anotherActor, this));
+            if (anotherActor is Player)
+            {
+                StartCoroutine(Battle.Loop((Player)anotherActor, this));
+
+            }
             return false;
         }
 
