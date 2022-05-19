@@ -16,17 +16,17 @@ namespace DungeonCrawl.Actors.Static
         {
             if (anotherActor is Player)
             {
-
                 Player player = (Player)anotherActor;
-                if (player.PlayerInventory.HasItem("GoldenKey"))
+                if (player.PlayerInventory.GetSelectedItem is GoldenKey)
                 {
+                    player.PlayerInventory.RemoveItem(player.PlayerInventory.GetSelectedItem);
                     ActorManager.Singleton.DestroyAllActors();
                     MapLoader.LoadMap(MapLoader._actualMap + 1);
-                    
+                    player.PlayerInventory.Display();
                 }
                 else
                 {
-                    UserInterface.Singleton.SetText("You need a golden key to go to the next level", UserInterface.TextPosition.BottomRight);
+                    UserInterface.Singleton.SetText("You have to use a golden key to go to the next level", UserInterface.TextPosition.BottomRight);
                 }
 
             }
