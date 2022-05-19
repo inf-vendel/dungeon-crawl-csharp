@@ -9,6 +9,9 @@ namespace DungeonCrawl.Actors.Static.Items
         public override string DefaultName => "Key";
 
         private int _id;
+
+        public override bool Stackable => true;
+
         public override bool Detectable => true;
         public override bool Pickable => true;
 

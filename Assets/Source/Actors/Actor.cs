@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Assets.Source.Core;
 using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Static.Items;
@@ -11,8 +12,11 @@ namespace DungeonCrawl.Actors
     {
 
         protected float spriteAlpha { get; set; } = 1.0f;
+        protected bool IsColored { get; set; }
+        protected Color spriteColor { get; set; }
 
-        public (int x, int y) Position
+
+    public (int x, int y) Position
         {
             get => _position;
             set
@@ -24,6 +28,8 @@ namespace DungeonCrawl.Actors
 
         private (int x, int y) _position;
         private SpriteRenderer _spriteRenderer;
+
+
 
         private void Awake()
         {
@@ -41,6 +47,10 @@ namespace DungeonCrawl.Actors
         {
             _spriteRenderer.sprite = ActorManager.Singleton.GetSprite(id);
             Color tmp = _spriteRenderer.color;
+            if (IsColored)
+            {
+                tmp = spriteColor;
+            }
             tmp.a = spriteAlpha;
             _spriteRenderer.color = tmp;
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Assets.Source.Core;
-using UnityEditor.UIElements;
+using DungeonCrawl.Core;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -28,7 +28,11 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor)
         {
-            StartCoroutine(Battle.Loop((Player)anotherActor, this));
+            if (anotherActor is Player)
+            {
+                StartCoroutine(Battle.Loop((Player)anotherActor, this));
+
+            }
             return false;
         }
 

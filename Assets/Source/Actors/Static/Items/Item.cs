@@ -7,6 +7,10 @@ namespace DungeonCrawl.Actors.Static.Items
 
         public override bool Detectable => false;
 
+        public virtual void Action(){}
+        public virtual bool Stackable { get; }
+
+        public int Quantity = 1;
         public virtual bool Pickable => false;
 
         public override int Z => -1;
@@ -15,5 +19,7 @@ namespace DungeonCrawl.Actors.Static.Items
         {
             return this.MemberwiseClone();
         }
+
+
     }
 }

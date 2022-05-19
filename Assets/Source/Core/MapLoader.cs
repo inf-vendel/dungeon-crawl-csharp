@@ -48,7 +48,7 @@ namespace DungeonCrawl.Core
             }
 
             // Set default camera size and position
-            CameraController.Singleton.Size = 10;
+            CameraController.Singleton.Size = 5;
             CameraController.Singleton.Position = ActorManager.Singleton.GetPlayer().Position;
         }
 
@@ -65,11 +65,8 @@ namespace DungeonCrawl.Core
                 case '/':
                     ActorManager.Singleton.Spawn<ClosedDoor>(position);
                     break;
-                case '<':
-                    ActorManager.Singleton.Spawn<Floor>(position);
-                    break;
-                case '>':
-                    ActorManager.Singleton.Spawn<Floor>(position);
+                case '\\':
+                    ActorManager.Singleton.Spawn<OpenDoor>(position);
                     break;
                 case 'p':
                     ActorManager.Singleton.GetPlayer().Position = position;
@@ -81,6 +78,10 @@ namespace DungeonCrawl.Core
                 case 's':
                     ActorManager.Singleton.Spawn<Skeleton>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'h':
+                    ActorManager.Singleton.Spawn<Bridge>(position);
+                    ActorManager.Singleton.Spawn<Water>(position);
                     break;
                 case 'l':
                     ActorManager.Singleton.Spawn<Sword>(position);
@@ -98,6 +99,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Ghost>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'G':
+                    ActorManager.Singleton.Spawn<GoldenKey>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
                 case 'S':
                     ActorManager.Singleton.Spawn<Slime>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
@@ -110,11 +115,55 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<StairUp>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'i':
+                    ActorManager.Singleton.Spawn<Info>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'D':
+                    ActorManager.Singleton.Spawn<Dog>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'B':
+                    ActorManager.Singleton.Spawn<Boss>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'f':
+                    ActorManager.Singleton.Spawn<BoneFire>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'w':
+                    ActorManager.Singleton.Spawn<Water>(position);
+                    break;
+                case 'y':
+                    ActorManager.Singleton.Spawn<BridgeRight>(position);
+                    ActorManager.Singleton.Spawn<Water>(position);
+                    break;
+                case 'x':
+                    ActorManager.Singleton.Spawn<BridgeLeft>(position);
+                    ActorManager.Singleton.Spawn<Water>(position);
+                    break;
+                case 't':
+                    ActorManager.Singleton.Spawn<Tombstone>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'á':
+                    ActorManager.Singleton.Spawn<Fire>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case '$':
+                    ActorManager.Singleton.Spawn<Skull>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'W':
+                    ActorManager.Singleton.Spawn<Web>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
                 case ' ':
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+       
 
         }
 

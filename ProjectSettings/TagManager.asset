@@ -3,7 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Attack1
+  - Attack2
+  - Footstep
+  - Heal1
+  - Heal2
+  - Heal3
+  - Heal4
+  - Heal5
+  - Heal6
+  - Heal7
+  - Heal8
+  - Key
+  - Knock
+  - Open1
+  - Open2
+  - Punch1
+  - Punch2
+  - Punch3
   layers:
   - Default
   - TransparentFX
