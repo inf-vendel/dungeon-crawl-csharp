@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using DungeonCrawl.Actors.Characters;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Source.Core
 {
@@ -31,6 +32,10 @@ namespace Assets.Source.Core
                 yield return new WaitForSeconds(1.0f);
                 UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
             }
+            //else if ((Player.Health - Enemy.Damage) <= 0)
+            //{
+            //    SceneManager.LoadScene("GameOver");
+            //}
             else
             {
                 UserInterface.Singleton.SetText($"{Enemy.DefaultName} {(Enemy.Health - Player.Damage).ToString()} HP left",
@@ -39,6 +44,7 @@ namespace Assets.Source.Core
                 UserInterface.Singleton.SetText($"You have {(Player.Health + 1 - Enemy.Damage).ToString()} HP left",
                     UserInterface.TextPosition.BottomCenter);
             }
+
 
             Player.ApplyDamage(Enemy.Damage);
 

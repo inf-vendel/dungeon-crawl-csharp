@@ -169,7 +169,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            SceneManager.LoadScene("GameOver");
+            ActorManager.Singleton.DestroyActor(this);
             Debug.Log("Oh no, I'm dead!");
         }
 

@@ -90,6 +90,7 @@ namespace DungeonCrawl.Actors.Characters
             IsAlive = false;
             UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
             Debug.Log("You are the big boss now...");
+
         }
 
         public override int DefaultSpriteId => 27;

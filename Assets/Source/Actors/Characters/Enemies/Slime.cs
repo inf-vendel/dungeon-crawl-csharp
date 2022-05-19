@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Source.Core;
+using DungeonCrawl.Core;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -38,6 +39,7 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             Debug.Log("Blugy...blugy...");
+
         }
 
         public override int DefaultSpriteId => 453;
