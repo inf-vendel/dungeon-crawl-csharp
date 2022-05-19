@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
-    public class Boss : Player, IEnemy
+    public class Boss : Character, IEnemy
     {
         public override bool Detectable => true;
 
@@ -89,7 +89,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             IsAlive = false;
             UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
-            Debug.Log("huuuuuuuuu...");
+            Debug.Log("You are the big boss now...");
         }
 
         public override int DefaultSpriteId => 27;

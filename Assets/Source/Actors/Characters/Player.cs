@@ -5,6 +5,7 @@ using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -145,6 +146,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
+            SceneManager.LoadScene("GameOver");
             Debug.Log("Oh no, I'm dead!");
         }
 
