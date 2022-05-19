@@ -11,6 +11,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
+        private string _baseName = "JustAGamer";
         public Inventory PlayerInventory { get; private set; }
         private int MAX_HEALTH = 30;
         private const int DEFAULT_HEALTH = 30;
@@ -18,7 +19,7 @@ namespace DungeonCrawl.Actors.Characters
         public bool CanMove;
         public bool InventoryOpen;
         public bool InFight;
-        
+        public string Name { get; set; }
         public Player()
         {
             SetHp(DEFAULT_HEALTH);
@@ -26,6 +27,15 @@ namespace DungeonCrawl.Actors.Characters
             CanMove = true;
             InventoryOpen = false;
             PlayerInventory = new Inventory();
+            if (SetPlayerName.PlayerName == "")
+            {
+                Name = _baseName;
+            }
+            else
+            {
+                Name = SetPlayerName.PlayerName;
+            }
+            
         }
         //public Player(int health, int damage)
         //{
