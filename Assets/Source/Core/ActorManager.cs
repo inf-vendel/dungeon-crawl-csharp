@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DungeonCrawl.Actors;
 using DungeonCrawl.Actors.Characters;
+using DungeonCrawl.Actors.Static.Items;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -40,6 +42,18 @@ namespace DungeonCrawl.Core
             foreach (Actor actor in _allActors)
             {
                 if (actor is Player)
+                {
+                    return actor;
+                }
+            }
+            return null;
+        }
+
+        public Actor GetGoldenKey()
+        {
+            foreach (Actor actor in _allActors)
+            {
+                if (actor is GoldenKey)
                 {
                     return actor;
                 }

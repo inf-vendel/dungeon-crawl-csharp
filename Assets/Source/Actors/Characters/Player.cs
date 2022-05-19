@@ -38,14 +38,11 @@ namespace DungeonCrawl.Actors.Characters
                 return;
             }
 
-            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
-            UserInterface.Singleton.SetText($"{Position.x}-{Position.y}", UserInterface.TextPosition.BottomRight);
-            
-
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 // Move up
                 TryMove(Direction.Up);
+                UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
             }
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
@@ -128,6 +125,7 @@ namespace DungeonCrawl.Actors.Characters
             }
 
             UserInterface.Singleton.SetText($"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", UserInterface.TextPosition.BottomLeft);
+
         }
 
         public override bool OnCollision(Actor anotherActor)

@@ -77,6 +77,31 @@ namespace Assets.Source.Core
  
         }
 
+        public bool HasItem(string name)
+        {
+            foreach (Item i in Items)
+            {
+                if (i.DefaultName == name)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool HasItem(Item item)
+        {
+            foreach (Item i in Items)
+            {
+                if (i == item)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
         public void RemoveItem(Item item)
         {
             foreach (var i in Items)
