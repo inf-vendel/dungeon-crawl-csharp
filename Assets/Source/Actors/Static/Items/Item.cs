@@ -7,6 +7,7 @@ namespace DungeonCrawl.Actors.Static.Items
 
         public override bool Detectable => false;
 
+        public virtual void Action(){}
         public virtual bool Stackable { get; }
 
         public int Quantity = 1;

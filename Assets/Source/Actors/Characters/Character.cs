@@ -30,6 +30,7 @@ namespace DungeonCrawl.Actors.Characters
             Health = health;
         }
 
+
         protected void SetDamage(int damage)
         {
             Damage = damage;

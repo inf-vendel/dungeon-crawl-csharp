@@ -11,6 +11,7 @@ namespace DungeonCrawl.Actors.Characters
     public class Player : Character
     {
         public Inventory PlayerInventory { get; private set; }
+        private int MAX_HEALTH = 30;
         private const int DEFAULT_HEALTH = 30;
         private const int DEFAULT_DAMAGE = 5;
         public bool CanMove;
@@ -62,6 +63,11 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Move right
                 TryMove(Direction.Right);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                PlayerInventory.GetSelectedItem.Action();
             }
 
             if (Input.GetKeyDown(KeyCode.I))
@@ -139,7 +145,15 @@ namespace DungeonCrawl.Actors.Characters
             Debug.Log("Oh no, I'm dead!");
         }
 
-        public override int DefaultSpriteId => 24;
+        public void Heal(int heal)
+        {
+            SetHp(Health+heal);
+            if (Health > MAX_HEALTH)
+            {
+                SetHp(MAX_HEALTH);
+            }
+        }
+        public override int DefaultSpriteId => 449;
 
         public override int Z => -2;
 
