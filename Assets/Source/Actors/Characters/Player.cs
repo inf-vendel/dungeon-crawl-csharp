@@ -156,7 +156,7 @@ namespace DungeonCrawl.Actors.Characters
                 SetHp(MAX_HEALTH);
             }
         }
-        public override int DefaultSpriteId => 449;
+        public override int DefaultSpriteId => 27;
 
         public override int Z => -2;
 

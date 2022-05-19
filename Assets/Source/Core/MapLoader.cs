@@ -119,6 +119,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Dog>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'B':
+                    ActorManager.Singleton.Spawn<Boss>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
                 case ' ':
                     break;
                 default:
