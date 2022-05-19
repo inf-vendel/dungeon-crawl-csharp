@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using DungeonCrawl.Actors.Static.Items;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Assets.Source.Core
 {
@@ -24,7 +27,21 @@ namespace Assets.Source.Core
             }
 
         }
-        public Item GetSelectedItem => Items[_selectedItem];
+
+        public Item GetSelectedItem
+        {
+            get
+            {
+                if (Items.ElementAtOrDefault(_selectedItem) != null)
+                {
+                    return Items[_selectedItem];
+                }
+                else
+                {
+                    return new NullItem();
+                }
+            }
+        } 
 
         public Inventory()
         {
@@ -46,12 +63,43 @@ namespace Assets.Source.Core
 
         public void AddItem(Item item)
         {
+            foreach (Item i in Items)
+            {
+                Debug.Log(i.DefaultName);
+                Debug.Log(item.DefaultName);
+                
+                Debug.Log(i.Stackable);
+                Debug.Log(Environment.NewLine);
+                Debug.Log(item.Stackable);
+
+                if (i.DefaultName.Equals(item.DefaultName) && item.Stackable)
+                {
+                    Debug.Log("stackable");
+                    i.Quantity++;
+                    Display();
+                    return;
+                }
+            }
             Items.Add(item);
+            Display();
         }
 
         public void RemoveItem(Item item)
         {
+            foreach (var i in Items)
+            {
+                if (i.DefaultName.Equals(item.DefaultName) && item.Stackable)
+                {
+                    if (i.Quantity > 1)
+                    {
+                        i.Quantity--;
+                        Display();
+                        return;
+                    }
+                }
+            }
             Items.Remove(item);
+            Display();
         }
 
         public Item SelectItem(Item item)

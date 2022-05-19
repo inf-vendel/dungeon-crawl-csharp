@@ -8,6 +8,8 @@ namespace DungeonCrawl.Actors.Static.Items
         public override int DefaultSpriteId => 227;
         public override string DefaultName => "Sword";
 
+        public override bool Stackable => false;
+
         public override bool Detectable => true;
         public override bool Pickable => true;
 

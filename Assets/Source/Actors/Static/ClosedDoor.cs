@@ -17,7 +17,7 @@ namespace DungeonCrawl.Actors.Static
                 if (player.PlayerInventory.GetSelectedItem is Key)
                 {
                     player.PlayerInventory.RemoveItem(player.PlayerInventory.GetSelectedItem);
-                    player.PlayerInventory.SelectedItem = 0;
+                    //player.PlayerInventory.SelectedItem = 0;
                     player.PlayerInventory.Display();
 
                     ActorManager.Singleton.Spawn<OpenDoor>(this.Position);
