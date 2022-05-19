@@ -146,8 +146,16 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Tombstone>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'á':
+                    ActorManager.Singleton.Spawn<Fire>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
                 case '$':
                     ActorManager.Singleton.Spawn<Skull>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'W':
+                    ActorManager.Singleton.Spawn<Web>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case ' ':
