@@ -6,6 +6,7 @@ using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = System.Random;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -19,7 +20,9 @@ namespace DungeonCrawl.Actors.Characters
         public bool CanMove;
         public bool InventoryOpen;
         public bool InFight;
-        
+        public string Name;
+        private Random r = new Random();
+
         public Player()
         {
             SetHp(DEFAULT_HEALTH);
@@ -55,27 +58,41 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Move up
                 TryMove(Direction.Up);
-                Utilities.PlaySound("Footstep");
+                
+                if (r.Next(100) <=10)
+                {
+                    Utilities.PlaySound("Footstep");
+                }
+                
             }
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 // Move down
-                Utilities.PlaySound("Footstep");
+                if (r.Next(100) <= 10)
+                {
+                    Utilities.PlaySound("Footstep");
+                }
                 TryMove(Direction.Down);
             }
 
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 // Move left
-                Utilities.PlaySound("Footstep");
+                if (r.Next(100) <= 10)
+                {
+                    Utilities.PlaySound("Footstep");
+                }
                 TryMove(Direction.Left);
             }
 
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 // Move right
-                Utilities.PlaySound("Footstep");
+                if (r.Next(100) <= 10)
+                {
+                    Utilities.PlaySound("Footstep");
+                }
                 TryMove(Direction.Right);
             }
 
