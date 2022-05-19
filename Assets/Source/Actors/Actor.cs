@@ -12,12 +12,9 @@ namespace DungeonCrawl.Actors
     {
 
         protected float spriteAlpha { get; set; } = 1.0f;
+        protected bool IsColored { get; set; }
+        protected Color spriteColor { get; set; }
 
-        protected Color spriteColor
-        {
-            get => Color.white;
-            set => spriteColor = value;
-        }
 
     public (int x, int y) Position
         {
@@ -50,7 +47,10 @@ namespace DungeonCrawl.Actors
         {
             _spriteRenderer.sprite = ActorManager.Singleton.GetSprite(id);
             Color tmp = _spriteRenderer.color;
-            tmp = spriteColor;
+            if (IsColored)
+            {
+                tmp = spriteColor;
+            }
             tmp.a = spriteAlpha;
             _spriteRenderer.color = tmp;
         }
