@@ -39,6 +39,7 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             Debug.Log("Blugy...blugy...");
+            ActorManager.Singleton.DestroyActor(this);
 
         }
 

@@ -15,7 +15,12 @@ namespace DungeonCrawl.Actors.Static.Items
 
         public override bool OnCollision(Actor anotherActor)
         {
-            StartCoroutine(Battle.Message("Welcome to the BackStreet"));
+            if (anotherActor is Player)
+            {
+                Player player = (Player)anotherActor;
+                StartCoroutine(Battle.Message($"Hey {player.Name}, welcome to the BackStreet"));
+            }
+            
             return true;
         }
     }
