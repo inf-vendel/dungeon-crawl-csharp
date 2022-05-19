@@ -56,7 +56,14 @@ namespace Assets.Source.Core
         public void Display()
         {
             UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
-            UserInterface.Singleton.SetText("Selected: " + GetSelectedItem.DefaultName, UserInterface.TextPosition.TopCenter, Color.cyan);
+            if (Items.Count != 0)
+            {
+                UserInterface.Singleton.SetText("Selected: " + GetSelectedItem.DefaultName, UserInterface.TextPosition.TopCenter, Color.cyan);
+            }
+            else
+            {
+                UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.TopCenter);
+            }
 
 
         }

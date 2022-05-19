@@ -26,6 +26,7 @@ namespace DungeonCrawl.Actors.Static.Items
             Player player = (Player) ActorManager.Singleton.GetPlayer();
             player.Heal(HealAmount);
             player.PlayerInventory.RemoveItem(this);
+            player.PlayerInventory.Display();
         }
     }
 }
