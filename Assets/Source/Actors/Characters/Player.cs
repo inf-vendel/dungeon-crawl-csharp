@@ -42,6 +42,7 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Move up
                 TryMove(Direction.Up);
+                //Utilities.PlaySound("Bruh");
                 UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
             }
 
@@ -139,6 +140,9 @@ namespace DungeonCrawl.Actors.Characters
         }
 
         public override int DefaultSpriteId => 24;
+
+        public override int Z => -2;
+
         public override string DefaultName => "Player";
 
         // capacity, display, item selection, move/delete,

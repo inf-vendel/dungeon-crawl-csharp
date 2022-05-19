@@ -146,7 +146,7 @@ namespace DungeonCrawl.Core
 
             go.name = actorName ?? component.DefaultName;
             component.Position = (x, y);
-
+            
             _allActors.Add(component);
 
             return component;

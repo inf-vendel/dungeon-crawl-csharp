@@ -1,4 +1,6 @@
 ﻿using System;
+using UnityEngine;
+using Random = System.Random;
 
 namespace DungeonCrawl
 {
@@ -35,6 +37,12 @@ namespace DungeonCrawl
             Random random = new Random();
             Direction randomDir = (Direction)values.GetValue(random.Next(values.Length));
             return randomDir;
+        }
+
+        public static void PlaySound(string tag)
+        {
+            GameObject gameObject = GameObject.FindGameObjectWithTag(tag);
+            gameObject.GetComponent<AudioSource>().Play();
         }
     }
 }

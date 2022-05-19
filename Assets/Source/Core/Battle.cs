@@ -15,6 +15,13 @@ namespace Assets.Source.Core
         {
         }
 
+        public static IEnumerator Message(string text)
+        {
+            UserInterface.Singleton.SetText(text, UserInterface.TextPosition.BottomCenter);
+            yield return new WaitForSeconds(1.0f);
+            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomCenter);
+        }
+
         public static IEnumerator Loop(Player Player, Character Enemy)
         {
             Player.CanMove = false;
