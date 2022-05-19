@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
+    public void SetName()
+    {
+        SceneManager.LoadScene("SetPlayerName");
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("Game");

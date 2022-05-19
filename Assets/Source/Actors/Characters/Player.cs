@@ -6,11 +6,13 @@ using DungeonCrawl.Actors.Static.Items;
 using DungeonCrawl.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = System.Random;
 
 namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
+        private string _baseName = "JustAGamer";
         public Inventory PlayerInventory { get; private set; }
         private int MAX_HEALTH = 30;
         private const int DEFAULT_HEALTH = 30;
@@ -18,30 +20,9 @@ namespace DungeonCrawl.Actors.Characters
         public bool CanMove;
         public bool InventoryOpen;
         public bool InFight;
-        private int _damage;
+        public string Name;
+        private Random r = new Random();
 
-        public override int Damage
-        {
-            get
-            {
-                int bonusdamage = 0;
-                foreach (var item in PlayerInventory.Items)
-                {
-                    if (item is Sword)
-                    {
-                        Sword sword = (Sword) item;
-                        bonusdamage += sword.Damage;
-                    }
-                }
-
-                return _damage + bonusdamage;
-            }
-        }
-
-        protected override void SetDamage(int damage)
-        {
-            _damage = damage;
-        }
         public Player()
         {
             SetHp(DEFAULT_HEALTH);
@@ -49,6 +30,15 @@ namespace DungeonCrawl.Actors.Characters
             CanMove = true;
             InventoryOpen = false;
             PlayerInventory = new Inventory();
+            if (SetPlayerName.PlayerName == "")
+            {
+                Name = _baseName;
+            }
+            else
+            {
+                Name = SetPlayerName.PlayerName;
+            }
+            
         }
         //public Player(int health, int damage)
         //{
@@ -68,27 +58,41 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Move up
                 TryMove(Direction.Up);
-                Utilities.PlaySound("Footstep");
+                
+                if (r.Next(100) <=10)
+                {
+                    Utilities.PlaySound("Footstep");
+                }
+                
             }
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 // Move down
-                Utilities.PlaySound("Footstep");
+                if (r.Next(100) <= 10)
+                {
+                    Utilities.PlaySound("Footstep");
+                }
                 TryMove(Direction.Down);
             }
 
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 // Move left
-                Utilities.PlaySound("Footstep");
+                if (r.Next(100) <= 10)
+                {
+                    Utilities.PlaySound("Footstep");
+                }
                 TryMove(Direction.Left);
             }
 
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 // Move right
-                Utilities.PlaySound("Footstep");
+                if (r.Next(100) <= 10)
+                {
+                    Utilities.PlaySound("Footstep");
+                }
                 TryMove(Direction.Right);
             }
 
