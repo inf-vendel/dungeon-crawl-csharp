@@ -41,6 +41,7 @@ namespace DungeonCrawl.Actors.Characters
             UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
             UserInterface.Singleton.SetText($"{Position.x}-{Position.y}", UserInterface.TextPosition.BottomRight);
             
+
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 // Move up
@@ -80,6 +81,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (InventoryOpen)
             {
+
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
                     PlayerInventory.SelectedItem = 0;
@@ -113,10 +115,15 @@ namespace DungeonCrawl.Actors.Characters
                 UserInterface.Singleton.SetText($"Press E to pick up {item.name}", UserInterface.TextPosition.BottomRight);
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    
                     Item copyObject = (Item)item.Clone();
                     PlayerInventory.AddItem(copyObject);
                     ActorManager.Singleton.DestroyActor(item);
-                    PlayerInventory.Display();
+                    if (InventoryOpen)
+                    {
+                        PlayerInventory.Display();
+                    }
+                    
                 }
             }
 

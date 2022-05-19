@@ -65,23 +65,16 @@ namespace Assets.Source.Core
         {
             foreach (Item i in Items)
             {
-                Debug.Log(i.DefaultName);
-                Debug.Log(item.DefaultName);
-                
-                Debug.Log(i.Stackable);
-                Debug.Log(Environment.NewLine);
-                Debug.Log(item.Stackable);
 
                 if (i.DefaultName.Equals(item.DefaultName) && item.Stackable)
                 {
                     Debug.Log("stackable");
                     i.Quantity++;
-                    Display();
                     return;
                 }
             }
             Items.Add(item);
-            Display();
+ 
         }
 
         public void RemoveItem(Item item)
@@ -93,13 +86,12 @@ namespace Assets.Source.Core
                     if (i.Quantity > 1)
                     {
                         i.Quantity--;
-                        Display();
                         return;
                     }
                 }
             }
             Items.Remove(item);
-            Display();
+
         }
 
         public Item SelectItem(Item item)
@@ -113,24 +105,24 @@ namespace Assets.Source.Core
             StringBuilder result = new();
             result.Append("Inventory:\n");
 
-            Dictionary<string, int> dict = new();
-
-            foreach (Item item in Items)
-            {
-                if (dict.ContainsKey(item.DefaultName))
-                    dict[item.DefaultName]++;
-                else
-                    dict.Add(item.DefaultName, 1);
-            }
+            //Dictionary<string, int> dict = new();
 
             int counter = 1;
-
-            foreach (KeyValuePair<string, int> item in dict)
+            foreach (Item item in Items)
             {
-                result.Append($"{counter}. {item.Key} ({item.Value})");
+                result.Append($"{counter}. {item.DefaultName} {item.Quantity}");
                 result.Append(Environment.NewLine);
                 counter++;
             }
+
+            
+
+            //foreach (KeyValuePair<string, int> item in dict)
+            //{
+            //    result.Append($"{counter}. {item.Key} ({item.Value})");
+            //    result.Append(Environment.NewLine);
+            //    counter++;
+            
 
             return result.ToString();
         }
