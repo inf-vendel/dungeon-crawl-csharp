@@ -23,13 +23,16 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor)
         {
-            StartCoroutine(Battle.Loop((Player)anotherActor, this));
+            if (anotherActor is Player)
+            {
+                StartCoroutine(Battle.Loop((Player)anotherActor, this));
+            }
             return false;
         }
 
         protected override void OnUpdate(float deltaTime)
         {
-            throw new NotImplementedException();
+            return;
         }
 
         protected override void OnDeath()

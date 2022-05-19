@@ -2,10 +2,10 @@
 
 namespace DungeonCrawl.Actors.Static
 {
-    public class  Tombstone : Actor
+    public class  Skull : Actor
     {
-        public override int DefaultSpriteId => 672;
-        public override string DefaultName => "Tombstone";
+        public override int DefaultSpriteId => 720;
+        public override string DefaultName => "Skull";
         public override int Z => -1;
 
         public override bool OnCollision(Actor anotherActor)

@@ -6,11 +6,12 @@ namespace DungeonCrawl.Actors.Characters
     public abstract class Character : Actor
     {
         public int Health { get; private set; } = 100;
-        public int Damage { get; private set; } = 10;
+        public virtual int Damage { get; private set; } = 10;
         protected int Defense { get; set; } = 1;
 
         public bool IsAlive { get; set; } = true;
 
+        
 
         public void ApplyDamage(int damage)
         {
@@ -31,7 +32,7 @@ namespace DungeonCrawl.Actors.Characters
         }
 
 
-        protected void SetDamage(int damage)
+        protected virtual void SetDamage(int damage)
         {
             Damage = damage;
         }

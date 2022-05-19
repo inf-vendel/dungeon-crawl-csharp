@@ -19,7 +19,7 @@ namespace DungeonCrawl.Actors.Characters
         public bool CanMove;
         public bool InventoryOpen;
         public bool InFight;
-        public string Name { get; set; }
+        
         public Player()
         {
             SetHp(DEFAULT_HEALTH);
@@ -49,13 +49,13 @@ namespace DungeonCrawl.Actors.Characters
             {
                 return;
             }
+            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 // Move up
                 TryMove(Direction.Up);
                 Utilities.PlaySound("Footstep");
-                UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
             }
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
