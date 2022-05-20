@@ -83,6 +83,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Bridge>(position);
                     ActorManager.Singleton.Spawn<Water>(position);
                     break;
+                case '{':
+                    ActorManager.Singleton.Spawn<Duck>(position);
+                    ActorManager.Singleton.Spawn<Water>(position);
+                    break;
                 case 'l':
                     ActorManager.Singleton.Spawn<Sword>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);

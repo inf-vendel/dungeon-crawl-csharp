@@ -15,7 +15,10 @@ namespace DungeonCrawl.Actors.Static
 
         public override bool OnCollision(Actor anotherActor)
         {
-            ActorManager.Singleton.DestroyActor(this);
+            if (anotherActor is not Ghost)
+            {
+                ActorManager.Singleton.DestroyActor(this);
+            }
             return true;
         }
 

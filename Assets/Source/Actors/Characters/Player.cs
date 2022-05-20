@@ -21,6 +21,7 @@ namespace DungeonCrawl.Actors.Characters
         public bool InventoryOpen;
         public bool InFight;
         public string Name;
+        private int _damage;
         private Random r = new Random();
 
         public Player()
@@ -45,7 +46,28 @@ namespace DungeonCrawl.Actors.Characters
         //    SetHp(health);
         //    SetDamage(damage);
         //}
+        public override int Damage
+        {
+            get
+            {
+                int bonusdamage = 0;
+                foreach (var item in PlayerInventory.Items)
+                {
+                    if (item is Sword)
+                    {
+                        Sword sword = (Sword)item;
+                        bonusdamage += sword.Damage;
+                    }
+                }
 
+                return _damage + bonusdamage;
+            }
+        }
+
+        protected override void SetDamage(int damage)
+        {
+            _damage = damage;
+        }
         protected override void OnUpdate(float deltaTime)
         {
             if (!CanMove)
@@ -173,6 +195,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
+            SceneManager.LoadScene("GameOver");
             ActorManager.Singleton.DestroyActor(this);
             Debug.Log("Oh no, I'm dead!");
         }
