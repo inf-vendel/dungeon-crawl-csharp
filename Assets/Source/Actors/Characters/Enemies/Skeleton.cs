@@ -50,6 +50,7 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             Debug.Log("Well, I was already dead anyway...");
+            ActorManager.Singleton.DestroyActor(this);
         }
 
         public override int DefaultSpriteId => 316;

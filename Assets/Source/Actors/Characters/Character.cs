@@ -22,7 +22,7 @@ namespace DungeonCrawl.Actors.Characters
                 // Die
                 OnDeath();
                 UserInterface.Singleton.SetText(string.Empty,UserInterface.TextPosition.BottomCenter);
-                ActorManager.Singleton.DestroyActor(this);
+                
             }
         }
 

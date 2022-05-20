@@ -88,6 +88,7 @@ namespace DungeonCrawl.Actors.Characters
             IsAlive = false;
             UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
             Debug.Log("huuuuuuuuu...");
+            ActorManager.Singleton.DestroyActor(this);
         }
 
         public override int DefaultSpriteId => 315;
