@@ -1,5 +1,7 @@
-﻿using TMPro;
+﻿using DungeonCrawl.Core;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Source.Core
 {
@@ -55,6 +57,13 @@ namespace Assets.Source.Core
         {
             _textComponents[(int)textPosition].text = text;
             _textComponents[(int)textPosition].color = color;
+        }
+
+        public void SetInventorySlot(int position, int spirteId)
+        {
+            var slot = transform.Find("Inventory").GetChild(position);
+            slot.GetComponent<Image>().sprite = ActorManager.Singleton.GetSprite(spirteId);
+            
         }
 
     }

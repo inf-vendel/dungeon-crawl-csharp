@@ -59,13 +59,14 @@ namespace Assets.Source.Core
         }
         public void Display()
         {
+            // TODO selected item for botton left
+            ToUserInterface();
             // UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
             Utilities.Message(UserInterface.TextPosition.TopLeft, ToString(), Color.white);
 
             if (Items.Count != 0 && GetSelectedItem is not NullItem)
             {
                 Utilities.Message(UserInterface.TextPosition.TopCenter, $"Selected: {GetSelectedItem.DefaultName}", Color.cyan);
-
             }
             else
             {
@@ -139,6 +140,19 @@ namespace Assets.Source.Core
             throw new NotImplementedException();
         }
 
+        public void ToUserInterface()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                UserInterface.Singleton.SetInventorySlot(i,166);
+            }
+            foreach (var item in Items)
+            {
+                
+                UserInterface.Singleton.SetInventorySlot(Items.IndexOf(item), item.DefaultSpriteId);
+            }
+        }
+
         public override string ToString()
         {
             StringBuilder result = new();
@@ -153,9 +167,7 @@ namespace Assets.Source.Core
                 result.Append(Environment.NewLine);
                 counter++;
             }
-
             
-
             //foreach (KeyValuePair<string, int> item in dict)
             //{
             //    result.Append($"{counter}. {item.Key} ({item.Value})");
