@@ -13,8 +13,8 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
-        public static int _width { get; set; }
-        public static int _height { get; set; }
+        private static int _width { get; set; }
+        private static int _height { get; set; }
         public static int _actualMap { get; set; }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace DungeonCrawl.Core
             }
 
             // Set default camera size and position
-            CameraController.Singleton.Size = 5;
+            CameraController.Singleton.Size = 10;
             CameraController.Singleton.Position = ActorManager.Singleton.GetPlayer().Position;
         }
 
@@ -100,7 +100,9 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'g':
-                    ActorManager.Singleton.Spawn<Ghost>(position);
+                    Ghost ghost = ActorManager.Singleton.Spawn<Ghost>(position);
+                    ghost.MapWidth = _width;
+                    ghost.MapHeight = _height;
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'G':
@@ -180,5 +182,7 @@ namespace DungeonCrawl.Core
         {
             ActorManager.Singleton.Spawn<Player>((0,0));
         }
+
+
     }
 }

@@ -20,6 +20,9 @@ namespace DungeonCrawl.Actors.Characters
         private const int DEFAULT_DAMAGE = 3;
         public bool IsAgressive { get; set; }
 
+        public int MapHeight { get; set; }
+        public int MapWidth { get; set; }
+
         public Ghost()
         {
             SetHp(DEFAULT_HEALTH);
@@ -65,13 +68,16 @@ namespace DungeonCrawl.Actors.Characters
                 }
                 else
                 {
-                    TryMove(Utilities.GetRandomDirection());
+                    // Utilities.GetRandomDirection()
+                    TryMove(Direction.Left, MapWidth, MapHeight);
                 }
                 _moveCounter = SPEED;
             }
 
 
         }
+
+        
 
         public override bool OnCollision(Actor anotherActor)
         {

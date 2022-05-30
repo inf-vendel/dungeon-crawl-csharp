@@ -62,7 +62,7 @@ namespace DungeonCrawl.Actors
 
             var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
 
-            if (targetPosition.x <= MapLoader._width && targetPosition.y <= - 1 && targetPosition.x >= - 1 && targetPosition.y >= -MapLoader._height)
+            //if (targetPosition.x <= MapLoader._width && targetPosition.y <= - 1 && targetPosition.x >= - 1 && targetPosition.y >= -MapLoader._height)
             {
                 if (actorAtTargetPosition == null)
                 {
@@ -79,6 +79,32 @@ namespace DungeonCrawl.Actors
                 }
             }
         }
+
+        public void TryMove(Direction direction, int width, int height)
+        {
+            var vector = direction.ToVector();
+            (int x, int y) targetPosition = (Position.x + vector.x, Position.y + vector.y);
+
+            var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
+
+            if (targetPosition.x <= width && targetPosition.y <= - 1 && targetPosition.x >= - 1 && targetPosition.y >= -height)
+            {
+                if (actorAtTargetPosition == null)
+                {
+                    // No obstacle found, just move
+                    Position = targetPosition;
+                }
+                else
+                {
+                    if (actorAtTargetPosition.OnCollision(this))
+                    {
+                        // Allowed to move
+                        Position = targetPosition;
+                    }
+                }
+            }
+        }
+
 
         /// <summary>
         ///     Invoked whenever another actor attempts to walk on the same position
