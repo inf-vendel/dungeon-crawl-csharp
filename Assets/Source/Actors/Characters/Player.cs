@@ -68,8 +68,14 @@ namespace DungeonCrawl.Actors.Characters
         {
             _damage = damage;
         }
+
         protected override void OnUpdate(float deltaTime)
         {
+            float hpScale = (float) Health / MAX_HEALTH;
+            this.gameObject.transform.Find("hpbar").transform.localScale = new Vector3(hpScale, 0.2f, 1);
+            //var top = this.gameObject.transform.Find("topimage");
+            //top.GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite(1, "chars");
+
             if (!CanMove)
             {
                 return;
@@ -208,6 +214,15 @@ namespace DungeonCrawl.Actors.Characters
                 SetHp(MAX_HEALTH);
             }
         }
+
+        public List<string> TopSprite { get; set; }
+        public List<string> BottomSprite { get; set; }
+
+        public override void SetSprite(int id)
+        {
+        }
+
+
         public override int DefaultSpriteId => 27;
 
         public override int Z => -2;

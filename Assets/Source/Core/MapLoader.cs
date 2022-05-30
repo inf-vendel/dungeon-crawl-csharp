@@ -180,9 +180,7 @@ namespace DungeonCrawl.Core
 
         public static void SpawnPlayer()
         {
-            ActorManager.Singleton.Spawn<Player>((0,0));
+            ActorManager.Singleton.SpawnPlayer<Player>(0,0);
         }
-
-
     }
 }

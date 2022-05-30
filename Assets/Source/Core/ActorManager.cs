@@ -4,6 +4,7 @@ using System.Linq;
 using DungeonCrawl.Actors;
 using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Static.Items;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -20,6 +21,7 @@ namespace DungeonCrawl.Core
         public static ActorManager Singleton { get; private set; }
 
         private SpriteAtlas _spriteAtlas;
+        private SpriteAtlas _charAtlas;
         private HashSet<Actor> _allActors;
 
         private void Awake()
@@ -34,6 +36,7 @@ namespace DungeonCrawl.Core
 
             _allActors = new HashSet<Actor>();
             _spriteAtlas = Resources.Load<SpriteAtlas>("Spritesheet");
+            _charAtlas = Resources.Load<SpriteAtlas>("LibrarianSheet");
         }
 
 
@@ -117,6 +120,11 @@ namespace DungeonCrawl.Core
             return _spriteAtlas.GetSprite($"kenney_transparent_{id}");
         }
 
+        public Sprite GetSprite(int id, string s)
+        {
+            return _charAtlas.GetSprite($"{s}_{id}");
+        }
+
         /// <summary>
         ///     Spawns given Actor type at given position
         /// </summary>
@@ -145,6 +153,42 @@ namespace DungeonCrawl.Core
 
             return component;
         }
+
+
+        public T SpawnPlayer<T>(int x, int y, string actorName = null) where T : Actor
+        {
+            var go = new GameObject();
+            go.AddComponent<SpriteRenderer>();
+
+            var component = go.AddComponent<T>();
+
+            go.name = actorName ?? component.DefaultName;
+            component.Position = (x, y);
+
+            go.GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite(5, "chars");
+
+            GameObject HPBar = new();
+            HPBar.name = "hpbar";
+            HPBar.AddComponent<SpriteRenderer>();
+            HPBar.GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite(247);
+            HPBar.transform.SetParent(go.transform);
+            var position = go.transform.position;
+            HPBar.transform.position = position + new Vector3(0, 1.6f, 0);
+
+            GameObject topImage = new();
+            topImage.name = "topimage";
+            topImage.AddComponent<SpriteRenderer>();
+            topImage.GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite(1, "chars");
+            topImage.transform.SetParent(go.transform);
+            var position2 = go.transform.position;
+            topImage.transform.position = position2 + new Vector3(0, 1f, 0);
+
+            _allActors.Add(component);
+
+            return component;
+        }
+
+
         /// <summary>
         ///     Spawns given Actor type at given position
         /// </summary>
