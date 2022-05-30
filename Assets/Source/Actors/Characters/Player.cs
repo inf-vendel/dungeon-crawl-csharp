@@ -73,8 +73,8 @@ namespace DungeonCrawl.Actors.Characters
         {
             float hpScale = (float) Health / MAX_HEALTH;
             this.gameObject.transform.Find("hpbar").transform.localScale = new Vector3(hpScale, 0.2f, 1);
-            //var top = this.gameObject.transform.Find("topimage");
-            //top.GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite(1, "chars");
+            //var top = ;
+            //top.;
 
             if (!CanMove)
             {
@@ -86,7 +86,7 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Move up
                 TryMove(Direction.Up);
-                
+                ChangeSpriteDirection(Direction.Up);
                 if (r.Next(100) <=10)
                 {
                     Utilities.PlaySound("Footstep");
@@ -96,6 +96,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
+                ChangeSpriteDirection(Direction.Down);
                 // Move down
                 if (r.Next(100) <= 10)
                 {
@@ -106,6 +107,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                ChangeSpriteDirection(Direction.Left);
                 // Move left
                 if (r.Next(100) <= 10)
                 {
@@ -116,6 +118,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
+                ChangeSpriteDirection(Direction.Right); 
                 // Move right
                 if (r.Next(100) <= 10)
                 {
@@ -231,5 +234,12 @@ namespace DungeonCrawl.Actors.Characters
 
         // capacity, display, item selection, move/delete,
         // protected List<Item> Inventory;
+
+        public void ChangeSpriteDirection(Direction direction)
+        {
+            this.gameObject.transform.Find("topimage")
+                .GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite((int)direction, "chars");
+            GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite((int)direction+4, "chars");
+        }
     }
 }
