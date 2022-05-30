@@ -61,8 +61,6 @@ namespace DungeonCrawl.Actors
             (int x, int y) targetPosition = (Position.x + vector.x, Position.y + vector.y);
 
             var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
-
-            //if (targetPosition.x <= MapLoader._width && targetPosition.y <= - 1 && targetPosition.x >= - 1 && targetPosition.y >= -MapLoader._height)
             {
                 if (actorAtTargetPosition == null)
                 {

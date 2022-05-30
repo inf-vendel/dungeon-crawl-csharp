@@ -68,8 +68,7 @@ namespace DungeonCrawl.Actors.Characters
                 }
                 else
                 {
-                    // Utilities.GetRandomDirection()
-                    TryMove(Direction.Left, MapWidth, MapHeight);
+                    TryMove(Utilities.GetRandomDirection(), MapWidth, MapHeight);
                 }
                 _moveCounter = SPEED;
             }
