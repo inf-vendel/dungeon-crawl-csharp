@@ -15,16 +15,12 @@ namespace DungeonCrawl.Actors.Static
             if (anotherActor is Player)
             {
                 Player player = (Player)anotherActor;
-                if (player.PlayerInventory.GetSelectedItem is Key)
+                if (player.PlayerInventory.GetSelectedItem is Key && !_isOpen)
                 {
                     player.PlayerInventory.RemoveItem(player.PlayerInventory.GetSelectedItem);
-                    //player.PlayerInventory.SelectedItem = 0;
                     player.PlayerInventory.Display();
-
                     _isOpen = true;
                     SetSprite(DefaultSpriteId);
-                    /* ActorManager.Singleton.Spawn<OpenDoor>(this.Position);
-                     ActorManager.Singleton.DestroyActor(this); */
                 }
             }
             return _isOpen;

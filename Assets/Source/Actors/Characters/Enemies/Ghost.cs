@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Assets.Source.Core;
 using DungeonCrawl.Core;
 using UnityEngine;
@@ -34,8 +35,11 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            Actor player = ActorManager.Singleton.GetPlayer();
             (int x, int y) playerPosition = player.Position;
+
+
+            //Actor player = ActorManager.Singleton.GetPlayer();
+            //(int x, int y) playerPosition = player.Position;
 
             _moveCounter -= deltaTime;
 
