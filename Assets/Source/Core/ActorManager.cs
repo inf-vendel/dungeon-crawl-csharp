@@ -37,13 +37,13 @@ namespace DungeonCrawl.Core
         }
 
 
-        public Actor GetPlayer()
+        public Player GetPlayer()
         {
             foreach (Actor actor in _allActors)
             {
                 if (actor is Player)
                 {
-                    return actor;
+                    return (Player)actor;
                 }
             }
             return null;

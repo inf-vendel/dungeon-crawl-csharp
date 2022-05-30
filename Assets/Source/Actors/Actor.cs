@@ -15,7 +15,6 @@ namespace DungeonCrawl.Actors
         protected bool IsColored { get; set; }
         protected Color spriteColor { get; set; }
 
-
     public (int x, int y) Position
         {
             get => _position;
@@ -28,7 +27,6 @@ namespace DungeonCrawl.Actors
 
         private (int x, int y) _position;
         private SpriteRenderer _spriteRenderer;
-
 
 
         private void Awake()
