@@ -19,7 +19,8 @@ namespace DungeonCrawl.Actors.Characters
         {
             if (anotherActor is Player)
             {
-                StartCoroutine(Battle.Message("Bark..."));
+                // Utilities.Message("Bark...");
+                StartCoroutine(Utilities.Message("Bark...", UserInterface.TextPosition.BottomCenter));
             }
 
             return false;

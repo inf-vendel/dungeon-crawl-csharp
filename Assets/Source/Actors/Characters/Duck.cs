@@ -19,7 +19,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             if (anotherActor is Player)
             {
-                StartCoroutine(Battle.Message("Quack"));
+                StartCoroutine(Utilities.Message("Quack", UserInterface.TextPosition.BottomCenter));
             }
 
             return false;

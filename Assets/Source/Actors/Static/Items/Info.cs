@@ -18,7 +18,7 @@ namespace DungeonCrawl.Actors.Static.Items
             if (anotherActor is Player)
             {
                 Player player = (Player)anotherActor;
-                StartCoroutine(Battle.Message($"Hey {player.Name}, welcome to the BackStreet"));
+                StartCoroutine(Utilities.Message($"Hey {player.Name}, welcome to the BackStreet", UserInterface.TextPosition.BottomCenter));
             }
             
             return true;

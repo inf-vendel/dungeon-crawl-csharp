@@ -10,6 +10,8 @@ namespace DungeonCrawl.Actors.Static
         public override string DefaultName => "Water";
         public override bool Detectable => true;
 
+        public override int Z => 1;
+
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor is Ghost)

@@ -61,7 +61,6 @@
     <Compile Include="Assets\Source\Actors\Characters\BoneFire.cs" />
     <Compile Include="Assets\Source\Actors\Static\Fire.cs" />
     <Compile Include="Assets\Source\Actors\Static\Floor.cs" />
-    <Compile Include="Assets\Source\Actors\Static\OpenDoor.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Enemies\IEnemy.cs" />
     <Compile Include="Assets\Source\Core\CameraController.cs" />
     <Compile Include="Assets\Source\Core\UserInterface.cs" />
@@ -82,7 +81,7 @@
     <Compile Include="Assets\Source\Core\Battle.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Character.cs" />
     <Compile Include="Assets\Source\Actors\Static\Skull.cs" />
-    <Compile Include="Assets\Source\Actors\Static\ClosedDoor.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Door.cs" />
     <Compile Include="Assets\Scenes\GameOver.cs" />
     <Compile Include="Assets\Scenes\SetPlayerName.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Enemies\Skeleton.cs" />

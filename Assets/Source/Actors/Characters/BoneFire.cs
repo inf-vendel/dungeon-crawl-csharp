@@ -19,7 +19,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             if (anotherActor is Player)
             {
-                StartCoroutine(Battle.Message("You feel more comfortable"));
+                StartCoroutine(Utilities.Message("You feel more comfortable", UserInterface.TextPosition.BottomCenter));
             }
 
             return false;

@@ -91,7 +91,7 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             IsAlive = false;
-            UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
+            // UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
             Debug.Log("huuuuuuuuu...");
             ActorManager.Singleton.DestroyActor(this);
         }

@@ -63,10 +63,7 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case '/':
-                    ActorManager.Singleton.Spawn<ClosedDoor>(position);
-                    break;
-                case '\\':
-                    ActorManager.Singleton.Spawn<OpenDoor>(position);
+                    ActorManager.Singleton.Spawn<Door>(position);
                     break;
                 case 'p':
                     ActorManager.Singleton.GetPlayer().Position = position;
@@ -81,7 +78,7 @@ namespace DungeonCrawl.Core
                     break;
                 case 'h':
                     ActorManager.Singleton.Spawn<Bridge>(position);
-                    ActorManager.Singleton.Spawn<Water>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case '{':
                     ActorManager.Singleton.Spawn<Duck>(position);

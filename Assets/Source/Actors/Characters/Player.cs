@@ -74,7 +74,7 @@ namespace DungeonCrawl.Actors.Characters
             {
                 return;
             }
-            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
+            //UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomRight);
 
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -169,7 +169,8 @@ namespace DungeonCrawl.Actors.Characters
 
             if (item is not null && item.Pickable)
             {
-                UserInterface.Singleton.SetText($"Press E to pick up {item.name}", UserInterface.TextPosition.BottomRight);
+                StartCoroutine(Utilities.Message($"Press E to pick up {item.name}",
+                    UserInterface.TextPosition.BottomRight));
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     
@@ -183,8 +184,7 @@ namespace DungeonCrawl.Actors.Characters
                     
                 }
             }
-
-            UserInterface.Singleton.SetText($"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", UserInterface.TextPosition.BottomLeft);
+            Utilities.Message(UserInterface.TextPosition.BottomLeft,$"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", Color.white);
 
         }
 
