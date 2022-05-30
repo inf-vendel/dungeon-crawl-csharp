@@ -10,10 +10,8 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 .vsconfig
-Assembly-CSharp.csproj
 ProjectSettings/MemorySettings.asset
 ProjectSettings/boot.config
-dungeon-crawl-1-csharp-inf-vendel.sln
 *.meta
 #Ignore all .meta file
 *.meta
