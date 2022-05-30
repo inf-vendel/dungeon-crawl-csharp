@@ -88,7 +88,7 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             IsAlive = false;
-            UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
+            // UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
             Debug.Log("You are the big boss now...");
 
         }

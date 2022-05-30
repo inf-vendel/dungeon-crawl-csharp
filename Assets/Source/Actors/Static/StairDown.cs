@@ -26,7 +26,10 @@ namespace DungeonCrawl.Actors.Static
                 }
                 else
                 {
-                    UserInterface.Singleton.SetText("You have to use a golden key to go to the next level", UserInterface.TextPosition.BottomRight);
+
+                    StartCoroutine(Utilities.Message("You have to use a golden key to go to the next level",
+                        UserInterface.TextPosition.BottomRight));
+                    //UserInterface.Singleton.SetText("You have to use a golden key to go to the next level", UserInterface.TextPosition.BottomRight);
                 }
 
             }

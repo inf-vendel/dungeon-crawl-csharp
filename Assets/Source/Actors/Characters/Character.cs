@@ -21,7 +21,7 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Die
                 OnDeath();
-                UserInterface.Singleton.SetText(string.Empty,UserInterface.TextPosition.BottomCenter);
+                // UserInterface.Singleton.SetText(string.Empty,UserInterface.TextPosition.BottomCenter);
                 
             }
         }

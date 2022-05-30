@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Assets.Source.Core;
 using DungeonCrawl.Core;
 using UnityEngine;
@@ -20,6 +21,9 @@ namespace DungeonCrawl.Actors.Characters
         private const int DEFAULT_DAMAGE = 3;
         public bool IsAgressive { get; set; }
 
+        public int MapHeight { get; set; }
+        public int MapWidth { get; set; }
+
         public Ghost()
         {
             SetHp(DEFAULT_HEALTH);
@@ -31,8 +35,11 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            Actor player = ActorManager.Singleton.GetPlayer();
             (int x, int y) playerPosition = player.Position;
+
+
+            //Actor player = ActorManager.Singleton.GetPlayer();
+            //(int x, int y) playerPosition = player.Position;
 
             _moveCounter -= deltaTime;
 
@@ -65,13 +72,15 @@ namespace DungeonCrawl.Actors.Characters
                 }
                 else
                 {
-                    TryMove(Utilities.GetRandomDirection());
+                    TryMove(Utilities.GetRandomDirection(), MapWidth, MapHeight);
                 }
                 _moveCounter = SPEED;
             }
 
 
         }
+
+        
 
         public override bool OnCollision(Actor anotherActor)
         {
@@ -86,7 +95,7 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnDeath()
         {
             IsAlive = false;
-            UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
+            // UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
             Debug.Log("huuuuuuuuu...");
             ActorManager.Singleton.DestroyActor(this);
         }

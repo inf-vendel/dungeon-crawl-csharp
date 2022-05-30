@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using Assets.Source.Core;
 using UnityEngine;
 using Random = System.Random;
 
@@ -14,6 +16,19 @@ namespace DungeonCrawl
 
     public static class Utilities
     {
+        public static IEnumerator Message(string text, UserInterface.TextPosition position, float time = 1.0f)
+        {
+            UserInterface.Singleton.SetText(text, position);
+            yield return new WaitForSeconds(1.0f);
+            UserInterface.Singleton.SetText(String.Empty, position);
+        }
+
+
+        public static void Message(UserInterface.TextPosition position,string text, Color color)
+        {
+            UserInterface.Singleton.SetText(text, position, color);
+        }
+
         public static (int x, int y) ToVector(this Direction dir)
         {
             switch (dir)

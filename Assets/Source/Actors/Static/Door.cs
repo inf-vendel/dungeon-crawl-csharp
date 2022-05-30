@@ -5,26 +5,25 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Static
 {
-    public class ClosedDoor : Actor
+    public class Door : Actor
     {
-        public override int DefaultSpriteId => 435;
+        private bool _isOpen = false;
+        public override int DefaultSpriteId => _isOpen ? 437 : 435;
         public override string DefaultName => "Door";
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor is Player)
             {
                 Player player = (Player)anotherActor;
-                if (player.PlayerInventory.GetSelectedItem is Key)
+                if (player.PlayerInventory.GetSelectedItem is Key && !_isOpen)
                 {
                     player.PlayerInventory.RemoveItem(player.PlayerInventory.GetSelectedItem);
-                    //player.PlayerInventory.SelectedItem = 0;
                     player.PlayerInventory.Display();
-
-                    ActorManager.Singleton.Spawn<OpenDoor>(this.Position);
-                    ActorManager.Singleton.DestroyActor(this);
+                    _isOpen = true;
+                    SetSprite(DefaultSpriteId);
                 }
             }
-            return false;
+            return _isOpen;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace DungeonCrawl.Actors.Static.Items
 
         public override void Action()
         {
-            Player player = (Player) ActorManager.Singleton.GetPlayer();
+            Player player = ActorManager.Singleton.GetPlayer();
             player.Heal(HealAmount);
             player.PlayerInventory.RemoveItem(this);
             player.PlayerInventory.Display();

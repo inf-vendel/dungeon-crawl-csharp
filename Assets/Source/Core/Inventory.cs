@@ -7,10 +7,14 @@ using System.Text;
 using DungeonCrawl.Actors.Static.Items;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
+using Assets.Source.Core;
+using DungeonCrawl;
+using DungeonCrawl.Core;
+
 
 namespace Assets.Source.Core
 {
-    public class Inventory
+    public class Inventory : MonoBehaviour
     {
         protected int Capacity { get; private set; }
         public List<Item> Items;
@@ -51,18 +55,21 @@ namespace Assets.Source.Core
 
         public void HideDisplay()
         {
-            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.TopLeft);
+            Utilities.Message(UserInterface.TextPosition.TopLeft, string.Empty, Color.white);
         }
         public void Display()
         {
-            UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
+            // UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
+            Utilities.Message(UserInterface.TextPosition.TopLeft, ToString(), Color.white);
+
             if (Items.Count != 0 && GetSelectedItem is not NullItem)
             {
-                UserInterface.Singleton.SetText("Selected: " + GetSelectedItem.DefaultName, UserInterface.TextPosition.TopCenter, Color.cyan);
+                Utilities.Message(UserInterface.TextPosition.TopCenter, $"Selected: {GetSelectedItem.DefaultName}", Color.cyan);
+
             }
             else
             {
-                UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.TopCenter);
+                Utilities.Message(UserInterface.TextPosition.TopCenter, string.Empty, Color.white);
             }
 
 

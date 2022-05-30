@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using DungeonCrawl;
 using UnityEngine;
 using DungeonCrawl.Actors.Characters;
 using UnityEngine.SceneManagement;
@@ -16,13 +17,6 @@ namespace Assets.Source.Core
         {
         }
 
-        public static IEnumerator Message(string text)
-        {
-            UserInterface.Singleton.SetText(text, UserInterface.TextPosition.BottomCenter);
-            yield return new WaitForSeconds(1.0f);
-            UserInterface.Singleton.SetText(String.Empty, UserInterface.TextPosition.BottomCenter);
-        }
-
         public static IEnumerator Loop(Player Player, Character Enemy)
         {
             Player.CanMove = false;
@@ -31,6 +25,10 @@ namespace Assets.Source.Core
                 UserInterface.Singleton.SetText("You win!", UserInterface.TextPosition.BottomCenter);
                 yield return new WaitForSeconds(1.0f);
                 UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.BottomCenter);
+
+                Utilities.Message(UserInterface.TextPosition.BottomCenter, "You win!", Color.white);
+                yield return new WaitForSeconds(1.0f);
+                Utilities.Message(UserInterface.TextPosition.BottomCenter,string.Empty, Color.white);
             }
             //else if ((Player.Health - Enemy.Damage) <= 0)
             //{

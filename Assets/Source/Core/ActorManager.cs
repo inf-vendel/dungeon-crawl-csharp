@@ -37,13 +37,13 @@ namespace DungeonCrawl.Core
         }
 
 
-        public Actor GetPlayer()
+        public Player GetPlayer()
         {
             foreach (Actor actor in _allActors)
             {
                 if (actor is Player)
                 {
-                    return actor;
+                    return (Player)actor;
                 }
             }
             return null;
@@ -129,6 +129,22 @@ namespace DungeonCrawl.Core
             return Spawn<T>(position.x, position.y, actorName);
         }
 
+
+        public T Spawn<T>(int x, int y, Player player, string actorName = null) where T : Actor
+        {
+            var go = new GameObject();
+            go.AddComponent<SpriteRenderer>();
+
+            var component = go.AddComponent<T>();
+
+            go.name = actorName ?? component.DefaultName;
+            component.Position = (x, y);
+            component.player = player;
+
+            _allActors.Add(component);
+
+            return component;
+        }
         /// <summary>
         ///     Spawns given Actor type at given position
         /// </summary>

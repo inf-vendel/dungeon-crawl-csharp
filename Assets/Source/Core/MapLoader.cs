@@ -5,6 +5,7 @@ using System;
 using System.Text.RegularExpressions;
 using DungeonCrawl.Actors;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace DungeonCrawl.Core
 {
@@ -13,8 +14,8 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
-        public static int _width { get; set; }
-        public static int _height { get; set; }
+        private static int _width { get; set; }
+        private static int _height { get; set; }
         public static int _actualMap { get; set; }
 
         /// <summary>
@@ -54,6 +55,7 @@ namespace DungeonCrawl.Core
 
         private static void SpawnActor(char c, (int x, int y) position)
         {
+            var player = ActorManager.Singleton.GetPlayer();
             switch (c)
             {
                 case '#':
@@ -63,13 +65,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case '/':
-                    ActorManager.Singleton.Spawn<ClosedDoor>(position);
-                    break;
-                case '\\':
-                    ActorManager.Singleton.Spawn<OpenDoor>(position);
+                    ActorManager.Singleton.Spawn<Door>(position);
                     break;
                 case 'p':
-                    ActorManager.Singleton.GetPlayer().Position = position;
+                    player.Position = position;
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'X':
@@ -81,7 +80,7 @@ namespace DungeonCrawl.Core
                     break;
                 case 'h':
                     ActorManager.Singleton.Spawn<Bridge>(position);
-                    ActorManager.Singleton.Spawn<Water>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case '{':
                     ActorManager.Singleton.Spawn<Duck>(position);
@@ -100,7 +99,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'g':
-                    ActorManager.Singleton.Spawn<Ghost>(position);
+                    Ghost ghost = ActorManager.Singleton.Spawn<Ghost>(position.x,position.y, player);
+                    ghost.MapWidth = _width;
+                    ghost.MapHeight = _height;
+                    
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'G':
@@ -180,5 +182,7 @@ namespace DungeonCrawl.Core
         {
             ActorManager.Singleton.Spawn<Player>((0,0));
         }
+
+
     }
 }
