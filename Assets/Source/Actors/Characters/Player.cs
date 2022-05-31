@@ -18,7 +18,6 @@ namespace DungeonCrawl.Actors.Characters
         private const int DEFAULT_HEALTH = 30;
         private const int DEFAULT_DAMAGE = 5;
         public bool CanMove;
-        public bool InventoryOpen;
         public bool InFight;
         public string Name;
         private int _damage;
@@ -29,7 +28,6 @@ namespace DungeonCrawl.Actors.Characters
             SetHp(DEFAULT_HEALTH);
             SetDamage(DEFAULT_DAMAGE);
             CanMove = true;
-            InventoryOpen = false;
             PlayerInventory = new Inventory();
             if (SetPlayerName.PlayerName == "")
             {
@@ -175,15 +173,10 @@ namespace DungeonCrawl.Actors.Characters
                     UserInterface.TextPosition.BottomRight));
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    
                     Item copyObject = (Item)item.Clone();
                     PlayerInventory.AddItem(copyObject);
                     ActorManager.Singleton.DestroyActor(item);
-                    if (InventoryOpen)
-                    {
-                        PlayerInventory.Display();
-                    }
-                    
+                    PlayerInventory.Display();
                 }
             }
             Utilities.Message(UserInterface.TextPosition.BottomLeft,$"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", Color.white);

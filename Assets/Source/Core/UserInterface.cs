@@ -64,7 +64,9 @@ namespace Assets.Source.Core
 
         public void SetInventorySlot(int position, int spirteId, int number = 0)
         {
-            var slot = transform.Find("Inventory").GetChild(position);
+            var inventory = GameObject.FindGameObjectWithTag("INVENTORY");
+            var slot = inventory.transform.GetChild(position);
+            //var slot = transform.Find("Inventory").GetChild(position);
             slot.GetComponent<Image>().sprite = ActorManager.Singleton.GetSprite(spirteId);
             slot.GetComponentInChildren<TextMeshProUGUI>().text = number == 1 ? string.Empty : number.ToString();
 
@@ -72,13 +74,17 @@ namespace Assets.Source.Core
 
         public void SetInventorySlot(int position)
         {
-            var slot = transform.Find("Inventory").GetChild(position);
+            var inventory = GameObject.FindGameObjectWithTag("INVENTORY");
+            var slot = inventory.transform.GetChild(position);
+            //var slot = transform.Find("Inventory").GetChild(position);
             slot.GetComponent<Image>().sprite = _inventorySlotSprite;
         }
 
         public void SetInventorySlotSelected(int position, float x,float y)
         {
-            var slot = transform.Find("Inventory").GetChild(position);
+            var inventory = GameObject.FindGameObjectWithTag("INVENTORY");
+            var slot = inventory.transform.GetChild(position);
+            //var slot = transform.Find("Inventory").GetChild(position);
             slot.GetComponent<Image>().transform.localScale = new Vector3(x,y,1.0f);
             
         }

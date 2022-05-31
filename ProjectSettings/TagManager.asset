@@ -22,6 +22,7 @@ TagManager:
   - Punch1
   - Punch2
   - Punch3
+  - INVENTORY
   layers:
   - Default
   - TransparentFX
