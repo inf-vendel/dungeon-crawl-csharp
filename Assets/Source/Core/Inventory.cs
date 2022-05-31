@@ -20,6 +20,8 @@ namespace Assets.Source.Core
         protected int Capacity { get; private set; }
         public List<Item> Items;
         private int _selectedItem;
+        // private GameObject _inventory;
+        public bool _isOpen;
 
         public int SelectedItem {
             get => _selectedItem;
@@ -52,28 +54,54 @@ namespace Assets.Source.Core
         public Inventory()
         {
             Items = new();
+            _isOpen = false;
         }
+
+        //private void Awake()
+        //{
+        //    _inventory = GameObject.Find("Inventory");
+        //}
 
         public void HideDisplay()
         {
-           // Utilities.Message(UserInterface.TextPosition.TopLeft, string.Empty, Color.white);
+            // Utilities.Message(UserInterface.TextPosition.TopLeft, string.Empty, Color.white);
+            ToggleInventoryVisibility();
+
         }
         public void Display()
         {
             // TODO selected item for botton left
-            ToUserInterface();
-            /* UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
-            Utilities.Message(UserInterface.TextPosition.TopLeft, ToString(), Color.white);
+            if (_isOpen)
+            {
+                ToUserInterface();
+            }
+        }
 
-            if (Items.Count != 0 && GetSelectedItem is not NullItem)
-            {
-                Utilities.Message(UserInterface.TextPosition.TopCenter, $"Selected: {GetSelectedItem.DefaultName}", Color.cyan);
-            }
-            else
-            {
-                Utilities.Message(UserInterface.TextPosition.TopCenter, string.Empty, Color.white);
-            }
-            */
+        public void ToggleInventoryVisibility()
+        {
+            _isOpen = !_isOpen;
+
+            //var inventory = GameObject.Find("Inventory");
+            //var color = inventory.GetComponent<SpriteRenderer>().color;
+            //color.a = color.a == 0f ? 1f : 0f;
+            //inventory.GetComponent<SpriteRenderer>().color = color;
+
+
+            Renderer r = GameObject.Find("Inventory").GetComponent<Renderer>();
+            Color newColor = r.material.color;
+            newColor.a = 0;
+            r.material.color = newColor;
+
+            //if (GameObject.Find("Inventory").activeSelf)
+            //{
+            //    GameObject.Find("Inventory").active = false;
+            //}
+            //else
+            //{
+            //    GameObject.Find("Inventory").active = true;
+            //}
+            //_inventory.SetActive(!_inventory.activeSelf);
+
 
         }
 

@@ -134,18 +134,11 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Input.GetKeyDown(KeyCode.I))
             {
-                if (InventoryOpen)
-                {
-                    PlayerInventory.HideDisplay();
-                }
-                else
-                {
-                    PlayerInventory.Display();
-                }
-                InventoryOpen = !InventoryOpen;
+                PlayerInventory.ToggleInventoryVisibility();
             }
 
-            if (InventoryOpen)
+    
+            if (PlayerInventory._isOpen)
             {
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))

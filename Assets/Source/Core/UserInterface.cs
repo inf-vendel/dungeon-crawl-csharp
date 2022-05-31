@@ -82,5 +82,7 @@ namespace Assets.Source.Core
             slot.GetComponent<Image>().transform.localScale = new Vector3(x,y,1.0f);
             
         }
+
+
     }
 }
