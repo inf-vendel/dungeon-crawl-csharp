@@ -2,8 +2,11 @@
 using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Actors.Static.Items;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using DungeonCrawl.Actors;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -53,9 +56,24 @@ namespace DungeonCrawl.Core
             CameraController.Singleton.Position = ActorManager.Singleton.GetPlayer().Position;
         }
 
+        private static void TxtReader(string filename, int id)
+        {
+
+
+            
+        }
+
         private static void SpawnActor(char c, (int x, int y) position)
         {
             var player = ActorManager.Singleton.GetPlayer();
+            string nums = "1234";
+
+            if (nums.Contains(c))
+            {
+                ActorManager.Singleton.Spawn<Info>(position);
+                ActorManager.Singleton.Spawn<Floor>(position);
+            }
+
             switch (c)
             {
                 case '#':
