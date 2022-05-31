@@ -1,4 +1,5 @@
 ﻿using DungeonCrawl.Core;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -61,17 +62,25 @@ namespace Assets.Source.Core
             _textComponents[(int)textPosition].color = color;
         }
 
-        public void SetInventorySlot(int position, int spirteId)
+        public void SetInventorySlot(int position, int spirteId, int number = 0)
         {
             var slot = transform.Find("Inventory").GetChild(position);
             slot.GetComponent<Image>().sprite = ActorManager.Singleton.GetSprite(spirteId);
-            
+            slot.GetComponentInChildren<TextMeshProUGUI>().text = number == 1 ? string.Empty : number.ToString();
+
         }
 
         public void SetInventorySlot(int position)
         {
             var slot = transform.Find("Inventory").GetChild(position);
             slot.GetComponent<Image>().sprite = _inventorySlotSprite;
+        }
+
+        public void SetInventorySlotSelected(int position, float x,float y)
+        {
+            var slot = transform.Find("Inventory").GetChild(position);
+            slot.GetComponent<Image>().transform.localScale = new Vector3(x,y,1.0f);
+            
         }
     }
 }

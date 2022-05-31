@@ -72,7 +72,7 @@ namespace DungeonCrawl.Actors.Characters
         protected override void OnUpdate(float deltaTime)
         {
             float hpScale = (float) Health / MAX_HEALTH;
-            this.gameObject.transform.Find("hpbar").transform.localScale = new Vector3(hpScale, 0.2f, 1);
+            this.gameObject.transform.Find("hpbar").transform.localScale = new Vector3(hpScale, 0.9f+hpScale/5, 1);
             //var top = ;
             //top.;
 

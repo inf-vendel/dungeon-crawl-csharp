@@ -171,10 +171,16 @@ namespace DungeonCrawl.Core
             GameObject HPBar = new();
             HPBar.name = "hpbar";
             HPBar.AddComponent<SpriteRenderer>();
-            HPBar.GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite(247);
+            HPBar.GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite(287);
             HPBar.transform.SetParent(go.transform);
             var position = go.transform.position;
             HPBar.transform.position = position + new Vector3(0, 1.6f, 0);
+            Color tmp = HPBar.GetComponent<SpriteRenderer>().color;
+            tmp.a = 0.8f;
+            //tmp.r = 1;
+            //tmp.g = 0.1f;
+            //tmp.b = 0.1f;
+            HPBar.GetComponent<SpriteRenderer>().color = tmp;
 
             GameObject topImage = new();
             topImage.name = "topimage";

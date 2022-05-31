@@ -56,13 +56,13 @@ namespace Assets.Source.Core
 
         public void HideDisplay()
         {
-            Utilities.Message(UserInterface.TextPosition.TopLeft, string.Empty, Color.white);
+           // Utilities.Message(UserInterface.TextPosition.TopLeft, string.Empty, Color.white);
         }
         public void Display()
         {
             // TODO selected item for botton left
             ToUserInterface();
-            // UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
+            /* UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
             Utilities.Message(UserInterface.TextPosition.TopLeft, ToString(), Color.white);
 
             if (Items.Count != 0 && GetSelectedItem is not NullItem)
@@ -73,7 +73,7 @@ namespace Assets.Source.Core
             {
                 Utilities.Message(UserInterface.TextPosition.TopCenter, string.Empty, Color.white);
             }
-
+            */
 
         }
 
@@ -146,12 +146,14 @@ namespace Assets.Source.Core
             for (int i = 0; i < 5; i++)
             {
                 UserInterface.Singleton.SetInventorySlot(i);
+                UserInterface.Singleton.SetInventorySlotSelected(i, 0.8f,0.2f);
             }
             foreach (var item in Items)
             {
-                
-                UserInterface.Singleton.SetInventorySlot(Items.IndexOf(item), item.DefaultSpriteId);
+                UserInterface.Singleton.SetInventorySlot(Items.IndexOf(item), item.DefaultSpriteId, item.Quantity);
             }
+
+            UserInterface.Singleton.SetInventorySlotSelected(_selectedItem, 1.2f,0.3f);
         }
 
         public override string ToString()
