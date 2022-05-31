@@ -125,6 +125,7 @@ namespace DungeonCrawl.Core
             return _charAtlas.GetSprite($"{s}_{id}");
         }
 
+
         /// <summary>
         ///     Spawns given Actor type at given position
         /// </summary>

@@ -29,6 +29,7 @@ namespace Assets.Source.Core
         public static UserInterface Singleton { get; private set; }
 
         private TextMeshProUGUI[] _textComponents;
+        private Sprite _inventorySlotSprite;
 
         private void Awake()
         {
@@ -41,6 +42,7 @@ namespace Assets.Source.Core
             Singleton = this;
 
             _textComponents = GetComponentsInChildren<TextMeshProUGUI>();
+            _inventorySlotSprite = Resources.Load<Sprite>("inventoryitem");
         }
 
         /// <summary>
@@ -66,5 +68,10 @@ namespace Assets.Source.Core
             
         }
 
+        public void SetInventorySlot(int position)
+        {
+            var slot = transform.Find("Inventory").GetChild(position);
+            slot.GetComponent<Image>().sprite = _inventorySlotSprite;
+        }
     }
 }

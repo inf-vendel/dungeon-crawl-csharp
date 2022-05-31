@@ -10,6 +10,7 @@ using Debug = UnityEngine.Debug;
 using Assets.Source.Core;
 using DungeonCrawl;
 using DungeonCrawl.Core;
+using UnityEngine.UI;
 
 
 namespace Assets.Source.Core
@@ -19,6 +20,7 @@ namespace Assets.Source.Core
         protected int Capacity { get; private set; }
         public List<Item> Items;
         private int _selectedItem;
+
         public int SelectedItem {
             get => _selectedItem;
             set
@@ -50,7 +52,6 @@ namespace Assets.Source.Core
         public Inventory()
         {
             Items = new();
-
         }
 
         public void HideDisplay()
@@ -144,7 +145,7 @@ namespace Assets.Source.Core
         {
             for (int i = 0; i < 5; i++)
             {
-                UserInterface.Singleton.SetInventorySlot(i,166);
+                UserInterface.Singleton.SetInventorySlot(i);
             }
             foreach (var item in Items)
             {
@@ -177,5 +178,6 @@ namespace Assets.Source.Core
 
             return result.ToString();
         }
+
     }
 }
