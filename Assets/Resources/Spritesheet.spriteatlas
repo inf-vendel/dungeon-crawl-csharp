@@ -45,11 +45,37 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: e44b7f78b0d7d86478e2926ad69f82c2, type: 3}
+    - {fileID: 2800000, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+    - {fileID: 2800000, guid: f4f6e8c43b28a8146a2c15d1a50c4a6b, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 1438493412, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: 386088234, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: -51120779, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: -483122553, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: 1878355597, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: -2089957605, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: -1612022292, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: 690167489, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: -775455372, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: 363556403, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: 1833595391, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: 1132675430, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: -279000462, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: -1227891709, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: -1781693712, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: -1691848906, guid: 3dd3cef3448ff4a4a9aff67a1ff3b5eb, type: 3}
+  - {fileID: 1615094465, guid: f4f6e8c43b28a8146a2c15d1a50c4a6b, type: 3}
+  - {fileID: 1476088567, guid: f4f6e8c43b28a8146a2c15d1a50c4a6b, type: 3}
+  - {fileID: 1182839121, guid: f4f6e8c43b28a8146a2c15d1a50c4a6b, type: 3}
+  - {fileID: 1267995982, guid: f4f6e8c43b28a8146a2c15d1a50c4a6b, type: 3}
+  - {fileID: -464938939, guid: f4f6e8c43b28a8146a2c15d1a50c4a6b, type: 3}
+  - {fileID: 492680539, guid: f4f6e8c43b28a8146a2c15d1a50c4a6b, type: 3}
+  - {fileID: 1068020110, guid: f4f6e8c43b28a8146a2c15d1a50c4a6b, type: 3}
+  - {fileID: -1060281624, guid: f4f6e8c43b28a8146a2c15d1a50c4a6b, type: 3}
   - {fileID: -4972309323787973953, guid: e44b7f78b0d7d86478e2926ad69f82c2, type: 3}
   - {fileID: -2007934298846182444, guid: e44b7f78b0d7d86478e2926ad69f82c2, type: 3}
   - {fileID: 660458254016727159, guid: e44b7f78b0d7d86478e2926ad69f82c2, type: 3}
@@ -1106,6 +1132,30 @@ SpriteAtlas:
   - {fileID: -6169574218389592043, guid: e44b7f78b0d7d86478e2926ad69f82c2, type: 3}
   - {fileID: -2727021250906492655, guid: e44b7f78b0d7d86478e2926ad69f82c2, type: 3}
   m_PackedSpriteNamesToIndex:
+  - monsters_9
+  - monsters_8
+  - monsters_3
+  - monsters_2
+  - monsters_1
+  - monsters_0
+  - monsters_7
+  - monsters_6
+  - monsters_5
+  - monsters_4
+  - monsters_14
+  - monsters_15
+  - monsters_12
+  - monsters_13
+  - monsters_10
+  - monsters_11
+  - chars_7
+  - chars_6
+  - chars_5
+  - chars_4
+  - chars_3
+  - chars_2
+  - chars_1
+  - chars_0
   - kenney_transparent_370
   - kenney_transparent_498
   - kenney_transparent_260

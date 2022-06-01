@@ -93,7 +93,7 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 's':
-                    ActorManager.Singleton.Spawn<Skeleton>(position);
+                    ActorManager.Singleton.SpawnMonsters<Skeleton>(position.x, position.y, new() { 2, 3, 6, 7 }, "monsters");
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'h':

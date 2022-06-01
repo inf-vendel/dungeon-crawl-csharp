@@ -14,11 +14,11 @@ namespace DungeonCrawl.Actors.Static
 
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor is Ghost)
+            if (anotherActor is Player)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
     }
