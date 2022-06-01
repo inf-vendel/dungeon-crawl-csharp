@@ -135,7 +135,12 @@ namespace DungeonCrawl.Actors.Characters
                 PlayerInventory.ToggleInventoryVisibility();
             }
 
-    
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Utilities.Message( UserInterface.TextPosition.BottomCenter, string.Empty);
+            }
+
+
             if (PlayerInventory._isOpen)
             {
 

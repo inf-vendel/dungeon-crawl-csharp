@@ -154,6 +154,22 @@ namespace DungeonCrawl.Core
 
             return component;
         }
+        public T Spawn<T>(int x, int y, string text, string actorName = null) where T : Info
+        {
+            var go = new GameObject();
+            go.AddComponent<SpriteRenderer>();
+
+            var component = go.AddComponent<T>();
+
+            go.name = actorName ?? component.DefaultName;
+            component.Position = (x, y);
+            component.Message = text;
+            
+
+            _allActors.Add(component);
+
+            return component;
+        }
 
 
         public T SpawnPlayer<T>(int x, int y, string actorName = null) where T : Actor
@@ -193,7 +209,7 @@ namespace DungeonCrawl.Core
         }
 
 
-        public T SpawnMonsters<T>(int x, int y, List<int> spriteIds, string sheet, string actorName = null) where T : Actor
+        public T SpawnFourTileMonsters<T>(int x, int y, List<int> spriteIds, string sheet, string actorName = null) where T : Actor
         {
             var go = new GameObject();
             go.AddComponent<SpriteRenderer>();
@@ -255,6 +271,38 @@ namespace DungeonCrawl.Core
             //var position2 = go.transform.position;
             //topImage.transform.position = position2 + new Vector3(0, 1f, 0);
 
+            _allActors.Add(component);
+
+            return component;
+        }
+
+        public T SpawnTwoTileMonsters<T>(int x, int y, List<int> spriteIds, string sheet, string actorName = null) where T : Actor
+        {
+            var go = new GameObject();
+            go.AddComponent<SpriteRenderer>();
+
+            var component = go.AddComponent<T>();
+
+            go.name = actorName ?? component.DefaultName;
+            component.Position = (x, y);
+
+            GameObject Top = new();
+            Top.name = "topleft";
+            Top.AddComponent<SpriteRenderer>();
+            Top.GetComponent<SpriteRenderer>().sprite = GetSprite(spriteIds[0], sheet);
+            Top.transform.SetParent(go.transform);
+            var position1 = go.transform.position;
+            Top.transform.position = position1 + new Vector3(0, 1, 0);
+
+            
+            GameObject down = new();
+            down.name = "downleft";
+            down.AddComponent<SpriteRenderer>();
+            down.GetComponent<SpriteRenderer>().sprite = GetSprite(spriteIds[1], sheet);
+            down.transform.SetParent(go.transform);
+            var position3 = go.transform.position;
+            down.transform.position = position3 + new Vector3(0, 0, 0);
+            
             _allActors.Add(component);
 
             return component;

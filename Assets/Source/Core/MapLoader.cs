@@ -56,11 +56,12 @@ namespace DungeonCrawl.Core
             CameraController.Singleton.Position = ActorManager.Singleton.GetPlayer().Position;
         }
 
-        private static void TxtReader(string filename, int id)
+        private static string[] TxtReader(int id)
         {
+            string path = $"map_{id}Init";
+            var lines = Regex.Split(Resources.Load<TextAsset>(path).text, "\n\t");
+            return lines;
 
-
-            
         }
 
         private static void SpawnActor(char c, (int x, int y) position)
@@ -70,8 +71,18 @@ namespace DungeonCrawl.Core
 
             if (nums.Contains(c))
             {
-                ActorManager.Singleton.Spawn<Info>(position);
+                var filenames = TxtReader(c - '0');
+                //foreach (var VARIABLE in filenames)
+                //{
+                //    Debug.Log(VARIABLE);
+                //}
+                string path = $"Pages/{filenames[(c - '0') - 1]}";
+                var text = Resources.Load<TextAsset>("Pages/FirstPage");
+                
+                Debug.Log(text);
+                ActorManager.Singleton.Spawn<Info>(position.x,  position.y, text.ToString(), "table");
                 ActorManager.Singleton.Spawn<Floor>(position);
+                return;
             }
 
             switch (c)
@@ -93,7 +104,7 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 's':
-                    ActorManager.Singleton.SpawnMonsters<Skeleton>(position.x, position.y, new() { 2, 3, 6, 7 }, "monsters");
+                    ActorManager.Singleton.SpawnFourTileMonsters<Skeleton>(position.x, position.y, new() { 2, 3, 6, 7 }, "monsters");
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'h':
@@ -123,7 +134,9 @@ namespace DungeonCrawl.Core
                     
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+
                 case 'G':
+                    ActorManager.Singleton.SpawnTwoTileMonsters<Skeleton>(position.x, position.y,  new(){0,5},"monsters");
                     ActorManager.Singleton.Spawn<GoldenKey>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
@@ -140,7 +153,7 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'i':
-                    ActorManager.Singleton.Spawn<Info>(position);
+                    //    ActorManager.Singleton.Spawn<Info>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'D':
