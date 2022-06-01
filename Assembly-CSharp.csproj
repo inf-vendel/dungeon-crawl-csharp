@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scenes\GetCameraImage.cs" />
     <Compile Include="Assets\Source\Core\Battle.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Character.cs" />
+    <Compile Include="Assets\Resources\Inventory_UI.cs" />
     <Compile Include="Assets\Source\Actors\Static\Skull.cs" />
     <Compile Include="Assets\Source\Actors\Static\Door.cs" />
     <Compile Include="Assets\Scenes\GameOver.cs" />
@@ -99,7 +100,6 @@
     <Compile Include="Assets\Source\Actors\Static\Items\NullItem.cs" />
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Duck.cs" />
-    <Compile Include="Assets\Resources\Inventory_UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\map_2.txt" />
