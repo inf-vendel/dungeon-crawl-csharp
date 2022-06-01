@@ -56,10 +56,11 @@ namespace DungeonCrawl.Core
             CameraController.Singleton.Position = ActorManager.Singleton.GetPlayer().Position;
         }
 
-        private static string[] TxtReader(int id)
+        private static string[] MapInitReader(int id)
         {
             string path = $"map_{id}Init";
-            var lines = Regex.Split(Resources.Load<TextAsset>(path).text, "\n\t");
+            // file.readalllines
+            var lines = Regex.Split(Resources.Load<TextAsset>(path).text, "\r\n|\r|\n");
             return lines;
 
         }
@@ -71,16 +72,14 @@ namespace DungeonCrawl.Core
 
             if (nums.Contains(c))
             {
-                var filenames = TxtReader(c - '0');
-                //foreach (var VARIABLE in filenames)
-                //{
-                //    Debug.Log(VARIABLE);
-                //}
-                string path = $"Pages/{filenames[(c - '0') - 1]}";
-                var text = Resources.Load<TextAsset>("Pages/FirstPage");
-                
-                Debug.Log(text);
-                ActorManager.Singleton.Spawn<Info>(position.x,  position.y, text.ToString(), "table");
+                var filenames = MapInitReader(_actualMap);
+
+                var pageName = filenames[(c - '0') - 1];
+                string path = $"Pages/{pageName}";
+                var text = Resources.Load<TextAsset>(path).text;
+
+
+                ActorManager.Singleton.Spawn<Info>(position.x,  position.y, text, "table");
                 ActorManager.Singleton.Spawn<Floor>(position);
                 return;
             }
