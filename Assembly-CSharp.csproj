@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scenes\GetCameraImage.cs" />
     <Compile Include="Assets\Source\Core\Battle.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Character.cs" />
+    <Compile Include="Assets\Resources\Inventory_UI.cs" />
     <Compile Include="Assets\Source\Actors\Static\Skull.cs" />
     <Compile Include="Assets\Source\Actors\Static\Door.cs" />
     <Compile Include="Assets\Scenes\GameOver.cs" />
@@ -99,7 +100,16 @@
     <Compile Include="Assets\Source\Actors\Static\Items\NullItem.cs" />
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Duck.cs" />
-    <Compile Include="Assets\Resources\Inventory_UI.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\FloorB.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\FloorW.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\BookShelf.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\BookShelfwithSkull.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\Bed.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\Table1.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\Table2.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\Chair.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\ChairSmall.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\Counter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\map_2.txt" />
