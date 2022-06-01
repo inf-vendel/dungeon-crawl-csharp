@@ -1,0 +1,2 @@
+﻿You can pick up items with "E"
+You can use items with "SPACE"
