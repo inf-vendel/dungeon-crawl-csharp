@@ -37,9 +37,8 @@ namespace DungeonCrawl
 
         public static void Shader(float alpha)
         {
-            var shader = GameObject.Find("shader");
-            var _spriterenderer = shader.transform.GetChild(1);
-            var alma = _spriterenderer.GetComponent<Image>();
+            var shader = GameObject.Find("Image");
+            var alma = shader.GetComponent<Image>();
             Color tmp = alma.color;
             tmp.a = alpha;
             alma.color = tmp;

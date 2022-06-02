@@ -41,7 +41,7 @@ namespace DungeonCrawl.Core
             _width = width;
             _height = height;
             _shader = float.Parse(split[2]);
-           // Utilities.Shader(_shader/10);
+            Utilities.Shader(_shader / 10);
 
             // Create actors
             for (var y = 0; y < height; y++)
