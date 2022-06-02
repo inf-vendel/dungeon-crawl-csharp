@@ -52,6 +52,19 @@ namespace DungeonCrawl.Actors
             _spriteRenderer.color = tmp;
         }
 
+        public virtual void SetSprite(int id, string s)
+        {
+            var _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer.sprite = ActorManager.Singleton.GetSprite(id, s);
+            Color tmp = _spriteRenderer.color;
+            if (IsColored)
+            {
+                tmp = spriteColor;
+            }
+            tmp.a = spriteAlpha;
+            _spriteRenderer.color = tmp;
+        }
+
         public void TryMove(Direction direction)
         {
             var vector = direction.ToVector();

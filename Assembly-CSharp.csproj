@@ -77,6 +77,7 @@
     <Compile Include="Assets\Source\Actors\Static\Water.cs" />
     <Compile Include="Assets\Source\Actors\Static\Tombstone.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Boss.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Tower.cs" />
     <Compile Include="Assets\Scenes\GetCameraImage.cs" />
     <Compile Include="Assets\Source\Core\Battle.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Character.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Source\Core\MapLoader.cs" />
     <Compile Include="Assets\Source\Utilities.cs" />
     <Compile Include="Assets\Source\Actors\Static\BridgeLeft.cs" />
+    <Compile Include="Assets\Source\Actors\Static\FloorForCollision.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Item.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Enemies\Slime.cs" />
     <Compile Include="Assets\Source\Core\Inventory.cs" />
@@ -110,35 +112,60 @@
     <Compile Include="Assets\Source\Actors\Librarian\Chair.cs" />
     <Compile Include="Assets\Source\Actors\Librarian\ChairSmall.cs" />
     <Compile Include="Assets\Source\Actors\Librarian\Counter.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Roof.cs" />
+
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\map_2.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Resources\map_6Init.txt" />
+    <None Include="Assets\Resources\map_2Init.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Resources\Pages\FourthPage.txt" />
+    <None Include="Assets\Resources\Pages\First.txt" />
+    <None Include="Assets\Resources\Pages\ThirdPage.txt" />
     <None Include="Assets\Resources\map_4.txt" />
+    <None Include="Assets\Resources\map_3Init.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Resources\ThirdPage.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\Resources\Story\map_1Init.txt" />
+    <None Include="Assets\Resources\map_1Init.txt" />
+    <None Include="Assets\Resources\map_6.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Resources\Pages\Second.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Resources\map_0.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Resources\Pages\4.txt" />
+    <None Include="Assets\Resources\Pages\5.txt" />
+    <None Include="Assets\Resources\Pages\3.txt" />
+    <None Include="Assets\Resources\FirstPage.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Resources\Pages\Third.txt" />
     <None Include="Assets\Resources\map_5.txt" />
+    <None Include="Assets\Resources\map_4Init.txt" />
+    <None Include="Assets\Resources\Pages\SecondPage.txt" />
+    <None Include="Assets\Resources\map_5Init.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\uml.cd" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Resources\Pages\2.txt" />
+    <None Include="Assets\Resources\map_0Init .txt" />
+    <None Include="Assets\Resources\Pages\1.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Resources\map_3.txt" />
     <None Include="Assets\Resources\map_1.txt" />
+    <None Include="Assets\Resources\SecondPage.txt" />
+    <None Include="Assets\Resources\Pages\FirstPage.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
