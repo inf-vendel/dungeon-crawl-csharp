@@ -159,10 +159,50 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Dog>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                // B was Boss
                 case 'B':
                     ActorManager.Singleton.Spawn<Boss>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'b':
+                    ActorManager.Singleton.Spawn<Bed>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'ó':
+                    ActorManager.Singleton.Spawn<BookShelfwithSkull>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'o':
+                    ActorManager.Singleton.Spawn<BookShelf>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'ü':
+                    ActorManager.Singleton.Spawn<Table1>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'ű':
+                    ActorManager.Singleton.Spawn<Table2>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'C':
+                    ActorManager.Singleton.Spawn<Chair>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'c':
+                    ActorManager.Singleton.Spawn<ChairSmall>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case '+':
+                    ActorManager.Singleton.Spawn<FloorW>(position);
+                    break;
+                case '-':
+                    ActorManager.Singleton.Spawn<FloorB>(position);
+                    break;
+                case 'é':
+                    ActorManager.Singleton.Spawn<Counter>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                // the end
                 case 'f':
                     ActorManager.Singleton.Spawn<BoneFire>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);

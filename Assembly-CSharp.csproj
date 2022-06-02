@@ -102,7 +102,18 @@
     <Compile Include="Assets\Source\Actors\Static\Items\NullItem.cs" />
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Duck.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\FloorB.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\FloorW.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\BookShelf.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\BookShelfwithSkull.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\Bed.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\Table1.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\Table2.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\Chair.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\ChairSmall.cs" />
+    <Compile Include="Assets\Source\Actors\Librarian\Counter.cs" />
     <Compile Include="Assets\Source\Actors\Static\Roof.cs" />
+
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\map_2.txt" />
