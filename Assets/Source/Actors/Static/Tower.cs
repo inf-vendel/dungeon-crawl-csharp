@@ -1,4 +1,5 @@
 ﻿using DungeonCrawl.Actors.Characters;
+using UnityEngine;
 
 namespace DungeonCrawl.Actors.Static
 {
@@ -7,6 +8,8 @@ namespace DungeonCrawl.Actors.Static
         public override int DefaultSpriteId => 623;
         public override string DefaultName => "Tower";
         public override int Z => -1;
+        public override bool Detectable => true;
+
 
         public override bool OnCollision(Actor anotherActor)
         {
@@ -20,6 +23,8 @@ namespace DungeonCrawl.Actors.Static
             }
             if (anotherActor is Ghost)
             {
+                Ghost ghost = (Ghost)anotherActor;
+                ghost.SPEED = 1.4f;
                 return true;
             }
             return false;

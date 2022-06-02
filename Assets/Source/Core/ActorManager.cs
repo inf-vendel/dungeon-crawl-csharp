@@ -205,7 +205,7 @@ namespace DungeonCrawl.Core
         }
 
 
-        public T SpawnFourTileMonsters<T>(int x, int y, List<int> spriteIds, string sheet, string actorName = null) where T : Actor
+        public T SpawnFourTileMonsters<T>(int x, int y, List<int> spriteIds, string sheet,  Player player, string actorName = null) where T : Actor
         {
             var go = new GameObject();
             go.AddComponent<SpriteRenderer>();
@@ -214,6 +214,7 @@ namespace DungeonCrawl.Core
 
             go.name = actorName ?? component.DefaultName;
             component.Position = (x, y);
+            component.player = player;
 
             GameObject TopLeft = new();
             TopLeft.name = "topleft";
@@ -246,26 +247,6 @@ namespace DungeonCrawl.Core
             DownRight.transform.SetParent(go.transform);
             var position4 = go.transform.position;
             DownRight.transform.position = position4 + new Vector3(0.5f, -1f, 0);
-
-
-            //GameObject HPBar = new();
-            //HPBar.name = "hpbar";
-            //HPBar.AddComponent<SpriteRenderer>();
-            //HPBar.GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite(287);
-            //HPBar.transform.SetParent(go.transform);
-            //var position = go.transform.position;
-            //HPBar.transform.position = position + new Vector3(0, 1.6f, 0);
-            //Color tmp = HPBar.GetComponent<SpriteRenderer>().color;
-            //tmp.a = 0.8f;
-            //HPBar.GetComponent<SpriteRenderer>().color = tmp;
-
-            //GameObject topImage = new();
-            //topImage.name = "topimage";
-            //topImage.AddComponent<SpriteRenderer>();
-            //topImage.GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite(1, "chars");
-            //topImage.transform.SetParent(go.transform);
-            //var position2 = go.transform.position;
-            //topImage.transform.position = position2 + new Vector3(0, 1f, 0);
 
             _allActors.Add(component);
 

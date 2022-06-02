@@ -114,7 +114,7 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 's':
-                    ActorManager.Singleton.SpawnFourTileMonsters<Skeleton>(position.x, position.y, new() { 2, 3, 6, 7 }, "monsters");
+                    ActorManager.Singleton.SpawnFourTileMonsters<Skeleton>(position.x, position.y, new() { 2, 3, 6, 7 }, "monsters", player);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'h':
@@ -138,7 +138,7 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'g':
-                    Ghost ghost = ActorManager.Singleton.Spawn<Ghost>(position.x,position.y, player);
+                    var ghost = ActorManager.Singleton.SpawnFourTileMonsters<Ghost>(position.x, position.y, new() { 10, 11, 14, 15 }, "monsters", player);
                     ghost.MapWidth = _width;
                     ghost.MapHeight = _height;
                     
@@ -146,7 +146,6 @@ namespace DungeonCrawl.Core
                     break;
 
                 case 'G':
-                    ActorManager.Singleton.SpawnTwoTileMonsters<Skeleton>(position.x, position.y,  new(){0,5},"monsters");
                     ActorManager.Singleton.Spawn<GoldenKey>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
@@ -213,6 +212,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Counter>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'É':
+                    ActorManager.Singleton.SpawnFourTileMonsters<Duck>(position.x, position.y, new() { 8, 9, 12, 13 }, "monsters", player);
+                    ActorManager.Singleton.Spawn<Sand>(position);
+                    break;
                 // the end
                 case 'f':
                     ActorManager.Singleton.Spawn<BoneFire>(position);
@@ -245,8 +248,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case '&':
-                    ActorManager.Singleton.SpawnTwoTileMonsters<FloorForCollision>(position.x, position.y, new() { 259, 307 }, "kenney_transparent");
-                   // ActorManager.Singleton.Spawn<Floor>(position);
+                    ActorManager.Singleton.Spawn<Pine>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    //ActorManager.Singleton.SpawnTwoTileMonsters<FloorForCollision>(position.x, position.y, new() { 259, 259 }, "kenney_transparent");
+                    // ActorManager.Singleton.Spawn<Floor>(position);
                     break;
                 case 'T':
                     ActorManager.Singleton.SpawnTwoTileMonsters<FloorForCollision>(position.x, position.y, new() { 529,623  }, "kenney_transparent");

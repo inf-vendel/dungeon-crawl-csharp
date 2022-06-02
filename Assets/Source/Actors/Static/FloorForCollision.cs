@@ -9,7 +9,8 @@ namespace DungeonCrawl.Actors.Static
         public override int DefaultSpriteId => 247;
         public override string DefaultName => "FloorForCollision";
         public override bool Detectable => true;
-        
+
+        public override int Z => -1;
 
         public FloorForCollision()
         {

@@ -43,7 +43,7 @@ namespace Assets.Source.Core
                     UserInterface.TextPosition.BottomCenter);
             }
 
-
+            Utilities.PlaySound("Punch1");
             Player.ApplyDamage(Enemy.Damage);
 
             Player.CanMove = true;

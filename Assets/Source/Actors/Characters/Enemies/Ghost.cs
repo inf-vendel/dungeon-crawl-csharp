@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Assets.Source.Core;
+using DungeonCrawl.Actors.Static;
 using DungeonCrawl.Core;
 using UnityEngine;
 
@@ -12,15 +13,15 @@ namespace DungeonCrawl.Actors.Characters
     {
         public override bool Detectable => true;
 
-        public const float SPEED = 1.0f;
+        public  float SPEED = .7f;
         private float _moveCounter;
 
         public float Vision { get; set; }
 
         private const int DEFAULT_HEALTH = 50;
-        private const int DEFAULT_DAMAGE = 3;
+        private const int DEFAULT_DAMAGE = 15;
         public bool IsAgressive { get; set; }
-
+        public override int Z => -2;
         public int MapHeight { get; set; }
         public int MapWidth { get; set; }
 
@@ -29,14 +30,19 @@ namespace DungeonCrawl.Actors.Characters
             SetHp(DEFAULT_HEALTH);
             SetDamage(DEFAULT_DAMAGE);
             IsAgressive = true;
-            spriteAlpha = 0.5f;
-            Vision = 5.0f;
+            spriteAlpha = 1f;
+            Vision = 50.0f;
+        }
+
+        private void Awake()
+        {
+            
         }
 
         protected override void OnUpdate(float deltaTime)
         {
             (int x, int y) playerPosition = player.Position;
-
+            
 
             //Actor player = ActorManager.Singleton.GetPlayer();
             //(int x, int y) playerPosition = player.Position;
@@ -50,6 +56,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (_moveCounter <= 0.0f)
             {
+                SPEED = .7f;
                 if (distance < Vision)
                 {
                     if (Position.x < playerPosition.x)
@@ -99,6 +106,9 @@ namespace DungeonCrawl.Actors.Characters
             Debug.Log("huuuuuuuuu...");
             ActorManager.Singleton.DestroyActor(this);
         }
+
+        public bool CanChangeSpeed { get; set; } = true;
+
 
         public override int DefaultSpriteId => 315;
         public override string DefaultName => "Ghost";
