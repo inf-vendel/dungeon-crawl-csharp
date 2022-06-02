@@ -133,6 +133,7 @@ namespace DungeonCrawl.Actors.Characters
             if (Input.GetKeyDown(KeyCode.I))
             {
                 PlayerInventory.ToggleInventoryVisibility();
+                PlayerInventory.Display();
             }
 
             if (Input.GetKeyDown(KeyCode.R))
@@ -143,31 +144,31 @@ namespace DungeonCrawl.Actors.Characters
 
             if (PlayerInventory._isOpen)
             {
-
+                PlayerInventory.Display();
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
                     PlayerInventory.SelectedItem = 0;
-                    PlayerInventory.Display();
+                    
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
                     PlayerInventory.SelectedItem = 1;
-                    PlayerInventory.Display();
+                    
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
                     PlayerInventory.SelectedItem = 2;
-                    PlayerInventory.Display();
+                    
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha4))
                 {
                     PlayerInventory.SelectedItem = 3;
-                    PlayerInventory.Display();
+                    
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha5))
                 {
                     PlayerInventory.SelectedItem = 4;
-                    PlayerInventory.Display();
+                    
                 }
             }
             Item item = ActorManager.Singleton.GetActorAt<Item>(Position);

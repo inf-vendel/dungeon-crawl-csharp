@@ -20,8 +20,6 @@ namespace DungeonCrawl.Core
         public static ActorManager Singleton { get; private set; }
 
         private SpriteAtlas _spriteAtlas;
-        private SpriteAtlas _charAtlas;
-        private SpriteAtlas _monsterAtlas;
         private HashSet<Actor> _allActors;
 
         private void Awake()
@@ -36,8 +34,6 @@ namespace DungeonCrawl.Core
 
             _allActors = new HashSet<Actor>();
             _spriteAtlas = Resources.Load<SpriteAtlas>("Spritesheet");
-            _charAtlas = Resources.Load<SpriteAtlas>("LibrarianSheet");
-            _monsterAtlas = Resources.Load<SpriteAtlas>("EldrigesSheet");
         }
 
 

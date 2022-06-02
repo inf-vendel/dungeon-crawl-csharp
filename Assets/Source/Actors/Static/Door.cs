@@ -15,7 +15,7 @@ namespace DungeonCrawl.Actors.Static
             if (anotherActor is Player)
             {
                 Player player = (Player)anotherActor;
-                if (player.PlayerInventory.GetSelectedItem is Key && !_isOpen)
+                if (player.PlayerInventory.GetSelectedItem.DefaultName is "Key" && !_isOpen)
                 {
                     player.PlayerInventory.RemoveItem(player.PlayerInventory.GetSelectedItem);
                     player.PlayerInventory.Display();

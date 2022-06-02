@@ -54,12 +54,7 @@ namespace Assets.Source.Core
         public Inventory()
         {
             Items = new();
-            _isOpen = true;
-        }
-
-        private void Start()
-        {
-            //_inventory = GameObject.FindGameObjectsWithTag("INVENTORY");
+            _isOpen = false;
         }
 
         public void Display()
@@ -73,9 +68,6 @@ namespace Assets.Source.Core
         public void ToggleInventoryVisibility()
         {
             _isOpen = !_isOpen;
-            Debug.Log("Open? " + _isOpen.ToString());
-            //GameObject.Find("Inventory").;
-            //_inventory[0].SetActive(!_inventory[0].activeSelf);
         }
 
         public void AddItem(Item item)
@@ -85,7 +77,6 @@ namespace Assets.Source.Core
 
                 if (i.DefaultName.Equals(item.DefaultName) && item.Stackable)
                 {
-                    Debug.Log("stackable");
                     i.Quantity++;
                     return;
                 }
@@ -146,15 +137,15 @@ namespace Assets.Source.Core
         {
             for (int i = 0; i < 5; i++)
             {
-                UserInterface.Singleton.SetInventorySlot(i);
-                UserInterface.Singleton.SetInventorySlotSelected(i, 0.8f,0.2f);
+                Inventory_UI.SetInventorySlot(i);
+                Inventory_UI.SetInventorySlotSelected(i, 0.8f,0.2f);
             }
             foreach (var item in Items)
             {
-                UserInterface.Singleton.SetInventorySlot(Items.IndexOf(item), item.DefaultSpriteId, item.Quantity);
+                Inventory_UI.SetInventorySlot(Items.IndexOf(item), item.DefaultSpriteId, item.Quantity);
             }
 
-            UserInterface.Singleton.SetInventorySlotSelected(_selectedItem, 1.2f,0.3f);
+            Inventory_UI.SetInventorySlotSelected(_selectedItem, 1.2f,0.3f);
         }
 
         public override string ToString()
