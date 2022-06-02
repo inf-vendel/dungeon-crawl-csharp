@@ -21,6 +21,8 @@ namespace DungeonCrawl.Core
         private static int _height { get; set; }
         public static int _actualMap { get; set; }
 
+        private static float _shader { get; set; }
+
         /// <summary>
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
@@ -38,6 +40,8 @@ namespace DungeonCrawl.Core
 
             _width = width;
             _height = height;
+            _shader = float.Parse(split[2]);
+           // Utilities.Shader(_shader/10);
 
             // Create actors
             for (var y = 0; y < height; y++)
@@ -225,6 +229,9 @@ namespace DungeonCrawl.Core
                 case 'á':
                     ActorManager.Singleton.Spawn<Fire>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case '}':
+                    ActorManager.Singleton.Spawn<Sand>(position);
                     break;
                 case '$':
                     ActorManager.Singleton.Spawn<Skull>(position);

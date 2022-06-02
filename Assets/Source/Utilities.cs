@@ -3,6 +3,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using Assets.Source.Core;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = System.Random;
 
 namespace DungeonCrawl
@@ -28,9 +29,20 @@ namespace DungeonCrawl
         {
             UserInterface.Singleton.SetText(text, position);
         }
-        public static void Message(UserInterface.TextPosition position,string text, Color color)
+
+        public static void Message(UserInterface.TextPosition position, string text, Color color)
         {
             UserInterface.Singleton.SetText(text, position, color);
+        }
+
+        public static void Shader(float alpha)
+        {
+            var shader = GameObject.Find("shader");
+            var _spriterenderer = shader.transform.GetChild(1);
+            var alma = _spriterenderer.GetComponent<Image>();
+            Color tmp = alma.color;
+            tmp.a = alpha;
+            alma.color = tmp;
         }
 
 

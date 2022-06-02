@@ -91,6 +91,7 @@
     <Compile Include="Assets\Source\Actors\Static\Skull.cs" />
     <Compile Include="Assets\Source\Actors\Static\Door.cs" />
     <Compile Include="Assets\Source\Actors\Librarian\FloorW.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Sand.cs" />
     <Compile Include="Assets\Scenes\GameOver.cs" />
     <Compile Include="Assets\Source\Actors\Librarian\BookShelfwithSkull.cs" />
     <Compile Include="Assets\Scenes\SetPlayerName.cs" />
