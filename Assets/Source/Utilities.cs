@@ -35,12 +35,15 @@ namespace DungeonCrawl
             UserInterface.Singleton.SetText(text, position, color);
         }
 
-        public static void Shader(float alpha)
+        public static void Shader(float alpha, float red, float green, float blue)
         {
             var shader = GameObject.Find("Image");
             var alma = shader.GetComponent<Image>();
             Color tmp = alma.color;
             tmp.a = alpha;
+            tmp.r = red;
+            tmp.g = green;
+            tmp.b = blue;
             alma.color = tmp;
         }
 

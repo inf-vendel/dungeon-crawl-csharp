@@ -40,8 +40,12 @@ namespace DungeonCrawl.Core
 
             _width = width;
             _height = height;
-            _shader = float.Parse(split[2]);
-            Utilities.Shader(_shader / 10);
+
+            float compAlpha = float.Parse(split[2]) / 10;
+            float compRed = float.Parse(split[3]) / 10;
+            float compGreen = float.Parse(split[4]) / 10;
+            float compBlue = float.Parse(split[5]) / 10;
+            Utilities.Shader(compAlpha, compRed, compGreen, compBlue);
 
             // Create actors
             for (var y = 0; y < height; y++)
