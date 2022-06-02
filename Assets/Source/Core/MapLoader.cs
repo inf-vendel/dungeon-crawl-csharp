@@ -94,6 +94,9 @@ namespace DungeonCrawl.Core
 
             switch (c)
             {
+                case '\\':
+                    ActorManager.Singleton.Spawn<FloorForCollision>(position);
+                    break;
                 case '#':
                     ActorManager.Singleton.Spawn<Wall>(position);
                     break;
