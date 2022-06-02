@@ -77,6 +77,7 @@
     <Compile Include="Assets\Source\Actors\Static\Water.cs" />
     <Compile Include="Assets\Source\Actors\Static\Tombstone.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Boss.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Tower.cs" />
     <Compile Include="Assets\Scenes\GetCameraImage.cs" />
     <Compile Include="Assets\Source\Core\Battle.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Character.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Source\Core\MapLoader.cs" />
     <Compile Include="Assets\Source\Utilities.cs" />
     <Compile Include="Assets\Source\Actors\Static\BridgeLeft.cs" />
+    <Compile Include="Assets\Source\Actors\Static\FloorForCollision.cs" />
     <Compile Include="Assets\Source\Actors\Static\Items\Item.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Enemies\Slime.cs" />
     <Compile Include="Assets\Source\Core\Inventory.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Assets\Source\Actors\Static\Items\NullItem.cs" />
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Duck.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Roof.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\map_2.txt" />
@@ -131,6 +134,7 @@
     <None Include="Assets\Resources\map_0.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Resources\Pages\4.txt" />
+    <None Include="Assets\Resources\Pages\5.txt" />
     <None Include="Assets\Resources\Pages\3.txt" />
     <None Include="Assets\Resources\FirstPage.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
