@@ -18,7 +18,6 @@ namespace DungeonCrawl.Actors.Characters
         private const int DEFAULT_HEALTH = 30;
         private const int DEFAULT_DAMAGE = 5;
         public bool CanMove;
-        public bool InventoryOpen;
         public bool InFight;
         public string Name;
         private int _damage;
@@ -29,7 +28,6 @@ namespace DungeonCrawl.Actors.Characters
             SetHp(DEFAULT_HEALTH);
             SetDamage(DEFAULT_DAMAGE);
             CanMove = true;
-            InventoryOpen = false;
             PlayerInventory = new Inventory();
             if (SetPlayerName.PlayerName == "")
             {
@@ -68,8 +66,14 @@ namespace DungeonCrawl.Actors.Characters
         {
             _damage = damage;
         }
+
         protected override void OnUpdate(float deltaTime)
         {
+            float hpScale = (float) Health / MAX_HEALTH;
+            this.gameObject.transform.Find("hpbar").transform.localScale = new Vector3(hpScale, 0.9f+hpScale/5, 1);
+            //var top = ;
+            //top.;
+
             if (!CanMove)
             {
                 return;
@@ -80,7 +84,7 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Move up
                 TryMove(Direction.Up);
-                
+                ChangeSpriteDirection(Direction.Up);
                 if (r.Next(100) <=10)
                 {
                     Utilities.PlaySound("Footstep");
@@ -90,6 +94,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
+                ChangeSpriteDirection(Direction.Down);
                 // Move down
                 if (r.Next(100) <= 10)
                 {
@@ -100,6 +105,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                ChangeSpriteDirection(Direction.Left);
                 // Move left
                 if (r.Next(100) <= 10)
                 {
@@ -110,6 +116,7 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
+                ChangeSpriteDirection(Direction.Right); 
                 // Move right
                 if (r.Next(100) <= 10)
                 {
@@ -125,18 +132,16 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Input.GetKeyDown(KeyCode.I))
             {
-                if (InventoryOpen)
-                {
-                    PlayerInventory.HideDisplay();
-                }
-                else
-                {
-                    PlayerInventory.Display();
-                }
-                InventoryOpen = !InventoryOpen;
+                PlayerInventory.ToggleInventoryVisibility();
             }
 
-            if (InventoryOpen)
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Utilities.Message( UserInterface.TextPosition.BottomCenter, string.Empty);
+            }
+
+
+            if (PlayerInventory._isOpen)
             {
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -173,15 +178,10 @@ namespace DungeonCrawl.Actors.Characters
                     UserInterface.TextPosition.BottomRight));
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    
                     Item copyObject = (Item)item.Clone();
                     PlayerInventory.AddItem(copyObject);
                     ActorManager.Singleton.DestroyActor(item);
-                    if (InventoryOpen)
-                    {
-                        PlayerInventory.Display();
-                    }
-                    
+                    PlayerInventory.Display();
                 }
             }
             Utilities.Message(UserInterface.TextPosition.BottomLeft,$"HP: {Health.ToString()}\nDamage: {Damage.ToString()}", Color.white);
@@ -208,6 +208,15 @@ namespace DungeonCrawl.Actors.Characters
                 SetHp(MAX_HEALTH);
             }
         }
+
+        public List<string> TopSprite { get; set; }
+        public List<string> BottomSprite { get; set; }
+
+        public override void SetSprite(int id)
+        {
+        }
+
+
         public override int DefaultSpriteId => 27;
 
         public override int Z => -2;
@@ -216,5 +225,12 @@ namespace DungeonCrawl.Actors.Characters
 
         // capacity, display, item selection, move/delete,
         // protected List<Item> Inventory;
+
+        public void ChangeSpriteDirection(Direction direction)
+        {
+            this.gameObject.transform.Find("topimage")
+                .GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite((int)direction, "chars");
+            GetComponent<SpriteRenderer>().sprite = ActorManager.Singleton.GetSprite((int)direction+4, "chars");
+        }
     }
 }

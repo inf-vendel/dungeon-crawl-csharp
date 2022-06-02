@@ -10,7 +10,8 @@ namespace DungeonCrawl.Core
         private void Start()
         {
             MapLoader.SpawnPlayer();
-            MapLoader.LoadMap(1);
+            MapLoader.LoadMap(6);
+
         }
     }
 }

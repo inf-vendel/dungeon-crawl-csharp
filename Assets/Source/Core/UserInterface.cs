@@ -1,5 +1,8 @@
-﻿using TMPro;
+﻿using DungeonCrawl.Core;
+using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Source.Core
 {
@@ -27,6 +30,7 @@ namespace Assets.Source.Core
         public static UserInterface Singleton { get; private set; }
 
         private TextMeshProUGUI[] _textComponents;
+        private Sprite _inventorySlotSprite;
 
         private void Awake()
         {
@@ -39,6 +43,7 @@ namespace Assets.Source.Core
             Singleton = this;
 
             _textComponents = GetComponentsInChildren<TextMeshProUGUI>();
+            _inventorySlotSprite = Resources.Load<Sprite>("inventoryitem");
         }
 
         /// <summary>
@@ -56,6 +61,34 @@ namespace Assets.Source.Core
             _textComponents[(int)textPosition].text = text;
             _textComponents[(int)textPosition].color = color;
         }
+
+        public void SetInventorySlot(int position, int spirteId, int number = 0)
+        {
+            var inventory = GameObject.FindGameObjectWithTag("INVENTORY");
+            var slot = inventory.transform.GetChild(position);
+            //var slot = transform.Find("Inventory").GetChild(position);
+            slot.GetComponent<Image>().sprite = ActorManager.Singleton.GetSprite(spirteId);
+            slot.GetComponentInChildren<TextMeshProUGUI>().text = number == 1 ? string.Empty : number.ToString();
+
+        }
+
+        public void SetInventorySlot(int position)
+        {
+            var inventory = GameObject.FindGameObjectWithTag("INVENTORY");
+            var slot = inventory.transform.GetChild(position);
+            //var slot = transform.Find("Inventory").GetChild(position);
+            slot.GetComponent<Image>().sprite = _inventorySlotSprite;
+        }
+
+        public void SetInventorySlotSelected(int position, float x,float y)
+        {
+            var inventory = GameObject.FindGameObjectWithTag("INVENTORY");
+            var slot = inventory.transform.GetChild(position);
+            //var slot = transform.Find("Inventory").GetChild(position);
+            slot.GetComponent<Image>().transform.localScale = new Vector3(x,y,1.0f);
+            
+        }
+
 
     }
 }

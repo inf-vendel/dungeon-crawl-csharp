@@ -15,7 +15,7 @@ namespace DungeonCrawl.Actors.Characters
         private float _moveCounter;
 
         private const int DEFAULT_HEALTH = 10;
-        private const int DEFAULT_DAMAGE = 2;
+        private const int DEFAULT_DAMAGE = 6;
         public bool IsAgressive { get; set; }
 
         public Skeleton()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Text.RegularExpressions;
 using Assets.Source.Core;
 using UnityEngine;
 using Random = System.Random;
@@ -19,15 +20,20 @@ namespace DungeonCrawl
         public static IEnumerator Message(string text, UserInterface.TextPosition position, float time = 1.0f)
         {
             UserInterface.Singleton.SetText(text, position);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(time);
             UserInterface.Singleton.SetText(String.Empty, position);
         }
 
-
+        public static void Message(UserInterface.TextPosition position, string text)
+        {
+            UserInterface.Singleton.SetText(text, position);
+        }
         public static void Message(UserInterface.TextPosition position,string text, Color color)
         {
             UserInterface.Singleton.SetText(text, position, color);
         }
+
+
 
         public static (int x, int y) ToVector(this Direction dir)
         {
@@ -59,5 +65,7 @@ namespace DungeonCrawl
             GameObject gameObject = GameObject.FindGameObjectWithTag(tag);
             gameObject.GetComponent<AudioSource>().Play();
         }
+
+
     }
 }

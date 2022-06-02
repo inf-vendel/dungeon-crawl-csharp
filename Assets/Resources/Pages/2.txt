@@ -1,0 +1,3 @@
+﻿You can toggle your inventory with "I"
+If it's open, you can select item with nums "1-5"
+

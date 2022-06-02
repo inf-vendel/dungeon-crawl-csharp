@@ -6,7 +6,7 @@ namespace DungeonCrawl.Actors.Static
 {
     public class Bridge : Actor
     {
-        public override int DefaultSpriteId => 730;
+        public override int DefaultSpriteId => 291;
         public override int Z => -1;
         public override string DefaultName => "Brigde";
         public override bool Detectable => true;

@@ -10,6 +10,7 @@ using Debug = UnityEngine.Debug;
 using Assets.Source.Core;
 using DungeonCrawl;
 using DungeonCrawl.Core;
+using UnityEngine.UI;
 
 
 namespace Assets.Source.Core
@@ -19,6 +20,9 @@ namespace Assets.Source.Core
         protected int Capacity { get; private set; }
         public List<Item> Items;
         private int _selectedItem;
+        private GameObject[] _inventory;
+        public bool _isOpen;
+
         public int SelectedItem {
             get => _selectedItem;
             set
@@ -50,29 +54,28 @@ namespace Assets.Source.Core
         public Inventory()
         {
             Items = new();
-
+            _isOpen = true;
         }
 
-        public void HideDisplay()
+        private void Start()
         {
-            Utilities.Message(UserInterface.TextPosition.TopLeft, string.Empty, Color.white);
+            //_inventory = GameObject.FindGameObjectsWithTag("INVENTORY");
         }
+
         public void Display()
         {
-            // UserInterface.Singleton.SetText(ToString(), UserInterface.TextPosition.TopLeft);
-            Utilities.Message(UserInterface.TextPosition.TopLeft, ToString(), Color.white);
-
-            if (Items.Count != 0 && GetSelectedItem is not NullItem)
+            if (_isOpen)
             {
-                Utilities.Message(UserInterface.TextPosition.TopCenter, $"Selected: {GetSelectedItem.DefaultName}", Color.cyan);
-
+                ToUserInterface();
             }
-            else
-            {
-                Utilities.Message(UserInterface.TextPosition.TopCenter, string.Empty, Color.white);
-            }
+        }
 
-
+        public void ToggleInventoryVisibility()
+        {
+            _isOpen = !_isOpen;
+            Debug.Log("Open? " + _isOpen.ToString());
+            //GameObject.Find("Inventory").;
+            //_inventory[0].SetActive(!_inventory[0].activeSelf);
         }
 
         public void AddItem(Item item)
@@ -139,6 +142,21 @@ namespace Assets.Source.Core
             throw new NotImplementedException();
         }
 
+        public void ToUserInterface()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                UserInterface.Singleton.SetInventorySlot(i);
+                UserInterface.Singleton.SetInventorySlotSelected(i, 0.8f,0.2f);
+            }
+            foreach (var item in Items)
+            {
+                UserInterface.Singleton.SetInventorySlot(Items.IndexOf(item), item.DefaultSpriteId, item.Quantity);
+            }
+
+            UserInterface.Singleton.SetInventorySlotSelected(_selectedItem, 1.2f,0.3f);
+        }
+
         public override string ToString()
         {
             StringBuilder result = new();
@@ -153,9 +171,7 @@ namespace Assets.Source.Core
                 result.Append(Environment.NewLine);
                 counter++;
             }
-
             
-
             //foreach (KeyValuePair<string, int> item in dict)
             //{
             //    result.Append($"{counter}. {item.Key} ({item.Value})");
@@ -165,5 +181,6 @@ namespace Assets.Source.Core
 
             return result.ToString();
         }
+
     }
 }

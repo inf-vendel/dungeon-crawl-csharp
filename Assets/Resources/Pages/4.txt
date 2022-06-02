@@ -1,0 +1,2 @@
+﻿Select a key to open a locked door
+(it happens automatic)

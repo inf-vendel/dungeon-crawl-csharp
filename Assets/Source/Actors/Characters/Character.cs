@@ -13,7 +13,7 @@ namespace DungeonCrawl.Actors.Characters
 
         
 
-        public void ApplyDamage(int damage)
+        public virtual void ApplyDamage(int damage)
         {
             Health -= damage - Defense;
 
@@ -22,7 +22,6 @@ namespace DungeonCrawl.Actors.Characters
                 // Die
                 OnDeath();
                 // UserInterface.Singleton.SetText(string.Empty,UserInterface.TextPosition.BottomCenter);
-                
             }
         }
 

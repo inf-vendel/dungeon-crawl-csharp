@@ -9,6 +9,7 @@ namespace DungeonCrawl.Actors.Static.Items
     {
         public override int DefaultSpriteId => 336;
         public override string DefaultName => "Info";
+        public string Message { get; set; } = $"Hey player, welcome to the BackStreet";
 
         public override bool Detectable => true;
         public override bool Pickable => false;
@@ -18,7 +19,7 @@ namespace DungeonCrawl.Actors.Static.Items
             if (anotherActor is Player)
             {
                 Player player = (Player)anotherActor;
-                StartCoroutine(Utilities.Message($"Hey {player.Name}, welcome to the BackStreet", UserInterface.TextPosition.BottomCenter));
+                StartCoroutine(Utilities.Message(Message.Replace("player",player.Name), UserInterface.TextPosition.BottomCenter, 5.0f));
             }
             
             return true;

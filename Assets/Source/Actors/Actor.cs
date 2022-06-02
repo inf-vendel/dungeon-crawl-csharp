@@ -26,13 +26,11 @@ namespace DungeonCrawl.Actors
         }
 
         private (int x, int y) _position;
-        private SpriteRenderer _spriteRenderer;
 
         public Player player { get; set; }
+
         private void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-
             SetSprite(DefaultSpriteId);
         }
 
@@ -41,9 +39,23 @@ namespace DungeonCrawl.Actors
             OnUpdate(Time.deltaTime);
         }
 
-        public void SetSprite(int id)
+        public virtual void SetSprite(int id)
         {
+            var _spriteRenderer = GetComponent<SpriteRenderer>();
             _spriteRenderer.sprite = ActorManager.Singleton.GetSprite(id);
+            Color tmp = _spriteRenderer.color;
+            if (IsColored)
+            {
+                tmp = spriteColor;
+            }
+            tmp.a = spriteAlpha;
+            _spriteRenderer.color = tmp;
+        }
+
+        public virtual void SetSprite(int id, string s)
+        {
+            var _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer.sprite = ActorManager.Singleton.GetSprite(id, s);
             Color tmp = _spriteRenderer.color;
             if (IsColored)
             {
