@@ -2,6 +2,7 @@
 using Assets.Source.Core;
 using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Core;
+using UnityEngine;
 
 namespace DungeonCrawl.Actors.Static.Items
 {
@@ -19,7 +20,7 @@ namespace DungeonCrawl.Actors.Static.Items
             if (anotherActor is Player)
             {
                 Player player = (Player)anotherActor;
-                StartCoroutine(Utilities.Message(Message.Replace("player",player.Name), UserInterface.TextPosition.BottomCenter, 5.0f));
+                StartCoroutine(Utilities.Message(Message.Replace("player",player.Name), UserInterface.TextPosition.BottomCenter, Color.cyan, 5.0f));
             }
             
             return true;

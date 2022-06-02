@@ -1,4 +1,5 @@
 ﻿using Assets.Source.Core;
+using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -20,7 +21,7 @@ namespace DungeonCrawl.Actors.Characters
             if (anotherActor is Player)
             {
                 // Utilities.Message("Bark...");
-                StartCoroutine(Utilities.Message("Bark...", UserInterface.TextPosition.BottomCenter));
+                StartCoroutine(Utilities.Message("Bark...", UserInterface.TextPosition.BottomCenter, Color.white));
             }
 
             return false;

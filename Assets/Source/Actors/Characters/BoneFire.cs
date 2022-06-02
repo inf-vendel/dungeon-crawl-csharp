@@ -1,4 +1,5 @@
 ﻿using Assets.Source.Core;
+using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -19,7 +20,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             if (anotherActor is Player)
             {
-                StartCoroutine(Utilities.Message("You feel more comfortable", UserInterface.TextPosition.BottomCenter));
+                StartCoroutine(Utilities.Message("You feel more comfortable", UserInterface.TextPosition.BottomCenter, Color.white));
             }
 
             return false;

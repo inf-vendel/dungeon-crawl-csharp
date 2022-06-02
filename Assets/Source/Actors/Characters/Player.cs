@@ -176,7 +176,7 @@ namespace DungeonCrawl.Actors.Characters
             if (item is not null && item.Pickable)
             {
                 StartCoroutine(Utilities.Message($"Press E to pick up {item.name}",
-                    UserInterface.TextPosition.BottomRight));
+                    UserInterface.TextPosition.BottomRight, Color.cyan));
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     Item copyObject = (Item)item.Clone();
@@ -191,6 +191,10 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor)
         {
+            if (anotherActor is Ghost)
+            {
+                StartCoroutine(Battle.Loop(this, (Ghost)anotherActor));
+            }
             return false;
         }
 

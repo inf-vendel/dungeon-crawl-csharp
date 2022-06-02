@@ -18,9 +18,9 @@ namespace DungeonCrawl
 
     public static class Utilities
     {
-        public static IEnumerator Message(string text, UserInterface.TextPosition position, float time = 1.0f)
+        public static IEnumerator Message(string text, UserInterface.TextPosition position, Color color, float time = 1.0f)
         {
-            UserInterface.Singleton.SetText(text, position);
+            UserInterface.Singleton.SetText(text, position, color);
             yield return new WaitForSeconds(time);
             UserInterface.Singleton.SetText(String.Empty, position);
         }

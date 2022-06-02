@@ -17,7 +17,7 @@ namespace DungeonCrawl.Actors.Characters
 
         public float Vision { get; set; }
 
-        private const int DEFAULT_HEALTH = 12;
+        private const int DEFAULT_HEALTH = 50;
         private const int DEFAULT_DAMAGE = 3;
         public bool IsAgressive { get; set; }
 
