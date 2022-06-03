@@ -174,6 +174,14 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Boss>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);
                     break;
+                case 'q':
+                    ActorManager.Singleton.Spawn<Fence>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
+                case 'Q':
+                    ActorManager.Singleton.Spawn<WallC>(position);
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    break;
                 case 'b':
                     ActorManager.Singleton.Spawn<Bed>(position);
                     ActorManager.Singleton.Spawn<Floor>(position);

@@ -89,6 +89,7 @@
     <Compile Include="Assets\Source\Actors\Characters\Character.cs" />
     <Compile Include="Assets\Resources\Inventory_UI.cs" />
     <Compile Include="Assets\Source\Actors\Static\Skull.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Pine.cs" />
     <Compile Include="Assets\Source\Actors\Static\Door.cs" />
     <Compile Include="Assets\Source\Actors\Librarian\FloorW.cs" />
     <Compile Include="Assets\Source\Actors\Static\Sand.cs" />
@@ -114,7 +115,8 @@
     <Compile Include="Assets\Source\Core\ActorManager.cs" />
     <Compile Include="Assets\Source\Actors\Librarian\ChairSmall.cs" />
     <Compile Include="Assets\Source\Actors\Characters\Duck.cs" />
-    <Compile Include="Assets\Source\Actors\Static\Pine.cs" />
+    <Compile Include="Assets\Source\Actors\Static\Fence.cs" />
+    <Compile Include="Assets\Source\Actors\Static\WallC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\map_2.txt" />
@@ -146,6 +148,7 @@
     <None Include="Assets\Resources\Uncanon maps\map_8Init.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Resources\Uncanon maps\map_4Init.txt" />
+    <None Include="Assets\Resources\Pages\1.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Resources\Pages\Tutorial4.txt" />
     <None Include="Assets\Resources\Uncanon maps\map_7.txt" />
